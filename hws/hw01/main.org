@@ -1,0 +1,44 @@
+#+NAME: Homework Assignment 01 : Solution
+
+* Recursion on Lists
+
+** Problem No. 1.1: Repeat
+   
+#+BEGIN_SRC scheme
+
+#+END_SRC
+
+** Problem No. 1.2: Invert
+
+** Problem No. 1.3: Count Occurences
+
+** Problem No. 1.4: Product
+
+** Problem No. 1.1: Every
+
+** Problem No. 1.2: Merge
+
+* Recursion on Trees
+
+** Problem No. 2.1: Preorder Traversal
+
+** Problem No. 2.2: Inorder
+
+** Problem No. 2.3: Postorder
+
+** Problem No. 2.4: Count All Nodes
+
+** Problem No. 2.5: Count Leaf Nodes
+
+** Problem No. 2.6: Count Internal Nodes
+
+** Problem No. 2.7: Map
+
+** Problem No. 2.8: Value at Path
+
+** Problem No. 2.9: Search
+
+** Problem No. 2.10: Update
+
+** Problem No. 2.11: Insert
+
