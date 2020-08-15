@@ -602,7 +602,7 @@
 <<test-product>>
 <<test-every>>
 <<test-merge>>
-;; <<test-flatten>>
+<<test-flatten>>
 
 
 ;; <<sample-trees>>
@@ -627,7 +627,7 @@
 (run-tests test-fn-product)
 (run-tests test-fn-every)
 (run-tests test-fn-merge)
-;; (run-tests test-fn-flatten)
+(run-tests test-fn-flatten)
 ;; (run-tests test-preorder)
 ;; (run-tests test-inorder)
 ;; (run-tests test-postorder)

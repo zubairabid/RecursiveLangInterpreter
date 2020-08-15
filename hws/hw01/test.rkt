@@ -67,15 +67,15 @@
                          (check-equal? (merge (list 55) (list 40 60 70 120))
                                        (list 40 55 60 70 120)))
               ))
-;; (define test-fn-flatten
-;;   (test-suite "Flatten"
-;;               (test-case "Already Flat"
-;;                          (check-equal? (flatten '(a b e 4 6 r 9 s))
-;;                                        '(a b e 4 6 r 9 s)))
-;;               (test-case "Nested"
-;;                          (check-equal? (flatten '(g (3 (5) (f) (d e)) (9) 1))
-;;                                        '(g 3 5 f d e 9 1)))
-;;               ))
+(define test-fn-flatten
+  (test-suite "Flatten"
+              (test-case "Already Flat"
+                         (check-equal? (flatten '(a b e 4 6 r 9 s))
+                                       '(a b e 4 6 r 9 s)))
+              (test-case "Nested"
+                         (check-equal? (flatten '(g (3 (5) (f) (d e)) (9) 1))
+                                       '(g 3 5 f d e 9 1)))
+              ))
 
 
 ;; (define singleton-tree (lnode 10))
@@ -226,7 +226,7 @@
 (run-tests test-fn-product)
 (run-tests test-fn-every)
 (run-tests test-fn-merge)
-;; (run-tests test-fn-flatten)
+(run-tests test-fn-flatten)
 ;; (run-tests test-preorder)
 ;; (run-tests test-inorder)
 ;; (run-tests test-postorder)

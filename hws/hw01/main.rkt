@@ -39,6 +39,11 @@
       (if (< (car loi1) (car loi2))
              (append (list (car loi1)) (merge (cdr loi1) loi2))
              (append (list (car loi2)) (merge loi1 (cdr loi2))))]))
+(define (flatten dlst)
+  (cond
+    [(null? dlst) '()]
+    [(not (list? dlst)) (list dlst)]
+    [else (append (flatten (car dlst)) (flatten (cdr dlst)))]))
 
 ;;; exporting only the required function
 (provide repeat)
@@ -47,3 +52,4 @@
 (provide product)
 (provide every)
 (provide merge)
+(provide flatten)

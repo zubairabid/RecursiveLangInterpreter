@@ -101,6 +101,17 @@
              (append (list (car loi2)) (merge loi1 (cdr loi2))))]))
 #+END_SRC
 
+** Flatten
+
+#+NAME: flatten
+#+BEGIN_SRC scheme
+(define (flatten dlst)
+  (cond
+    [(null? dlst) '()]
+    [(not (list? dlst)) (list dlst)]
+    [else (append (flatten (car dlst)) (flatten (cdr dlst)))]))
+#+END_SRC
+
 * Recursion on Trees
 
 ** Problem No. 2.1: Preorder Traversal
@@ -136,6 +147,7 @@
 <<product>>
 <<every>>
 <<merge>>
+<<flatten>>
 
 ;;; exporting only the required function
 (provide repeat)
@@ -144,4 +156,5 @@
 (provide product)
 (provide every)
 (provide merge)
+(provide flatten)
 #+END_SRC
