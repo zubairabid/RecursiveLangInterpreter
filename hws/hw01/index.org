@@ -597,7 +597,7 @@
 (require "main.rkt")
 
 <<test-repeat>>
-;; <<test-invert>>
+<<test-invert>>
 ;; <<test-count-occur>>
 ;; <<test-product>>
 ;; <<test-every>>
@@ -622,7 +622,7 @@
 
 
 (run-tests repeat-fn-tests)
-;; (run-tests invert-fn-tests)
+(run-tests invert-fn-tests)
 ;; (run-tests count-occur-fn-tests)
 ;; (run-tests test-fn-product)
 ;; (run-tests test-fn-every)

@@ -13,22 +13,22 @@
               (test-case "Repeat a string" (check-equal? (repeat 3 'hi) '(hi hi hi)))
               (test-case "Repeat a list" (check-equal? (repeat 2 '(ab ab)) '((ab ab) (ab ab))))
               (test-case "Repeat zero times" (check-equal? (repeat 0 4) '()))))
-;; (define invert-fn-tests
-;;   (test-suite "invert-tests"
-;;             (test-case "2-list is (number number)"
-;;                        (check-equal?
-;;                         (invert '((1 100) (2 300) (5 600) (8 200)))
-;;                         '((100 1) (300 2) (600 5) (200 8))))
-;;             (test-case "2-list is (any any)"
-;;                        (check-equal?
-;;                         (invert '((1 400) (a b) (xy 50) ((l m) 9)))
-;;                         '((400 1) (b a) (50 xy) (9 (l m)))))
-;;             (test-case "Found a non-2-list item"
-;;                        (check-exn exn:fail?
-;;                                   (lambda () (invert '(1 (2 3))))))
-;;             (test-case "Not a List"
-;;                        (check-exn exn:fail?
-;;                                   (lambda () (invert 2))))))
+(define invert-fn-tests
+  (test-suite "invert-tests"
+            (test-case "2-list is (number number)"
+                       (check-equal?
+                        (invert '((1 100) (2 300) (5 600) (8 200)))
+                        '((100 1) (300 2) (600 5) (200 8))))
+            (test-case "2-list is (any any)"
+                       (check-equal?
+                        (invert '((1 400) (a b) (xy 50) ((l m) 9)))
+                        '((400 1) (b a) (50 xy) (9 (l m)))))
+            (test-case "Found a non-2-list item"
+                       (check-exn exn:fail?
+                                  (lambda () (invert '(1 (2 3))))))
+            (test-case "Not a List"
+                       (check-exn exn:fail?
+                                  (lambda () (invert 2))))))
 ;; (define count-occur-fn-tests
 ;;   (test-suite "Count Occurrences"
 ;;               (test-case "Single Occurrence"
@@ -221,7 +221,7 @@
 
 
 (run-tests repeat-fn-tests)
-;; (run-tests invert-fn-tests)
+(run-tests invert-fn-tests)
 ;; (run-tests count-occur-fn-tests)
 ;; (run-tests test-fn-product)
 ;; (run-tests test-fn-every)

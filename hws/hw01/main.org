@@ -3,6 +3,15 @@
 * Recursion on Lists
 
 ** Problem No. 1.1: Repeat
+   The function =(repeat n x)= has to return a list containing
+   =n= copies of =x=. 
+
+   We define a recursive function =repeat=:
+   
+   - Base case (~n == 0~) ::  Returns an empty list
+   - Recursive step :: Append the value =x= 
+   to the list returned by recursively calling 
+   the function with =n-1= and =x= 
    
 #+NAME: repeat
 #+BEGIN_SRC scheme
@@ -13,6 +22,26 @@
 #+END_SRC
 
 ** Problem No. 1.2: Invert
+   The function =(invert lst)= has to be implemented, where:
+   - =lst= :: A list of (lists of length 2)
+   - =invert= :: A function to invert each =lst=
+
+*** Solution:
+    We define a recursive function =invert=:
+
+    - Base case (~null? lst~) :: Returns an empty list
+    - Recursive step ::
+      1. Take the =(car lst)= and =(reverse)= it.
+      2. Append the result of step 1 to the value returned by
+         recursively calling the function with =(cdr lst)=
+   
+#+NAME: invert
+#+BEGIN_SRC scheme
+(define (invert lst)
+  (if (null? lst)
+      '()
+      (cons (reverse (car lst)) (invert (cdr lst)))))
+#+END_SRC
 
 ** Problem No. 1.3: Count Occurences
 
@@ -52,7 +81,9 @@
 #lang racket/base
 
 <<repeat>>
+<<invert>>
 
 ;;; exporting only the required function
 (provide repeat)
+(provide invert)
 #+END_SRC
