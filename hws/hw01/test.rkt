@@ -37,18 +37,18 @@
                          (check-equal? (count-occurrences 2 '(2 3 4 3 5 6 3)) 1))
               (test-case "No Occurrence"
                          (check-equal? (count-occurrences 9 '(2 3 4 3 5 6 3)) 0))))
-;; (define test-fn-product
-;;   (test-suite "Product"
-;;               (test-case "Single Item"
-;;                          (check-equal? (product '(a) '(b))
-;;                                        '((a b))))
-;;               (test-case "Multiple Items"
-;;                          (check-equal? (product '(a b c) '(e d))
-;;                                        '((a e) (a d) (b e) (b d) (c e) (c d))))
-;;               (test-case "Any one null"
-;;                          (check-equal? (product '() '(e d))
-;;                                        '(e d)))
-;;               ))
+(define test-fn-product
+  (test-suite "Product"
+              (test-case "Single Item"
+                         (check-equal? (product '(a) '(b))
+                                       '((a b))))
+              (test-case "Multiple Items"
+                         (check-equal? (product '(a b c) '(e d))
+                                       '((a e) (a d) (b e) (b d) (c e) (c d))))
+              (test-case "Any one null"
+                         (check-equal? (product '() '(e d))
+                                       '(e d)))
+              ))
 ;; (define test-fn-every
 ;;   (test-suite "Every"
 ;;               (test-case "All Pass"
@@ -223,7 +223,7 @@
 (run-tests repeat-fn-tests)
 (run-tests invert-fn-tests)
 (run-tests count-occur-fn-tests)
-;; (run-tests test-fn-product)
+(run-tests test-fn-product)
 ;; (run-tests test-fn-every)
 ;; (run-tests test-fn-merge)
 ;; (run-tests test-fn-flatten)
