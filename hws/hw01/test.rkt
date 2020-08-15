@@ -49,15 +49,15 @@
                          (check-equal? (product '() '(e d))
                                        '(e d)))
               ))
-;; (define test-fn-every
-;;   (test-suite "Every"
-;;               (test-case "All Pass"
-;;                          (check-equal? (every symbol? '(a b d g))
-;;                                        #t))
-;;               (test-case "One Fail"
-;;                          (check-equal? (every integer? (list 3 5 7 'd))
-;;                                        #f))
-;;               ))
+(define test-fn-every
+  (test-suite "Every"
+              (test-case "All Pass"
+                         (check-equal? (every symbol? '(a b d g))
+                                       #t))
+              (test-case "One Fail"
+                         (check-equal? (every integer? (list 3 5 7 'd))
+                                       #f))
+              ))
 ;; (define test-fn-merge
 ;;   (test-suite "Merge"
 ;;               (test-case "Both lists length > 1"
@@ -224,7 +224,7 @@
 (run-tests invert-fn-tests)
 (run-tests count-occur-fn-tests)
 (run-tests test-fn-product)
-;; (run-tests test-fn-every)
+(run-tests test-fn-every)
 ;; (run-tests test-fn-merge)
 ;; (run-tests test-fn-flatten)
 ;; (run-tests test-preorder)
