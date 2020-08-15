@@ -6,6 +6,7 @@
    The function =(repeat n x)= has to return a list containing
    =n= copies of =x=. 
 
+*** Solution
    We define a recursive function =repeat=:
    
    - Base case (~n == 0~) ::  Returns an empty list
@@ -44,6 +45,20 @@
 #+END_SRC
 
 ** Problem No. 1.3: Count Occurences
+   The function =(count-occurences s slist)= has to be implemented,
+   where it returns the number of occurences of =s= in =slist=
+   
+#+NAME: count-occurrences
+#+BEGIN_SRC scheme
+(define (count-occurrences s slist)
+  (define (occplus s comp)
+    (if (= s comp)
+        1
+        0))
+  (if (null? slist)
+      0
+      (+ (occplus s (car slist)) (count-occurrences s (cdr slist)))))
+#+END_SRC
 
 ** Problem No. 1.4: Product
 
@@ -82,8 +97,10 @@
 
 <<repeat>>
 <<invert>>
+<<count-occurrences>>
 
 ;;; exporting only the required function
 (provide repeat)
 (provide invert)
+(provide count-occurrences)
 #+END_SRC

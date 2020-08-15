@@ -29,14 +29,14 @@
             (test-case "Not a List"
                        (check-exn exn:fail?
                                   (lambda () (invert 2))))))
-;; (define count-occur-fn-tests
-;;   (test-suite "Count Occurrences"
-;;               (test-case "Single Occurrence"
-;;                          (check-equal? (count-occurrences 3 '(2 3 4 3 5 6 3)) 3))
-;;               (test-case "Multiple Occurrences"
-;;                          (check-equal? (count-occurrences 2 '(2 3 4 3 5 6 3)) 1))
-;;               (test-case "No Occurrence"
-;;                          (check-equal? (count-occurrences 9 '(2 3 4 3 5 6 3)) 0))))
+(define count-occur-fn-tests
+  (test-suite "Count Occurrences"
+              (test-case "Single Occurrence"
+                         (check-equal? (count-occurrences 3 '(2 3 4 3 5 6 3)) 3))
+              (test-case "Multiple Occurrences"
+                         (check-equal? (count-occurrences 2 '(2 3 4 3 5 6 3)) 1))
+              (test-case "No Occurrence"
+                         (check-equal? (count-occurrences 9 '(2 3 4 3 5 6 3)) 0))))
 ;; (define test-fn-product
 ;;   (test-suite "Product"
 ;;               (test-case "Single Item"
@@ -222,7 +222,7 @@
 
 (run-tests repeat-fn-tests)
 (run-tests invert-fn-tests)
-;; (run-tests count-occur-fn-tests)
+(run-tests count-occur-fn-tests)
 ;; (run-tests test-fn-product)
 ;; (run-tests test-fn-every)
 ;; (run-tests test-fn-merge)

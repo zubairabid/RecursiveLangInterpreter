@@ -598,7 +598,7 @@
 
 <<test-repeat>>
 <<test-invert>>
-;; <<test-count-occur>>
+<<test-count-occur>>
 ;; <<test-product>>
 ;; <<test-every>>
 ;; <<test-merge>>
@@ -623,7 +623,7 @@
 
 (run-tests repeat-fn-tests)
 (run-tests invert-fn-tests)
-;; (run-tests count-occur-fn-tests)
+(run-tests count-occur-fn-tests)
 ;; (run-tests test-fn-product)
 ;; (run-tests test-fn-every)
 ;; (run-tests test-fn-merge)
