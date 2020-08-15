@@ -31,6 +31,14 @@
   (if (null? lst)
       #t
       (and (pred (car lst)) (every pred (cdr lst)))))
+(define (merge loi1 loi2)
+  (cond 
+    [(null? loi1) loi2]
+    [(null? loi2) loi1]
+    [else 
+      (if (< (car loi1) (car loi2))
+             (append (list (car loi1)) (merge (cdr loi1) loi2))
+             (append (list (car loi2)) (merge loi1 (cdr loi2))))]))
 
 ;;; exporting only the required function
 (provide repeat)
@@ -38,3 +46,4 @@
 (provide count-occurrences)
 (provide product)
 (provide every)
+(provide merge)

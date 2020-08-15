@@ -77,7 +77,7 @@
          (append (product sos1 (list (car sos2))) (product sos1 (cdr sos2)))]
         [else (list (append sos1 sos2))])]))
 #+END_SRC
-** Problem No. 1.1: Every
+** Problem No. 1.5: Every
 
 #+NAME: every
 #+BEGIN_SRC scheme
@@ -86,7 +86,20 @@
       #t
       (and (pred (car lst)) (every pred (cdr lst)))))
 #+END_SRC
-** Problem No. 1.2: Merge
+** Problem No. 1.6: Merge
+
+
+#+NAME: merge
+#+BEGIN_SRC scheme
+(define (merge loi1 loi2)
+  (cond 
+    [(null? loi1) loi2]
+    [(null? loi2) loi1]
+    [else 
+      (if (< (car loi1) (car loi2))
+             (append (list (car loi1)) (merge (cdr loi1) loi2))
+             (append (list (car loi2)) (merge loi1 (cdr loi2))))]))
+#+END_SRC
 
 * Recursion on Trees
 
@@ -122,6 +135,7 @@
 <<count-occurrences>>
 <<product>>
 <<every>>
+<<merge>>
 
 ;;; exporting only the required function
 (provide repeat)
@@ -129,4 +143,5 @@
 (provide count-occurrences)
 (provide product)
 (provide every)
+(provide merge)
 #+END_SRC

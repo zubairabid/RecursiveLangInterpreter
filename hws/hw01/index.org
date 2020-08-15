@@ -601,7 +601,7 @@
 <<test-count-occur>>
 <<test-product>>
 <<test-every>>
-;; <<test-merge>>
+<<test-merge>>
 ;; <<test-flatten>>
 
 
@@ -626,7 +626,7 @@
 (run-tests count-occur-fn-tests)
 (run-tests test-fn-product)
 (run-tests test-fn-every)
-;; (run-tests test-fn-merge)
+(run-tests test-fn-merge)
 ;; (run-tests test-fn-flatten)
 ;; (run-tests test-preorder)
 ;; (run-tests test-inorder)

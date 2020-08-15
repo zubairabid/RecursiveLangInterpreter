@@ -58,15 +58,15 @@
                          (check-equal? (every integer? (list 3 5 7 'd))
                                        #f))
               ))
-;; (define test-fn-merge
-;;   (test-suite "Merge"
-;;               (test-case "Both lists length > 1"
-;;                          (check-equal? (merge (list 10 50 60 100) (list 1 3 6 9))
-;;                                        (list 1 3 6 9 10 50 60 100)))
-;;               (test-case "One list with single item"
-;;                          (check-equal? (merge (list 55) (list 40 60 70 120))
-;;                                        (list 40 55 60 70 120)))
-;;               ))
+(define test-fn-merge
+  (test-suite "Merge"
+              (test-case "Both lists length > 1"
+                         (check-equal? (merge (list 10 50 60 100) (list 1 3 6 9))
+                                       (list 1 3 6 9 10 50 60 100)))
+              (test-case "One list with single item"
+                         (check-equal? (merge (list 55) (list 40 60 70 120))
+                                       (list 40 55 60 70 120)))
+              ))
 ;; (define test-fn-flatten
 ;;   (test-suite "Flatten"
 ;;               (test-case "Already Flat"
@@ -225,7 +225,7 @@
 (run-tests count-occur-fn-tests)
 (run-tests test-fn-product)
 (run-tests test-fn-every)
-;; (run-tests test-fn-merge)
+(run-tests test-fn-merge)
 ;; (run-tests test-fn-flatten)
 ;; (run-tests test-preorder)
 ;; (run-tests test-inorder)
