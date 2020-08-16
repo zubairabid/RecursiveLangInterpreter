@@ -78,6 +78,16 @@
     (leaf-node (v) 1)
     (internal-node (v left right)
       (+ 1 (count-nodes left) (count-nodes right)))))
+(define (count-leaves tree)
+  (cases full-binary-tree tree
+    (leaf-node (v) 1)
+    (internal-node (v left right)
+      (+ (count-leaves left) (count-leaves right)))))
+(define (count-internal tree)
+  (cases full-binary-tree tree
+    (leaf-node (v) 0)
+    (internal-node (v left right)
+      (+ 1 (count-internal left) (count-internal right)))))
 
 ;;; exporting only the required function
 (provide repeat)
@@ -91,3 +101,5 @@
 (provide traverse/inorder)
 (provide traverse/postorder)
 (provide count-nodes)
+(provide count-leaves)
+(provide count-internal)

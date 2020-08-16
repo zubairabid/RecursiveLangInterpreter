@@ -611,8 +611,8 @@
 <<test-inorder>>
 <<test-postorder>>
 <<test-count-nodes>>
-;; <<test-count-leaves>>
-;; <<test-count-internal>>
+<<test-count-leaves>>
+<<test-count-internal>>
 ;; <<test-tree-map>>
 ;; <<path-items>>
 ;; <<test-vap>>
@@ -632,8 +632,8 @@
 (run-tests test-inorder)
 (run-tests test-postorder)
 (run-tests test-count-nodes)
-;; (run-tests test-count-leaves)
-;; (run-tests test-count-internal)
+(run-tests test-count-leaves)
+(run-tests test-count-internal)
 ;; (run-tests test-tree-map)
 
 ;; (run-tests test-value-at-path)

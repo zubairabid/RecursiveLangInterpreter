@@ -172,7 +172,28 @@
 
 ** Problem No. 2.5: Count Leaf Nodes
 
+
+#+NAME: count-leaves
+#+BEGIN_SRC scheme
+(define (count-leaves tree)
+  (cases full-binary-tree tree
+    (leaf-node (v) 1)
+    (internal-node (v left right)
+      (+ (count-leaves left) (count-leaves right)))))
+#+END_SRC
+
+
 ** Problem No. 2.6: Count Internal Nodes
+
+
+#+NAME: count-internal
+#+BEGIN_SRC scheme
+(define (count-internal tree)
+  (cases full-binary-tree tree
+    (leaf-node (v) 0)
+    (internal-node (v left right)
+      (+ 1 (count-internal left) (count-internal right)))))
+#+END_SRC
 
 ** Problem No. 2.7: Map
 
@@ -202,6 +223,8 @@
 <<traverse/inorder>>
 <<traverse/postorder>>
 <<count-nodes>>
+<<count-leaves>>
+<<count-internal>>
 
 ;;; exporting only the required function
 (provide repeat)
@@ -215,4 +238,6 @@
 (provide traverse/inorder)
 (provide traverse/postorder)
 (provide count-nodes)
+(provide count-leaves)
+(provide count-internal)
 #+END_SRC

@@ -138,28 +138,28 @@
               (test-case "larger"
                          (check-equal? (count-nodes larger-tree)
                                        7))))
-;; (define test-count-leaves
-;;   (test-suite "Count Leaves"
-;;               (test-case "singleton"
-;;                          (check-equal? (count-leaves singleton-tree)
-;;                                        1))
-;;               (test-case "small"
-;;                          (check-equal? (count-leaves small-tree)
-;;                                        2))
-;;               (test-case "larger"
-;;                          (check-equal? (count-leaves larger-tree)
-;;                                        4))))
-;; (define test-count-internal
-;;   (test-suite "Count Internal"
-;;               (test-case "singleton"
-;;                          (check-equal? (count-internal singleton-tree)
-;;                                        0))
-;;               (test-case "small"
-;;                          (check-equal? (count-internal small-tree)
-;;                                        1))
-;;               (test-case "larger"
-;;                          (check-equal? (count-internal larger-tree)
-;;                                        3))))
+(define test-count-leaves
+  (test-suite "Count Leaves"
+              (test-case "singleton"
+                         (check-equal? (count-leaves singleton-tree)
+                                       1))
+              (test-case "small"
+                         (check-equal? (count-leaves small-tree)
+                                       2))
+              (test-case "larger"
+                         (check-equal? (count-leaves larger-tree)
+                                       4))))
+(define test-count-internal
+  (test-suite "Count Internal"
+              (test-case "singleton"
+                         (check-equal? (count-internal singleton-tree)
+                                       0))
+              (test-case "small"
+                         (check-equal? (count-internal small-tree)
+                                       1))
+              (test-case "larger"
+                         (check-equal? (count-internal larger-tree)
+                                       3))))
 ;; (define test-tree-map
 ;;   (test-suite "Tree Map"
 ;;               (test-case "singleton"
@@ -231,8 +231,8 @@
 (run-tests test-inorder)
 (run-tests test-postorder)
 (run-tests test-count-nodes)
-;; (run-tests test-count-leaves)
-;; (run-tests test-count-internal)
+(run-tests test-count-leaves)
+(run-tests test-count-internal)
 ;; (run-tests test-tree-map)
 
 ;; (run-tests test-value-at-path)
