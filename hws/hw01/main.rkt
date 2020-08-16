@@ -93,6 +93,20 @@
     (leaf-node (v) (lnode (fn v)))
     (internal-node (v left right)
       (inode (fn v) (tree/map fn left) (tree/map fn right)))))
+(define path-item (list "left" "right"))
+(define (value-at-path path tree)
+  (cond
+    [(null? path) (cases full-binary-tree tree 
+                    (leaf-node (v) v)
+                    (internal-node (v left right) v))]
+    [(equal? (list-ref path-item 0) (car path))
+      (cases full-binary-tree tree
+        (leaf-node (v) tree) ;; return the last node in the path
+        (internal-node (v left right) (value-at-path (cdr path) left)))]
+    [(equal? (list-ref path-item 1) (car path))
+      (cases full-binary-tree tree
+        (leaf-node (v) tree) ;; return the last node in the path
+        (internal-node (v left right) (value-at-path (cdr path) right)))]))
 
 ;;; exporting only the required function
 (provide repeat)
@@ -109,3 +123,4 @@
 (provide count-leaves)
 (provide count-internal)
 (provide tree/map)
+(provide value-at-path)

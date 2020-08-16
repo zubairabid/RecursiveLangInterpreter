@@ -175,20 +175,20 @@
                                                       (lnode 31)
                                                       (lnode 41))))
               ))
-;; (define path-item (list "left" "right"))
-;; (define test-value-at-path
-;;   (test-suite "Value at Path"
-;;               (test-case "left-right"
-;;                          (check-equal? (value-at-path 
-;;                                         (list "left" "right")
-;;                                         larger-tree)
-;;                                        80))
-;;               (test-case "root"
-;;                          (check-equal? (value-at-path 
-;;                                         '()
-;;                                         larger-tree)
-;;                                        100))
-;;               ))
+(define path-item (list "left" "right"))
+(define test-value-at-path
+  (test-suite "Value at Path"
+              (test-case "left-right"
+                         (check-equal? (value-at-path 
+                                        (list "left" "right")
+                                        larger-tree)
+                                       80))
+              (test-case "root"
+                         (check-equal? (value-at-path 
+                                        '()
+                                        larger-tree)
+                                       100))
+              ))
 ;; (define test-search
 ;;   (test-suite "Search"
 ;;               (test-case "found"
@@ -235,7 +235,7 @@
 (run-tests test-count-internal)
 (run-tests test-tree-map)
 
-;; (run-tests test-value-at-path)
+(run-tests test-value-at-path)
 ;; (run-tests test-search)
 ;; (run-tests test-update)
 ;; (run-tests test-insert)

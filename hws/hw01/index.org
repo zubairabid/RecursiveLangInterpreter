@@ -614,8 +614,8 @@
 <<test-count-leaves>>
 <<test-count-internal>>
 <<test-tree-map>>
-;; <<path-items>>
-;; <<test-vap>>
+<<path-items>>
+<<test-vap>>
 ;; <<test-search>>
 ;; <<test-update>>
 ;; <<test-insert>>
@@ -636,7 +636,7 @@
 (run-tests test-count-internal)
 (run-tests test-tree-map)
 
-;; (run-tests test-value-at-path)
+(run-tests test-value-at-path)
 ;; (run-tests test-search)
 ;; (run-tests test-update)
 ;; (run-tests test-insert)

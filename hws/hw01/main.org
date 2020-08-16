@@ -207,6 +207,29 @@
 
 ** Problem No. 2.8: Value at Path
 
+   
+#+NAME: path-item
+#+BEGIN_SRC scheme 
+(define path-item (list "left" "right"))
+#+END_SRC
+   
+#+NAME: value-at-path
+#+BEGIN_SRC scheme
+(define (value-at-path path tree)
+  (cond
+    [(null? path) (cases full-binary-tree tree 
+                    (leaf-node (v) v)
+                    (internal-node (v left right) v))]
+    [(equal? (list-ref path-item 0) (car path))
+      (cases full-binary-tree tree
+        (leaf-node (v) tree) ;; return the last node in the path
+        (internal-node (v left right) (value-at-path (cdr path) left)))]
+    [(equal? (list-ref path-item 1) (car path))
+      (cases full-binary-tree tree
+        (leaf-node (v) tree) ;; return the last node in the path
+        (internal-node (v left right) (value-at-path (cdr path) right)))]))
+#+END_SRC
+
 ** Problem No. 2.9: Search
 
 ** Problem No. 2.10: Update
@@ -234,6 +257,8 @@
 <<count-leaves>>
 <<count-internal>>
 <<tree/map>>
+<<path-item>>
+<<value-at-path>>
 
 ;;; exporting only the required function
 (provide repeat)
@@ -250,4 +275,5 @@
 (provide count-leaves)
 (provide count-internal)
 (provide tree/map)
+(provide value-at-path)
 #+END_SRC
