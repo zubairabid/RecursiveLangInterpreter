@@ -88,6 +88,11 @@
     (leaf-node (v) 0)
     (internal-node (v left right)
       (+ 1 (count-internal left) (count-internal right)))))
+(define (tree/map fn tr)
+  (cases full-binary-tree tr
+    (leaf-node (v) (lnode (fn v)))
+    (internal-node (v left right)
+      (inode (fn v) (tree/map fn left) (tree/map fn right)))))
 
 ;;; exporting only the required function
 (provide repeat)
@@ -103,3 +108,4 @@
 (provide count-nodes)
 (provide count-leaves)
 (provide count-internal)
+(provide tree/map)

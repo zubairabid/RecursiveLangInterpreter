@@ -185,7 +185,6 @@
 
 ** Problem No. 2.6: Count Internal Nodes
 
-
 #+NAME: count-internal
 #+BEGIN_SRC scheme
 (define (count-internal tree)
@@ -196,6 +195,15 @@
 #+END_SRC
 
 ** Problem No. 2.7: Map
+
+#+NAME: tree/map
+#+BEGIN_SRC scheme
+(define (tree/map fn tr)
+  (cases full-binary-tree tr
+    (leaf-node (v) (lnode (fn v)))
+    (internal-node (v left right)
+      (inode (fn v) (tree/map fn left) (tree/map fn right)))))
+#+END_SRC
 
 ** Problem No. 2.8: Value at Path
 
@@ -225,6 +233,7 @@
 <<count-nodes>>
 <<count-leaves>>
 <<count-internal>>
+<<tree/map>>
 
 ;;; exporting only the required function
 (provide repeat)
@@ -240,4 +249,5 @@
 (provide count-nodes)
 (provide count-leaves)
 (provide count-internal)
+(provide tree/map)
 #+END_SRC

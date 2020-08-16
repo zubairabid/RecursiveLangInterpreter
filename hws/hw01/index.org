@@ -1,4 +1,4 @@
-#+NAME: Homework Assignment 01 : Functional Programming
+
 
 * Introduction
   Solving any problem using functional programming requires
@@ -613,7 +613,7 @@
 <<test-count-nodes>>
 <<test-count-leaves>>
 <<test-count-internal>>
-;; <<test-tree-map>>
+<<test-tree-map>>
 ;; <<path-items>>
 ;; <<test-vap>>
 ;; <<test-search>>
@@ -634,7 +634,7 @@
 (run-tests test-count-nodes)
 (run-tests test-count-leaves)
 (run-tests test-count-internal)
-;; (run-tests test-tree-map)
+(run-tests test-tree-map)
 
 ;; (run-tests test-value-at-path)
 ;; (run-tests test-search)

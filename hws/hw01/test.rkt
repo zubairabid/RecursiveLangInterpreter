@@ -160,21 +160,21 @@
               (test-case "larger"
                          (check-equal? (count-internal larger-tree)
                                        3))))
-;; (define test-tree-map
-;;   (test-suite "Tree Map"
-;;               (test-case "singleton"
-;;                          (check-equal? (tree/map 
-;;                                         add1 singleton-tree
-;;                                         )
-;;                                        (lnode 11)))
-;;               (test-case "small"
-;;                          (check-equal? (tree/map 
-;;                                         add1 small-tree
-;;                                         )
-;;                                        (inode 21
-;;                                                       (lnode 31)
-;;                                                       (lnode 41))))
-;;               ))
+(define test-tree-map
+  (test-suite "Tree Map"
+              (test-case "singleton"
+                         (check-equal? (tree/map 
+                                        add1 singleton-tree
+                                        )
+                                       (lnode 11)))
+              (test-case "small"
+                         (check-equal? (tree/map 
+                                        add1 small-tree
+                                        )
+                                       (inode 21
+                                                      (lnode 31)
+                                                      (lnode 41))))
+              ))
 ;; (define path-item (list "left" "right"))
 ;; (define test-value-at-path
 ;;   (test-suite "Value at Path"
@@ -233,7 +233,7 @@
 (run-tests test-count-nodes)
 (run-tests test-count-leaves)
 (run-tests test-count-internal)
-;; (run-tests test-tree-map)
+(run-tests test-tree-map)
 
 ;; (run-tests test-value-at-path)
 ;; (run-tests test-search)
