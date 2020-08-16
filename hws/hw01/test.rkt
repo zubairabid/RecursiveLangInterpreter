@@ -127,17 +127,17 @@
               (test-case "larger"
                          (check-equal? (traverse/postorder larger-tree)
                                        (list 5 6 200 80 50 40 100)))))
-;; (define test-count-nodes
-;;   (test-suite "Count Nodes"
-;;               (test-case "singleton"
-;;                          (check-equal? (count-nodes singleton-tree)
-;;                                        1))
-;;               (test-case "small"
-;;                          (check-equal? (count-nodes small-tree)
-;;                                        3))
-;;               (test-case "larger"
-;;                          (check-equal? (count-nodes larger-tree)
-;;                                        7))))
+(define test-count-nodes
+  (test-suite "Count Nodes"
+              (test-case "singleton"
+                         (check-equal? (count-nodes singleton-tree)
+                                       1))
+              (test-case "small"
+                         (check-equal? (count-nodes small-tree)
+                                       3))
+              (test-case "larger"
+                         (check-equal? (count-nodes larger-tree)
+                                       7))))
 ;; (define test-count-leaves
 ;;   (test-suite "Count Leaves"
 ;;               (test-case "singleton"
@@ -230,7 +230,7 @@
 (run-tests test-preorder)
 (run-tests test-inorder)
 (run-tests test-postorder)
-;; (run-tests test-count-nodes)
+(run-tests test-count-nodes)
 ;; (run-tests test-count-leaves)
 ;; (run-tests test-count-internal)
 ;; (run-tests test-tree-map)

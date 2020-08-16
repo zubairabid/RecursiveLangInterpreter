@@ -610,7 +610,7 @@
 <<test-preorder>>
 <<test-inorder>>
 <<test-postorder>>
-;; <<test-count-nodes>>
+<<test-count-nodes>>
 ;; <<test-count-leaves>>
 ;; <<test-count-internal>>
 ;; <<test-tree-map>>
@@ -631,7 +631,7 @@
 (run-tests test-preorder)
 (run-tests test-inorder)
 (run-tests test-postorder)
-;; (run-tests test-count-nodes)
+(run-tests test-count-nodes)
 ;; (run-tests test-count-leaves)
 ;; (run-tests test-count-internal)
 ;; (run-tests test-tree-map)

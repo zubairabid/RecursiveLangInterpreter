@@ -73,6 +73,11 @@
         (append 
           (traverse/postorder right)
           (list v))))))
+(define (count-nodes tree)
+  (cases full-binary-tree tree
+    (leaf-node (v) 1)
+    (internal-node (v left right)
+      (+ 1 (count-nodes left) (count-nodes right)))))
 
 ;;; exporting only the required function
 (provide repeat)
@@ -85,3 +90,4 @@
 (provide traverse/preorder)
 (provide traverse/inorder)
 (provide traverse/postorder)
+(provide count-nodes)
