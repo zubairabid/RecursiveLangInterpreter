@@ -116,7 +116,33 @@
 
 ** Problem No. 2.1: Preorder Traversal
 
+#+NAME: traverse/preorder
+#+BEGIN_SRC scheme
+(define (traverse/preorder tree)
+  (cases full-binary-tree tree
+    (leaf-node (v) (list v))
+    (internal-node (v left right) 
+      (append 
+        (list v)
+        (append 
+          (traverse/preorder left)
+          (traverse/preorder right))))))
+#+END_SRC
+
 ** Problem No. 2.2: Inorder
+
+#+NAME: traverse/inorder
+#+BEGIN_SRC scheme
+(define (traverse/inorder tree)
+  (cases full-binary-tree tree
+    (leaf-node (v) (list v))
+    (internal-node (v left right) 
+      (append 
+        (list v)
+        (append 
+          (traverse/preorder left)
+          (traverse/preorder right))))))
+#+END_SRC
 
 ** Problem No. 2.3: Postorder
 
@@ -140,6 +166,8 @@
 #+NAME: solution
 #+BEGIN_SRC scheme :noweb yes :tangle ./main.rkt
 #lang racket/base
+(require eopl)
+(require "datatypes.rkt")
 
 <<repeat>>
 <<invert>>
@@ -148,6 +176,7 @@
 <<every>>
 <<merge>>
 <<flatten>>
+<<traverse/preorder>>
 
 ;;; exporting only the required function
 (provide repeat)
@@ -157,4 +186,5 @@
 (provide every)
 (provide merge)
 (provide flatten)
+(provide traverse/preorder)
 #+END_SRC

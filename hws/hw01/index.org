@@ -605,9 +605,9 @@
 <<test-flatten>>
 
 
-;; <<sample-trees>>
+<<sample-trees>>
 
-;; <<test-preorder>>
+<<test-preorder>>
 ;; <<test-inorder>>
 ;; <<test-postorder>>
 ;; <<test-count-nodes>>
@@ -628,7 +628,7 @@
 (run-tests test-fn-every)
 (run-tests test-fn-merge)
 (run-tests test-fn-flatten)
-;; (run-tests test-preorder)
+(run-tests test-preorder)
 ;; (run-tests test-inorder)
 ;; (run-tests test-postorder)
 ;; (run-tests test-count-nodes)

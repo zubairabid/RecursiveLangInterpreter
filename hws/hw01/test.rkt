@@ -78,33 +78,33 @@
               ))
 
 
-;; (define singleton-tree (lnode 10))
-;; 
-;; (define small-tree
-;;   (inode 20
-;;          (lnode 30)
-;;          (lnode 40)))
-;; 
-;; (define larger-tree
-;;   (inode 100
-;;          (inode 50
-;;                 (inode 200
-;;                        (lnode 5)
-;;                        (lnode 6))
-;;                 (lnode 80))
-;;          (lnode 40)))
+(define singleton-tree (lnode 10))
 
-;; (define test-preorder 
-;;   (test-suite "Preorder"
-;;               (test-case "singleton"
-;;                          (check-equal? (traverse/preorder singleton-tree)
-;;                                        (list 10)))
-;;               (test-case "small"
-;;                          (check-equal? (traverse/preorder small-tree)
-;;                                        (list 20 30 40)))
-;;               (test-case "larger"
-;;                          (check-equal? (traverse/preorder larger-tree)
-;;                                        (list 100 50 200 5 6 80 40)))))
+(define small-tree
+  (inode 20
+         (lnode 30)
+         (lnode 40)))
+
+(define larger-tree
+  (inode 100
+         (inode 50
+                (inode 200
+                       (lnode 5)
+                       (lnode 6))
+                (lnode 80))
+         (lnode 40)))
+
+(define test-preorder 
+  (test-suite "Preorder"
+              (test-case "singleton"
+                         (check-equal? (traverse/preorder singleton-tree)
+                                       (list 10)))
+              (test-case "small"
+                         (check-equal? (traverse/preorder small-tree)
+                                       (list 20 30 40)))
+              (test-case "larger"
+                         (check-equal? (traverse/preorder larger-tree)
+                                       (list 100 50 200 5 6 80 40)))))
 ;; (define test-inorder
 ;;   (test-suite "Inorder"
 ;;               (test-case "singleton"
@@ -227,7 +227,7 @@
 (run-tests test-fn-every)
 (run-tests test-fn-merge)
 (run-tests test-fn-flatten)
-;; (run-tests test-preorder)
+(run-tests test-preorder)
 ;; (run-tests test-inorder)
 ;; (run-tests test-postorder)
 ;; (run-tests test-count-nodes)

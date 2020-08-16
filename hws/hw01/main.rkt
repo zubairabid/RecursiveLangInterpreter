@@ -1,4 +1,6 @@
 #lang racket/base
+(require eopl)
+(require "datatypes.rkt")
 
 (define (repeat n x)
   (if (= n 0)
@@ -44,6 +46,15 @@
     [(null? dlst) '()]
     [(not (list? dlst)) (list dlst)]
     [else (append (flatten (car dlst)) (flatten (cdr dlst)))]))
+(define (traverse/preorder tree)
+  (cases full-binary-tree tree
+    (leaf-node (v) (list v))
+    (internal-node (v left right) 
+      (append 
+        (list v)
+        (append 
+          (traverse/preorder left)
+          (traverse/preorder right))))))
 
 ;;; exporting only the required function
 (provide repeat)
@@ -53,3 +64,4 @@
 (provide every)
 (provide merge)
 (provide flatten)
+(provide traverse/preorder)
