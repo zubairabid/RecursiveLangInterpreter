@@ -138,10 +138,10 @@
     (leaf-node (v) (list v))
     (internal-node (v left right) 
       (append 
-        (list v)
+        (traverse/inorder left) 
         (append 
-          (traverse/preorder left)
-          (traverse/preorder right))))))
+          (list v)
+          (traverse/inorder right))))))
 #+END_SRC
 
 ** Problem No. 2.3: Postorder
@@ -177,6 +177,7 @@
 <<merge>>
 <<flatten>>
 <<traverse/preorder>>
+<<traverse/inorder>>
 
 ;;; exporting only the required function
 (provide repeat)
@@ -187,4 +188,5 @@
 (provide merge)
 (provide flatten)
 (provide traverse/preorder)
+(provide traverse/inorder)
 #+END_SRC

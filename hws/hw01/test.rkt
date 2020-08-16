@@ -105,17 +105,17 @@
               (test-case "larger"
                          (check-equal? (traverse/preorder larger-tree)
                                        (list 100 50 200 5 6 80 40)))))
-;; (define test-inorder
-;;   (test-suite "Inorder"
-;;               (test-case "singleton"
-;;                          (check-equal? (traverse/inorder singleton-tree)
-;;                                        (list 10)))
-;;               (test-case "small"
-;;                          (check-equal? (traverse/inorder small-tree)
-;;                                        (list 30 20 40)))
-;;               (test-case "larger"
-;;                          (check-equal? (traverse/inorder larger-tree)
-;;                                        (list 5 200 6 50 80 100 40)))))
+(define test-inorder
+  (test-suite "Inorder"
+              (test-case "singleton"
+                         (check-equal? (traverse/inorder singleton-tree)
+                                       (list 10)))
+              (test-case "small"
+                         (check-equal? (traverse/inorder small-tree)
+                                       (list 30 20 40)))
+              (test-case "larger"
+                         (check-equal? (traverse/inorder larger-tree)
+                                       (list 5 200 6 50 80 100 40)))))
 ;; (define test-postorder
 ;;   (test-suite "Postorder"
 ;;               (test-case "singleton"
@@ -228,7 +228,7 @@
 (run-tests test-fn-merge)
 (run-tests test-fn-flatten)
 (run-tests test-preorder)
-;; (run-tests test-inorder)
+(run-tests test-inorder)
 ;; (run-tests test-postorder)
 ;; (run-tests test-count-nodes)
 ;; (run-tests test-count-leaves)
