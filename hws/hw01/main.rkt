@@ -64,6 +64,15 @@
         (append 
           (list v)
           (traverse/inorder right))))))
+(define (traverse/postorder tree)
+  (cases full-binary-tree tree
+    (leaf-node (v) (list v))
+    (internal-node (v left right) 
+      (append 
+        (traverse/postorder left) 
+        (append 
+          (traverse/postorder right)
+          (list v))))))
 
 ;;; exporting only the required function
 (provide repeat)
@@ -75,3 +84,4 @@
 (provide flatten)
 (provide traverse/preorder)
 (provide traverse/inorder)
+(provide traverse/postorder)

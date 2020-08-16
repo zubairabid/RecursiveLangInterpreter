@@ -609,7 +609,7 @@
 
 <<test-preorder>>
 <<test-inorder>>
-;; <<test-postorder>>
+<<test-postorder>>
 ;; <<test-count-nodes>>
 ;; <<test-count-leaves>>
 ;; <<test-count-internal>>
@@ -630,7 +630,7 @@
 (run-tests test-fn-flatten)
 (run-tests test-preorder)
 (run-tests test-inorder)
-;; (run-tests test-postorder)
+(run-tests test-postorder)
 ;; (run-tests test-count-nodes)
 ;; (run-tests test-count-leaves)
 ;; (run-tests test-count-internal)
