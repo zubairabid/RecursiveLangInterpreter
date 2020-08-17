@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-08-17 Mon 17:48 -->
+<!-- 2020-08-17 Mon 18:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -198,7 +198,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -246,100 +246,108 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8f1c036">1. Introduction</a></li>
-<li><a href="#orge00648f">2. Recursion on Lists</a>
+<li><a href="#org4c3785b">1. Introduction</a></li>
+<li><a href="#org4c0f2c8">2. Recursion on Lists</a>
 <ul>
-<li><a href="#org6e29c59">2.1. Problem No. 1.1: Repeat</a>
+<li><a href="#orgc91dfd0">2.1. Problem No. 1.1: Repeat</a>
 <ul>
-<li><a href="#org0c075bd">2.1.1. Solution</a></li>
+<li><a href="#orgbc4a1b5">2.1.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org27e5392">2.2. Problem No. 1.2: Invert</a>
+<li><a href="#org8e13cf3">2.2. Problem No. 1.2: Invert</a>
 <ul>
-<li><a href="#org5588fbc">2.2.1. Solution:</a></li>
+<li><a href="#org6c98cac">2.2.1. Solution:</a></li>
 </ul>
 </li>
-<li><a href="#orgec3e1d5">2.3. Problem No. 1.3: Count Occurences</a>
+<li><a href="#org55b3537">2.3. Problem No. 1.3: Count Occurences</a>
 <ul>
-<li><a href="#org16c39fc">2.3.1. Solution</a></li>
+<li><a href="#org0440f38">2.3.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org0a3785f">2.4. Problem No. 1.4: Product</a>
+<li><a href="#orgbaeb1f4">2.4. Problem No. 1.4: Product</a>
 <ul>
-<li><a href="#org970f629">2.4.1. Solution</a></li>
+<li><a href="#org3fe914b">2.4.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org90107ee">2.5. Problem No. 1.5: Every</a>
+<li><a href="#orge233d6c">2.5. Problem No. 1.5: Every</a>
 <ul>
-<li><a href="#org07325d8">2.5.1. Solution</a></li>
+<li><a href="#org28fff08">2.5.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org2dc6ec8">2.6. Problem No. 1.6: Merge</a>
+<li><a href="#org9cddcef">2.6. Problem No. 1.6: Merge</a>
 <ul>
-<li><a href="#org947cf58">2.6.1. Solution</a></li>
+<li><a href="#org3db5dfd">2.6.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org56d7969">2.7. Flatten</a>
+<li><a href="#org83267c3">2.7. Flatten</a>
 <ul>
-<li><a href="#orgaa187a3">2.7.1. Solution</a></li>
+<li><a href="#org1113de0">2.7.1. Solution</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgf0eb3bd">3. Recursion on Trees</a>
+<li><a href="#orgf87931a">3. Recursion on Trees</a>
 <ul>
-<li><a href="#orge15887c">3.1. Problem No. 2.1: Preorder Traversal</a>
+<li><a href="#orgc6fe7f1">3.1. Problem No. 2.1: Preorder Traversal</a>
 <ul>
-<li><a href="#orgdcc5971">3.1.1. Solution</a></li>
+<li><a href="#orgc62ddd0">3.1.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org2841796">3.2. Problem No. 2.2: Inorder</a>
+<li><a href="#org68a363a">3.2. Problem No. 2.2: Inorder</a>
 <ul>
-<li><a href="#org1386721">3.2.1. Solution</a></li>
+<li><a href="#org628b7b1">3.2.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org9477419">3.3. Problem No. 2.3: Postorder</a>
+<li><a href="#orgbec0fd6">3.3. Problem No. 2.3: Postorder</a>
 <ul>
-<li><a href="#orgc0fe089">3.3.1. Solution</a></li>
+<li><a href="#org2d3b0e4">3.3.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org8f50b82">3.4. Problem No. 2.4: Count All Nodes</a>
+<li><a href="#org3d32229">3.4. Problem No. 2.4: Count All Nodes</a>
 <ul>
-<li><a href="#orgff1afc2">3.4.1. Solution</a></li>
+<li><a href="#org74bca1b">3.4.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org3985fd4">3.5. Problem No. 2.5: Count Leaf Nodes</a>
+<li><a href="#orgf57b365">3.5. Problem No. 2.5: Count Leaf Nodes</a>
 <ul>
-<li><a href="#org8d74b37">3.5.1. Solution</a></li>
+<li><a href="#orgba50bcb">3.5.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org102199e">3.6. Problem No. 2.6: Count Internal Nodes</a>
+<li><a href="#org19131fc">3.6. Problem No. 2.6: Count Internal Nodes</a>
 <ul>
-<li><a href="#orge94fbd5">3.6.1. Solution</a></li>
+<li><a href="#org6d631e5">3.6.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#orgc1a76b2">3.7. Problem No. 2.7: Map</a>
+<li><a href="#orgc39b6f2">3.7. Problem No. 2.7: Map</a>
 <ul>
-<li><a href="#org6af120e">3.7.1. Solution:</a></li>
+<li><a href="#org4061751">3.7.1. Solution:</a></li>
 </ul>
 </li>
-<li><a href="#orgf83f438">3.8. Problem No. 2.8: Value at Path</a>
+<li><a href="#org921c538">3.8. Problem No. 2.8: Value at Path</a>
 <ul>
-<li><a href="#org78dd3c7">3.8.1. Solution</a></li>
+<li><a href="#org6cea7fe">3.8.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org1fd0791">3.9. Problem No. 2.9: Search</a></li>
-<li><a href="#orga926a06">3.10. Problem No. 2.10: Update</a></li>
-<li><a href="#orgbd61e5c">3.11. Problem No. 2.11: Insert</a></li>
+<li><a href="#org1a9e14f">3.9. Problem No. 2.9: Search</a></li>
+<li><a href="#orgf7cf825">3.10. Problem No. 2.10: Update</a>
+<ul>
+<li><a href="#org9de3ec2">3.10.1. Solution</a></li>
 </ul>
 </li>
-<li><a href="#org5d9df27">4. Tangle</a></li>
+<li><a href="#orgbec0576">3.11. Problem No. 2.11: Insert</a>
+<ul>
+<li><a href="#org2ea54b1">3.11.1. Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org3abdd37">4. Tangle</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8f1c036" class="outline-2">
-<h2 id="org8f1c036"><span class="section-number-2">1</span> Introduction</h2>
+<div id="outline-container-org4c3785b" class="outline-2">
+<h2 id="org4c3785b"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Solution to HW01 of PoPL Monsoon 2020.
@@ -360,12 +368,12 @@ any of the following inbuilt functions:
 </div>
 </div>
 
-<div id="outline-container-orge00648f" class="outline-2">
-<h2 id="orge00648f"><span class="section-number-2">2</span> Recursion on Lists</h2>
+<div id="outline-container-org4c0f2c8" class="outline-2">
+<h2 id="org4c0f2c8"><span class="section-number-2">2</span> Recursion on Lists</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org6e29c59" class="outline-3">
-<h3 id="org6e29c59"><span class="section-number-3">2.1</span> Problem No. 1.1: Repeat</h3>
+<div id="outline-container-orgc91dfd0" class="outline-3">
+<h3 id="orgc91dfd0"><span class="section-number-3">2.1</span> Problem No. 1.1: Repeat</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 The function <code>(repeat n x)</code> has to return a list containing
@@ -373,8 +381,8 @@ The function <code>(repeat n x)</code> has to return a list containing
 </p>
 </div>
 
-<div id="outline-container-org0c075bd" class="outline-4">
-<h4 id="org0c075bd"><span class="section-number-4">2.1.1</span> Solution</h4>
+<div id="outline-container-orgbc4a1b5" class="outline-4">
+<h4 id="orgbc4a1b5"><span class="section-number-4">2.1.1</span> Solution</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 We define a recursive function <code>repeat</code>:
@@ -387,18 +395,18 @@ calling the function with <code>n-1</code> and <code>x</code></dd>
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org50846d9">(define (repeat n x)
-  (if (= n 0)
-      '()
-      (cons x (repeat (- n 1) x))))
+<pre class="src src-scheme" id="orgac16e3b"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">repeat</span> n x<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #2d9574;">(</span>= n <span style="color: #a45bad;">0</span><span style="color: #2d9574;">)</span>
+      '<span style="color: #2d9574;">()</span>
+      <span style="color: #2d9574;">(</span>cons x <span style="color: #67b11d;">(</span>repeat <span style="color: #b1951d;">(</span>- n <span style="color: #a45bad;">1</span><span style="color: #b1951d;">)</span> x<span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org27e5392" class="outline-3">
-<h3 id="org27e5392"><span class="section-number-3">2.2</span> Problem No. 1.2: Invert</h3>
+<div id="outline-container-org8e13cf3" class="outline-3">
+<h3 id="org8e13cf3"><span class="section-number-3">2.2</span> Problem No. 1.2: Invert</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 The function <code>(invert lst)</code> has to be implemented, where:
@@ -409,8 +417,8 @@ The function <code>(invert lst)</code> has to be implemented, where:
 </dl>
 </div>
 
-<div id="outline-container-org5588fbc" class="outline-4">
-<h4 id="org5588fbc"><span class="section-number-4">2.2.1</span> Solution:</h4>
+<div id="outline-container-org6c98cac" class="outline-4">
+<h4 id="org6c98cac"><span class="section-number-4">2.2.1</span> Solution:</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 We define a recursive function <code>invert</code>:
@@ -426,18 +434,18 @@ calling the function with <code>(cdr lst)</code></li>
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgef5b3c9">(define (invert lst)
-  (if (null? lst)
-      '()
-      (cons (reverse (car lst)) (invert (cdr lst)))))
+<pre class="src src-scheme" id="org577e5b1"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">invert</span> lst<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #2d9574;">(</span>null? lst<span style="color: #2d9574;">)</span>
+      '<span style="color: #2d9574;">()</span>
+      <span style="color: #2d9574;">(</span>cons <span style="color: #67b11d;">(</span>reverse <span style="color: #b1951d;">(</span>car lst<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>invert <span style="color: #b1951d;">(</span>cdr lst<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgec3e1d5" class="outline-3">
-<h3 id="orgec3e1d5"><span class="section-number-3">2.3</span> Problem No. 1.3: Count Occurences</h3>
+<div id="outline-container-org55b3537" class="outline-3">
+<h3 id="org55b3537"><span class="section-number-3">2.3</span> Problem No. 1.3: Count Occurences</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 The function <code>(count-occurences s slist)</code> has to be implemented,
@@ -445,8 +453,8 @@ where it returns the number of occurences of <code>s</code> in <code>slist</code
 </p>
 </div>
 
-<div id="outline-container-org16c39fc" class="outline-4">
-<h4 id="org16c39fc"><span class="section-number-4">2.3.1</span> Solution</h4>
+<div id="outline-container-org0440f38" class="outline-4">
+<h4 id="org0440f38"><span class="section-number-4">2.3.1</span> Solution</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <p>
 We implement the function <code>(count-occurrences)</code> recursively. But first, we
@@ -470,22 +478,22 @@ using occplus, 0 otherwise</li>
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org26e79bb">(define (count-occurrences s slist)
-  (define (occplus s comp)
-    (if (= s comp)
-	1
-	0))
-  (if (null? slist)
-      0
-      (+ (occplus s (car slist)) (count-occurrences s (cdr slist)))))
+<pre class="src src-scheme" id="org1114240"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">count-occurrences</span> s slist<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #2d9574;">(</span><span style="color: #bc6ec5; font-weight: bold;">occplus</span> s comp<span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #67b11d;">(</span>= s comp<span style="color: #67b11d;">)</span>
+        <span style="color: #a45bad;">1</span>
+        <span style="color: #a45bad;">0</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #2d9574;">(</span>null? slist<span style="color: #2d9574;">)</span>
+      <span style="color: #a45bad;">0</span>
+      <span style="color: #2d9574;">(</span>+ <span style="color: #67b11d;">(</span>occplus s <span style="color: #b1951d;">(</span>car slist<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>count-occurrences s <span style="color: #b1951d;">(</span>cdr slist<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0a3785f" class="outline-3">
-<h3 id="org0a3785f"><span class="section-number-3">2.4</span> Problem No. 1.4: Product</h3>
+<div id="outline-container-orgbaeb1f4" class="outline-3">
+<h3 id="orgbaeb1f4"><span class="section-number-3">2.4</span> Problem No. 1.4: Product</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 We need to write a function <code>(product sos1 sos2)</code>, where:
@@ -497,8 +505,8 @@ lists as a list of <code>2-lists</code></dd>
 </dl>
 </div>
 
-<div id="outline-container-org970f629" class="outline-4">
-<h4 id="org970f629"><span class="section-number-4">2.4.1</span> Solution</h4>
+<div id="outline-container-org3fe914b" class="outline-4">
+<h4 id="org3fe914b"><span class="section-number-4">2.4.1</span> Solution</h4>
 <div class="outline-text-4" id="text-2-4-1">
 <p>
 The idea is to recursively reduce <code>sos1</code> to a single-element list, and then
@@ -526,24 +534,24 @@ with <code>(cdr sos1)</code></li>
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org51e35b7">(define (product sos1 sos2) 
-  (cond
-    [(null? sos1) sos2]
-    [(null? sos2) sos1]
-    [else 
-      (cond
-	[(&gt; (length sos1) 1)
-	 (append (product (list (car sos1)) sos2) (product (cdr sos1) sos2))]
-	[(&gt; (length sos2) 1)
-	 (append (product sos1 (list (car sos2))) (product sos1 (cdr sos2)))]
-	[else (list (append sos1 sos2))])]))
+<pre class="src src-scheme" id="org880bade"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">product</span> sos1 sos2<span style="color: #bc6ec5;">)</span> 
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? sos1<span style="color: #67b11d;">)</span> sos2<span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? sos2<span style="color: #67b11d;">)</span> sos1<span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span>else 
+      <span style="color: #67b11d;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span>
+        <span style="color: #b1951d;">[</span><span style="color: #4f97d7;">(</span>&gt; <span style="color: #bc6ec5;">(</span>length sos1<span style="color: #bc6ec5;">)</span> <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
+         <span style="color: #4f97d7;">(</span>append <span style="color: #bc6ec5;">(</span>product <span style="color: #2d9574;">(</span>list <span style="color: #9cb6ad;">(</span>car sos1<span style="color: #9cb6ad;">)</span><span style="color: #2d9574;">)</span> sos2<span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">(</span>product <span style="color: #2d9574;">(</span>cdr sos1<span style="color: #2d9574;">)</span> sos2<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">]</span>
+        <span style="color: #b1951d;">[</span><span style="color: #4f97d7;">(</span>&gt; <span style="color: #bc6ec5;">(</span>length sos2<span style="color: #bc6ec5;">)</span> <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
+         <span style="color: #4f97d7;">(</span>append <span style="color: #bc6ec5;">(</span>product sos1 <span style="color: #2d9574;">(</span>list <span style="color: #9cb6ad;">(</span>car sos2<span style="color: #9cb6ad;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">(</span>product sos1 <span style="color: #2d9574;">(</span>cdr sos2<span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">]</span>
+        <span style="color: #b1951d;">[</span>else <span style="color: #4f97d7;">(</span>list <span style="color: #bc6ec5;">(</span>append sos1 sos2<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">]</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org90107ee" class="outline-3">
-<h3 id="org90107ee"><span class="section-number-3">2.5</span> Problem No. 1.5: Every</h3>
+<div id="outline-container-orge233d6c" class="outline-3">
+<h3 id="orge233d6c"><span class="section-number-3">2.5</span> Problem No. 1.5: Every</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 The function <code>(every pred lst)</code> needs to be implemented, where it takes a
@@ -552,8 +560,8 @@ list <code>lst</code> and does and <code>and</code> check against each element w
 </p>
 </div>
 
-<div id="outline-container-org07325d8" class="outline-4">
-<h4 id="org07325d8"><span class="section-number-4">2.5.1</span> Solution</h4>
+<div id="outline-container-org28fff08" class="outline-4">
+<h4 id="org28fff08"><span class="section-number-4">2.5.1</span> Solution</h4>
 <div class="outline-text-4" id="text-2-5-1">
 <p>
 We implement a recursive function, where 
@@ -566,17 +574,17 @@ We implement a recursive function, where
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org19d4e0c">(define (every pred lst) 
-  (if (null? lst)
+<pre class="src src-scheme" id="org357470c"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">every</span> pred lst<span style="color: #bc6ec5;">)</span> 
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #2d9574;">(</span>null? lst<span style="color: #2d9574;">)</span>
       #t
-      (and (pred (car lst)) (every pred (cdr lst)))))
+      <span style="color: #2d9574;">(</span><span style="color: #4f97d7; font-weight: bold;">and</span> <span style="color: #67b11d;">(</span>pred <span style="color: #b1951d;">(</span>car lst<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>every pred <span style="color: #b1951d;">(</span>cdr lst<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org2dc6ec8" class="outline-3">
-<h3 id="org2dc6ec8"><span class="section-number-3">2.6</span> Problem No. 1.6: Merge</h3>
+<div id="outline-container-org9cddcef" class="outline-3">
+<h3 id="org9cddcef"><span class="section-number-3">2.6</span> Problem No. 1.6: Merge</h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
 The function <code>(merge loi1 loi2)</code> needs to take the two sorted lists <code>loi1</code>
@@ -584,8 +592,8 @@ and <code>loi2</code> and merge them such that the resulting list is also sorted
 </p>
 </div>
 
-<div id="outline-container-org947cf58" class="outline-4">
-<h4 id="org947cf58"><span class="section-number-4">2.6.1</span> Solution</h4>
+<div id="outline-container-org3db5dfd" class="outline-4">
+<h4 id="org3db5dfd"><span class="section-number-4">2.6.1</span> Solution</h4>
 <div class="outline-text-4" id="text-2-6-1">
 <p>
 We define it recursively: if either list is empty, return the other,
@@ -604,22 +612,22 @@ with the result of the recursive function call with
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgf7588e0">(define (merge loi1 loi2)
-  (cond 
-    [(null? loi1) loi2]
-    [(null? loi2) loi1]
-    [else 
-      (if (&lt; (car loi1) (car loi2))
-	     (append (list (car loi1)) (merge (cdr loi1) loi2))
-	     (append (list (car loi2)) (merge loi1 (cdr loi2))))]))
+<pre class="src src-scheme" id="orgcaa80e9"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">merge</span> loi1 loi2<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span> 
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? loi1<span style="color: #67b11d;">)</span> loi2<span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? loi2<span style="color: #67b11d;">)</span> loi1<span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span>else 
+      <span style="color: #67b11d;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #b1951d;">(</span>&lt; <span style="color: #4f97d7;">(</span>car loi1<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>car loi2<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span>
+             <span style="color: #b1951d;">(</span>append <span style="color: #4f97d7;">(</span>list <span style="color: #bc6ec5;">(</span>car loi1<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>merge <span style="color: #bc6ec5;">(</span>cdr loi1<span style="color: #bc6ec5;">)</span> loi2<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span>
+             <span style="color: #b1951d;">(</span>append <span style="color: #4f97d7;">(</span>list <span style="color: #bc6ec5;">(</span>car loi2<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>merge loi1 <span style="color: #bc6ec5;">(</span>cdr loi2<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org56d7969" class="outline-3">
-<h3 id="org56d7969"><span class="section-number-3">2.7</span> Flatten</h3>
+<div id="outline-container-org83267c3" class="outline-3">
+<h3 id="org83267c3"><span class="section-number-3">2.7</span> Flatten</h3>
 <div class="outline-text-3" id="text-2-7">
 <p>
 The function <code>(flatten dlst)</code> needs to be implemented, and flatten
@@ -628,8 +636,8 @@ nested heirarchial structure.
 </p>
 </div>
 
-<div id="outline-container-orgaa187a3" class="outline-4">
-<h4 id="orgaa187a3"><span class="section-number-4">2.7.1</span> Solution</h4>
+<div id="outline-container-org1113de0" class="outline-4">
+<h4 id="org1113de0"><span class="section-number-4">2.7.1</span> Solution</h4>
 <div class="outline-text-4" id="text-2-7-1">
 <p>
 We make extensive use of the provided <code>(append list list)</code> function here.
@@ -647,11 +655,11 @@ then <code>(cdr dlst)</code></dd>
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org8bf762e">(define (flatten dlst)
-  (cond
-    [(null? dlst) '()]
-    [(not (list? dlst)) (list dlst)]
-    [else (append (flatten (car dlst)) (flatten (cdr dlst)))]))
+<pre class="src src-scheme" id="org5040bd4"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">flatten</span> dlst<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? dlst<span style="color: #67b11d;">)</span> '<span style="color: #67b11d;">()</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>not <span style="color: #b1951d;">(</span>list? dlst<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>list dlst<span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span>else <span style="color: #67b11d;">(</span>append <span style="color: #b1951d;">(</span>flatten <span style="color: #4f97d7;">(</span>car dlst<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>flatten <span style="color: #4f97d7;">(</span>cdr dlst<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
@@ -659,12 +667,12 @@ then <code>(cdr dlst)</code></dd>
 </div>
 </div>
 
-<div id="outline-container-orgf0eb3bd" class="outline-2">
-<h2 id="orgf0eb3bd"><span class="section-number-2">3</span> Recursion on Trees</h2>
+<div id="outline-container-orgf87931a" class="outline-2">
+<h2 id="orgf87931a"><span class="section-number-2">3</span> Recursion on Trees</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orge15887c" class="outline-3">
-<h3 id="orge15887c"><span class="section-number-3">3.1</span> Problem No. 2.1: Preorder Traversal</h3>
+<div id="outline-container-orgc6fe7f1" class="outline-3">
+<h3 id="orgc6fe7f1"><span class="section-number-3">3.1</span> Problem No. 2.1: Preorder Traversal</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 The function <code>(traverse/preorder tree)</code> needs to do a preorder traversal of
@@ -672,8 +680,8 @@ the given <code>tree</code>, aka return a list with <code>leaf left right</code>
 </p>
 </div>
 
-<div id="outline-container-orgdcc5971" class="outline-4">
-<h4 id="orgdcc5971"><span class="section-number-4">3.1.1</span> Solution</h4>
+<div id="outline-container-orgc62ddd0" class="outline-4">
+<h4 id="orgc62ddd0"><span class="section-number-4">3.1.1</span> Solution</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 We use recursion along with <code>(cases)</code> in order to navigate the
@@ -692,23 +700,23 @@ the:
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org9ecc5c6">(define (traverse/preorder tree)
-  (cases full-binary-tree tree
-    (leaf-node (v) (list v))
-    (internal-node (v left right) 
-      (append 
-	(list v)
-	(append 
-	  (traverse/preorder left)
-	  (traverse/preorder right))))))
+<pre class="src src-scheme" id="org6a518d3"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">traverse/preorder</span> tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>list v<span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span> 
+      <span style="color: #67b11d;">(</span>append 
+        <span style="color: #b1951d;">(</span>list v<span style="color: #b1951d;">)</span>
+        <span style="color: #b1951d;">(</span>append 
+          <span style="color: #4f97d7;">(</span>traverse/preorder left<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>traverse/preorder right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2841796" class="outline-3">
-<h3 id="org2841796"><span class="section-number-3">3.2</span> Problem No. 2.2: Inorder</h3>
+<div id="outline-container-org68a363a" class="outline-3">
+<h3 id="org68a363a"><span class="section-number-3">3.2</span> Problem No. 2.2: Inorder</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 The function <code>(traverse/inorder tree)</code> needs to do a inorder traversal of
@@ -716,8 +724,8 @@ the given <code>tree</code>, aka return a list with <code>left leaf right</code>
 </p>
 </div>
 
-<div id="outline-container-org1386721" class="outline-4">
-<h4 id="org1386721"><span class="section-number-4">3.2.1</span> Solution</h4>
+<div id="outline-container-org628b7b1" class="outline-4">
+<h4 id="org628b7b1"><span class="section-number-4">3.2.1</span> Solution</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 We use recursion along with <code>(cases)</code> in order to navigate the
@@ -737,23 +745,23 @@ the:
 
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgadaaad0">(define (traverse/inorder tree)
-  (cases full-binary-tree tree
-    (leaf-node (v) (list v))
-    (internal-node (v left right) 
-      (append 
-	(traverse/inorder left) 
-	(append 
-	  (list v)
-	  (traverse/inorder right))))))
+<pre class="src src-scheme" id="org6d78f28"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">traverse/inorder</span> tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>list v<span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span> 
+      <span style="color: #67b11d;">(</span>append 
+        <span style="color: #b1951d;">(</span>traverse/inorder left<span style="color: #b1951d;">)</span> 
+        <span style="color: #b1951d;">(</span>append 
+          <span style="color: #4f97d7;">(</span>list v<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>traverse/inorder right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9477419" class="outline-3">
-<h3 id="org9477419"><span class="section-number-3">3.3</span> Problem No. 2.3: Postorder</h3>
+<div id="outline-container-orgbec0fd6" class="outline-3">
+<h3 id="orgbec0fd6"><span class="section-number-3">3.3</span> Problem No. 2.3: Postorder</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 The function <code>(traverse/psotorder tree)</code> needs to do a postorder traversal of
@@ -761,8 +769,8 @@ the given <code>tree</code>, aka return a list with <code>left right leaf</code>
 </p>
 </div>
 
-<div id="outline-container-orgc0fe089" class="outline-4">
-<h4 id="orgc0fe089"><span class="section-number-4">3.3.1</span> Solution</h4>
+<div id="outline-container-org2d3b0e4" class="outline-4">
+<h4 id="org2d3b0e4"><span class="section-number-4">3.3.1</span> Solution</h4>
 <div class="outline-text-4" id="text-3-3-1">
 <p>
 We use recursion along with <code>(cases)</code> in order to navigate the
@@ -781,31 +789,31 @@ the:
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgd400564">(define (traverse/postorder tree)
-  (cases full-binary-tree tree
-    (leaf-node (v) (list v))
-    (internal-node (v left right) 
-      (append 
-	(traverse/postorder left) 
-	(append 
-	  (traverse/postorder right)
-	  (list v))))))
+<pre class="src src-scheme" id="org70a8a95"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">traverse/postorder</span> tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>list v<span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span> 
+      <span style="color: #67b11d;">(</span>append 
+        <span style="color: #b1951d;">(</span>traverse/postorder left<span style="color: #b1951d;">)</span> 
+        <span style="color: #b1951d;">(</span>append 
+          <span style="color: #4f97d7;">(</span>traverse/postorder right<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>list v<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8f50b82" class="outline-3">
-<h3 id="org8f50b82"><span class="section-number-3">3.4</span> Problem No. 2.4: Count All Nodes</h3>
+<div id="outline-container-org3d32229" class="outline-3">
+<h3 id="org3d32229"><span class="section-number-3">3.4</span> Problem No. 2.4: Count All Nodes</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Function <code>(count-nodes tree)</code> will count how many nodes are there.
 </p>
 </div>
 
-<div id="outline-container-orgff1afc2" class="outline-4">
-<h4 id="orgff1afc2"><span class="section-number-4">3.4.1</span> Solution</h4>
+<div id="outline-container-org74bca1b" class="outline-4">
+<h4 id="org74bca1b"><span class="section-number-4">3.4.1</span> Solution</h4>
 <div class="outline-text-4" id="text-3-4-1">
 <p>
 We use a recursive solution, to sum it up: for each node with a value, we
@@ -820,27 +828,27 @@ subtrees.</dd>
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org6565d81">(define (count-nodes tree)
-  (cases full-binary-tree tree
-    (leaf-node (v) 1)
-    (internal-node (v left right)
-      (+ 1 (count-nodes left) (count-nodes right)))))
+<pre class="src src-scheme" id="orgc90767f"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">count-nodes</span> tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #a45bad;">1</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>+ <span style="color: #a45bad;">1</span> <span style="color: #b1951d;">(</span>count-nodes left<span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>count-nodes right<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3985fd4" class="outline-3">
-<h3 id="org3985fd4"><span class="section-number-3">3.5</span> Problem No. 2.5: Count Leaf Nodes</h3>
+<div id="outline-container-orgf57b365" class="outline-3">
+<h3 id="orgf57b365"><span class="section-number-3">3.5</span> Problem No. 2.5: Count Leaf Nodes</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 Function <code>(count-leaves tree)</code> will count how many leaf-nodes are there.
 </p>
 </div>
 
-<div id="outline-container-org8d74b37" class="outline-4">
-<h4 id="org8d74b37"><span class="section-number-4">3.5.1</span> Solution</h4>
+<div id="outline-container-orgba50bcb" class="outline-4">
+<h4 id="orgba50bcb"><span class="section-number-4">3.5.1</span> Solution</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <p>
 We use a recursive solution, to sum it up: for each node that is a
@@ -856,11 +864,11 @@ subtrees.</dd>
 
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org90cef49">(define (count-leaves tree)
-  (cases full-binary-tree tree
-    (leaf-node (v) 1)
-    (internal-node (v left right)
-      (+ (count-leaves left) (count-leaves right)))))
+<pre class="src src-scheme" id="org4418e59"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">count-leaves</span> tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #a45bad;">1</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>+ <span style="color: #b1951d;">(</span>count-leaves left<span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>count-leaves right<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
@@ -868,16 +876,16 @@ subtrees.</dd>
 </div>
 
 
-<div id="outline-container-org102199e" class="outline-3">
-<h3 id="org102199e"><span class="section-number-3">3.6</span> Problem No. 2.6: Count Internal Nodes</h3>
+<div id="outline-container-org19131fc" class="outline-3">
+<h3 id="org19131fc"><span class="section-number-3">3.6</span> Problem No. 2.6: Count Internal Nodes</h3>
 <div class="outline-text-3" id="text-3-6">
 <p>
 Function <code>(count-internal tree)</code> will count how many internal-nodes are there
 </p>
 </div>
 
-<div id="outline-container-orge94fbd5" class="outline-4">
-<h4 id="orge94fbd5"><span class="section-number-4">3.6.1</span> Solution</h4>
+<div id="outline-container-org6d631e5" class="outline-4">
+<h4 id="org6d631e5"><span class="section-number-4">3.6.1</span> Solution</h4>
 <div class="outline-text-4" id="text-3-6-1">
 <p>
 We use a recursive solution, to sum it up: for each node that is an
@@ -892,27 +900,27 @@ subtrees.</dd>
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgc3d4d90">(define (count-internal tree)
-  (cases full-binary-tree tree
-    (leaf-node (v) 0)
-    (internal-node (v left right)
-      (+ 1 (count-internal left) (count-internal right)))))
+<pre class="src src-scheme" id="org5af067d"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">count-internal</span> tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #a45bad;">0</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>+ <span style="color: #a45bad;">1</span> <span style="color: #b1951d;">(</span>count-internal left<span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>count-internal right<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc1a76b2" class="outline-3">
-<h3 id="orgc1a76b2"><span class="section-number-3">3.7</span> Problem No. 2.7: Map</h3>
+<div id="outline-container-orgc39b6f2" class="outline-3">
+<h3 id="orgc39b6f2"><span class="section-number-3">3.7</span> Problem No. 2.7: Map</h3>
 <div class="outline-text-3" id="text-3-7">
 <p>
 The function <code>(tree/map fn tr)</code> needs to work like <code>(map)</code> but for trees.
 </p>
 </div>
 
-<div id="outline-container-org6af120e" class="outline-4">
-<h4 id="org6af120e"><span class="section-number-4">3.7.1</span> Solution:</h4>
+<div id="outline-container-org4061751" class="outline-4">
+<h4 id="org4061751"><span class="section-number-4">3.7.1</span> Solution:</h4>
 <div class="outline-text-4" id="text-3-7-1">
 <p>
 We recursively navigate the tree such that:
@@ -929,19 +937,19 @@ definitions.</dd>
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org7be690b">(define (tree/map fn tr)
-  (cases full-binary-tree tr
-    (leaf-node (v) (lnode (fn v)))
-    (internal-node (v left right)
-      (inode (fn v) (tree/map fn left) (tree/map fn right)))))
+<pre class="src src-scheme" id="org51978fc"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">tree/map</span> fn tr<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tr
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>lnode <span style="color: #b1951d;">(</span>fn v<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>inode <span style="color: #b1951d;">(</span>fn v<span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>tree/map fn left<span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>tree/map fn right<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf83f438" class="outline-3">
-<h3 id="orgf83f438"><span class="section-number-3">3.8</span> Problem No. 2.8: Value at Path</h3>
+<div id="outline-container-org921c538" class="outline-3">
+<h3 id="org921c538"><span class="section-number-3">3.8</span> Problem No. 2.8: Value at Path</h3>
 <div class="outline-text-3" id="text-3-8">
 <p>
 Given a <code>path</code>, the function <code>(value-at-path path tree)</code> should navigate
@@ -950,8 +958,8 @@ the <code>path</code>.
 </p>
 </div>
 
-<div id="outline-container-org78dd3c7" class="outline-4">
-<h4 id="org78dd3c7"><span class="section-number-4">3.8.1</span> Solution</h4>
+<div id="outline-container-org6cea7fe" class="outline-4">
+<h4 id="org6cea7fe"><span class="section-number-4">3.8.1</span> Solution</h4>
 <div class="outline-text-4" id="text-3-8-1">
 <p>
 We navigate through the path as such: if the <code>path</code> is null, then we have 
@@ -977,299 +985,372 @@ subtree.</li>
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="org6284d46">(define path-item (list "left" "right"))
+<pre class="src src-scheme" id="org71fca84"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5; font-weight: bold;">path-item</span> <span style="color: #bc6ec5;">(</span>list <span style="color: #2d9574;">"left"</span> <span style="color: #2d9574;">"right"</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-scheme" id="orgdd8f261">(define (value-at-path path tree)
-  (cond
-    [(null? path) (cases full-binary-tree tree 
-		    (leaf-node (v) v)
-		    (internal-node (v left right) v))]
-    [(equal? (list-ref path-item 0) (car path))
-      (cases full-binary-tree tree
-	(leaf-node (v) tree) ;; return the last node in the path
-	(internal-node (v left right) (value-at-path (cdr path) left)))]
-    [(equal? (list-ref path-item 1) (car path))
-      (cases full-binary-tree tree
-	(leaf-node (v) tree) ;; return the last node in the path
-	(internal-node (v left right) (value-at-path (cdr path) right)))]))
+<pre class="src src-scheme" id="org5775009"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">value-at-path</span> path tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? path<span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>cases full-binary-tree tree 
+                    <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> v<span style="color: #b1951d;">)</span>
+                    <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span> v<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>equal? <span style="color: #b1951d;">(</span>list-ref path-item <span style="color: #a45bad;">0</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>car path<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> tree<span style="color: #b1951d;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return the last node in the path</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>value-at-path <span style="color: #bc6ec5;">(</span>cdr path<span style="color: #bc6ec5;">)</span> left<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>equal? <span style="color: #b1951d;">(</span>list-ref path-item <span style="color: #a45bad;">1</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>car path<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> tree<span style="color: #b1951d;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return the last node in the path</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>value-at-path <span style="color: #bc6ec5;">(</span>cdr path<span style="color: #bc6ec5;">)</span> right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1fd0791" class="outline-3">
-<h3 id="org1fd0791"><span class="section-number-3">3.9</span> Problem No. 2.9: Search</h3>
+<div id="outline-container-org1a9e14f" class="outline-3">
+<h3 id="org1a9e14f"><span class="section-number-3">3.9</span> Problem No. 2.9: Search</h3>
 <div class="outline-text-3" id="text-3-9">
 <div class="org-src-container">
-<pre class="src src-scheme" id="org1fb25f6">(define (search val tree)
-  (cases full-binary-tree tree
-    (leaf-node (v)
-      (if (= v val)
-	  '()
-	  #f))
-    (internal-node (v left right)
-      (cond 
-	[(= v val) '()]
-	[(list? (search val left)) 
-	    (append 
-	      (list (list-ref path-item 0)) ;; very, and I cannot stress this
-	      (search val left))] ;; enough, inefficient
-	[(list? (search val right))
-	    (append 
-	      (list (list-ref path-item 1)) 
-	      (search val right))]
-	[else #f]))))
+<pre class="src src-scheme" id="orgeb662b8"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">search</span> val tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #b1951d;">(</span>= v val<span style="color: #b1951d;">)</span>
+          '<span style="color: #b1951d;">()</span>
+          #f<span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span> 
+        <span style="color: #b1951d;">[</span><span style="color: #4f97d7;">(</span>= v val<span style="color: #4f97d7;">)</span> '<span style="color: #4f97d7;">()</span><span style="color: #b1951d;">]</span>
+        <span style="color: #b1951d;">[</span><span style="color: #4f97d7;">(</span>list? <span style="color: #bc6ec5;">(</span>search val left<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span> 
+            <span style="color: #4f97d7;">(</span>append 
+              <span style="color: #bc6ec5;">(</span>list <span style="color: #2d9574;">(</span>list-ref path-item <span style="color: #a45bad;">0</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">very, and I cannot stress this</span>
+              <span style="color: #bc6ec5;">(</span>search val left<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">]</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">enough, inefficient</span>
+        <span style="color: #b1951d;">[</span><span style="color: #4f97d7;">(</span>list? <span style="color: #bc6ec5;">(</span>search val right<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+            <span style="color: #4f97d7;">(</span>append 
+              <span style="color: #bc6ec5;">(</span>list <span style="color: #2d9574;">(</span>list-ref path-item <span style="color: #a45bad;">1</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span> 
+              <span style="color: #bc6ec5;">(</span>search val right<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">]</span>
+        <span style="color: #b1951d;">[</span>else #f<span style="color: #b1951d;">]</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga926a06" class="outline-3">
-<h3 id="orga926a06"><span class="section-number-3">3.10</span> Problem No. 2.10: Update</h3>
+<div id="outline-container-orgf7cf825" class="outline-3">
+<h3 id="orgf7cf825"><span class="section-number-3">3.10</span> Problem No. 2.10: Update</h3>
 <div class="outline-text-3" id="text-3-10">
+<p>
+The function <code>(update path fn tree)</code> will traverse through the tree using the
+path like in problem 2.8, and instead of returning the node, will return the
+node after applying <code>(fn)</code> to the value of the node.
+</p>
+</div>
+
+<div id="outline-container-org9de3ec2" class="outline-4">
+<h4 id="org9de3ec2"><span class="section-number-4">3.10.1</span> Solution</h4>
+<div class="outline-text-4" id="text-3-10-1">
+<p>
+Like the <code>(value-at-path)</code> function, it's a recursive function based on the
+value of <code>path</code>.
+</p>
+
+<dl class="org-dl">
+<dt>Base case (<code>path</code> is empty)</dt><dd>return:
+<ol class="org-ol">
+<li>an internal node with <code>(fn v)</code>, or</li>
+<li>a leaf node with <code>(fn v)</code>, according to
+what the original node (<code>tree</code>) was at
+this point</li>
+</ol></dd>
+<dt>Recursive case</dt><dd>Return the <code>tree</code> (whatever node it is) with only the
+following mofication:
+<ol class="org-ol">
+<li>If it is an internal node, then the branch taken
+should be the result of the recursive call with the
+aforesaid branch.</li>
+<li>Else, return the node unchanged. The search has
+failed due to faulty path.</li>
+</ol></dd>
+</dl>
+
 <div class="org-src-container">
-<pre class="src src-scheme" id="org8282f93">(define (update path fn tree)
-  (cond
-    [(null? path) 
-      (cases full-binary-tree tree 
-	(leaf-node (v) 
-	  (lnode (fn v)))
-	(internal-node (v left right) 
-	  (inode (fn v) left right)))]
-    [(equal? (list-ref path-item 0) (car path))
-      (cases full-binary-tree tree
-	(leaf-node (v) (lnode v)) ;; return unchanged
-	(internal-node (v left right)
-	  (inode v (update (cdr path) fn left) right)))]
-    [(equal? (list-ref path-item 1) (car path))
-      (cases full-binary-tree tree
-	(leaf-node (v) (lnode v)) ;; return unchanged
-	(internal-node (v left right)
-	  (inode v left (update (cdr path) fn right))))]))
+<pre class="src src-scheme" id="org34a4707"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">update</span> path fn tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? path<span style="color: #67b11d;">)</span> 
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree 
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> 
+          <span style="color: #4f97d7;">(</span>lnode <span style="color: #bc6ec5;">(</span>fn v<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span> 
+          <span style="color: #4f97d7;">(</span>inode <span style="color: #bc6ec5;">(</span>fn v<span style="color: #bc6ec5;">)</span> left right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>equal? <span style="color: #b1951d;">(</span>list-ref path-item <span style="color: #a45bad;">0</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>car path<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>lnode v<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return unchanged</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>inode v <span style="color: #bc6ec5;">(</span>update <span style="color: #2d9574;">(</span>cdr path<span style="color: #2d9574;">)</span> fn left<span style="color: #bc6ec5;">)</span> right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>equal? <span style="color: #b1951d;">(</span>list-ref path-item <span style="color: #a45bad;">1</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>car path<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>lnode v<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return unchanged</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>inode v left <span style="color: #bc6ec5;">(</span>update <span style="color: #2d9574;">(</span>cdr path<span style="color: #2d9574;">)</span> fn right<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
+</div>
 
-<div id="outline-container-orgbd61e5c" class="outline-3">
-<h3 id="orgbd61e5c"><span class="section-number-3">3.11</span> Problem No. 2.11: Insert</h3>
+<div id="outline-container-orgbec0576" class="outline-3">
+<h3 id="orgbec0576"><span class="section-number-3">3.11</span> Problem No. 2.11: Insert</h3>
 <div class="outline-text-3" id="text-3-11">
+<p>
+The function <code>(tree/insert path left-st right-st tree)</code> will traverse through 
+the tree using the path like in problem 2.8 and 2.10, and will return the
+tree (if the path points to a leaf node) with an internal node in place of
+the earlier leaf node, with the <code>left-st</code> and <code>right-st</code> as subtrees.
+</p>
+</div>
+
+<div id="outline-container-org2ea54b1" class="outline-4">
+<h4 id="org2ea54b1"><span class="section-number-4">3.11.1</span> Solution</h4>
+<div class="outline-text-4" id="text-3-11-1">
+<p>
+Like the <code>(update)</code> function, it's a recursive function based on the
+value of <code>path</code>.
+</p>
+
+<dl class="org-dl">
+<dt>Base case (<code>path</code> is empty)</dt><dd>return:
+<ol class="org-ol">
+<li>if it's a leaf-node, then return an
+internal node with the same value and
+the <code>left-st</code> and <code>right-st</code></li>
+<li>else, return the node itself. There will
+be no change to the tree as the path was
+wrong.</li>
+</ol></dd>
+<dt>Recursive case</dt><dd>Return the <code>tree</code> (whatever node it is) with only the
+following mofication:
+<ol class="org-ol">
+<li>If it is a leaf node, return the node unchanged. The
+search has failed due to faulty path.</li>
+<li>If it is an internal node, then the branch taken
+should be the result of the recursive call with the
+aforesaid branch.</li>
+</ol></dd>
+</dl>
+
 <div class="org-src-container">
-<pre class="src src-scheme" id="org5a1a35a">(define (tree/insert path left-st right-st tree)
-  (cond
-    [(null? path)
-      (cases full-binary-tree tree
-	(leaf-node (v)
-	  (inode v left-st right-st))
-	(internal-node (v left right) ;; faulty pathfinding
-	  (inode v left right)))] ;; return unchanged
-    [(equal? (list-ref path-item 0) (car path))
-      (cases full-binary-tree tree
-	(leaf-node (v) (lnode v)) ;; return unchanged
-	(internal-node (v left right)
-	  (inode v (tree/insert (cdr path) left-st right-st tree) right)))]
-    [(equal? (list-ref path-item 1) (car path))
-      (cases full-binary-tree tree
-	(leaf-node (v) (lnode v)) ;; return unchanged
-	(internal-node (v left right)
-	  (inode v left (tree/insert (cdr path) left-st right-st tree))))]))
+<pre class="src src-scheme" id="org96d62cf"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">tree/insert</span> path left-st right-st tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? path<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>inode v left-st right-st<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">faulty pathfinding</span>
+          <span style="color: #4f97d7;">(</span>inode v left right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return unchanged</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>equal? <span style="color: #b1951d;">(</span>list-ref path-item <span style="color: #a45bad;">0</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>car path<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>lnode v<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return unchanged</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>inode v <span style="color: #bc6ec5;">(</span>tree/insert <span style="color: #2d9574;">(</span>cdr path<span style="color: #2d9574;">)</span> left-st right-st tree<span style="color: #bc6ec5;">)</span> right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>equal? <span style="color: #b1951d;">(</span>list-ref path-item <span style="color: #a45bad;">1</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>car path<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>lnode v<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return unchanged</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>inode v left <span style="color: #bc6ec5;">(</span>tree/insert <span style="color: #2d9574;">(</span>cdr path<span style="color: #2d9574;">)</span> left-st right-st tree<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org5d9df27" class="outline-2">
-<h2 id="org5d9df27"><span class="section-number-2">4</span> Tangle</h2>
+<div id="outline-container-org3abdd37" class="outline-2">
+<h2 id="org3abdd37"><span class="section-number-2">4</span> Tangle</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
-<pre class="src src-scheme" id="org69cd107">#lang racket/base
-(require eopl)
-(require "datatypes.rkt")
+<pre class="src src-scheme" id="orga4e171f">#lang racket/base
+<span style="color: #4f97d7;">(</span>require eopl<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>require <span style="color: #2d9574;">"datatypes.rkt"</span><span style="color: #4f97d7;">)</span>
 
-(define (repeat n x)
-  (if (= n 0)
-      '()
-      (cons x (repeat (- n 1) x))))
-(define (invert lst)
-  (if (null? lst)
-      '()
-      (cons (reverse (car lst)) (invert (cdr lst)))))
-(define (count-occurrences s slist)
-  (define (occplus s comp)
-    (if (= s comp)
-	1
-	0))
-  (if (null? slist)
-      0
-      (+ (occplus s (car slist)) (count-occurrences s (cdr slist)))))
-(define (product sos1 sos2) 
-  (cond
-    [(null? sos1) sos2]
-    [(null? sos2) sos1]
-    [else 
-      (cond
-	[(&gt; (length sos1) 1)
-	 (append (product (list (car sos1)) sos2) (product (cdr sos1) sos2))]
-	[(&gt; (length sos2) 1)
-	 (append (product sos1 (list (car sos2))) (product sos1 (cdr sos2)))]
-	[else (list (append sos1 sos2))])]))
-(define (every pred lst) 
-  (if (null? lst)
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">repeat</span> n x<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #2d9574;">(</span>= n <span style="color: #a45bad;">0</span><span style="color: #2d9574;">)</span>
+      '<span style="color: #2d9574;">()</span>
+      <span style="color: #2d9574;">(</span>cons x <span style="color: #67b11d;">(</span>repeat <span style="color: #b1951d;">(</span>- n <span style="color: #a45bad;">1</span><span style="color: #b1951d;">)</span> x<span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">invert</span> lst<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #2d9574;">(</span>null? lst<span style="color: #2d9574;">)</span>
+      '<span style="color: #2d9574;">()</span>
+      <span style="color: #2d9574;">(</span>cons <span style="color: #67b11d;">(</span>reverse <span style="color: #b1951d;">(</span>car lst<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>invert <span style="color: #b1951d;">(</span>cdr lst<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">count-occurrences</span> s slist<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #2d9574;">(</span><span style="color: #bc6ec5; font-weight: bold;">occplus</span> s comp<span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #67b11d;">(</span>= s comp<span style="color: #67b11d;">)</span>
+        <span style="color: #a45bad;">1</span>
+        <span style="color: #a45bad;">0</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #2d9574;">(</span>null? slist<span style="color: #2d9574;">)</span>
+      <span style="color: #a45bad;">0</span>
+      <span style="color: #2d9574;">(</span>+ <span style="color: #67b11d;">(</span>occplus s <span style="color: #b1951d;">(</span>car slist<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>count-occurrences s <span style="color: #b1951d;">(</span>cdr slist<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">product</span> sos1 sos2<span style="color: #bc6ec5;">)</span> 
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? sos1<span style="color: #67b11d;">)</span> sos2<span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? sos2<span style="color: #67b11d;">)</span> sos1<span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span>else 
+      <span style="color: #67b11d;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span>
+        <span style="color: #b1951d;">[</span><span style="color: #4f97d7;">(</span>&gt; <span style="color: #bc6ec5;">(</span>length sos1<span style="color: #bc6ec5;">)</span> <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
+         <span style="color: #4f97d7;">(</span>append <span style="color: #bc6ec5;">(</span>product <span style="color: #2d9574;">(</span>list <span style="color: #9cb6ad;">(</span>car sos1<span style="color: #9cb6ad;">)</span><span style="color: #2d9574;">)</span> sos2<span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">(</span>product <span style="color: #2d9574;">(</span>cdr sos1<span style="color: #2d9574;">)</span> sos2<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">]</span>
+        <span style="color: #b1951d;">[</span><span style="color: #4f97d7;">(</span>&gt; <span style="color: #bc6ec5;">(</span>length sos2<span style="color: #bc6ec5;">)</span> <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
+         <span style="color: #4f97d7;">(</span>append <span style="color: #bc6ec5;">(</span>product sos1 <span style="color: #2d9574;">(</span>list <span style="color: #9cb6ad;">(</span>car sos2<span style="color: #9cb6ad;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span> <span style="color: #bc6ec5;">(</span>product sos1 <span style="color: #2d9574;">(</span>cdr sos2<span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">]</span>
+        <span style="color: #b1951d;">[</span>else <span style="color: #4f97d7;">(</span>list <span style="color: #bc6ec5;">(</span>append sos1 sos2<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">]</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">every</span> pred lst<span style="color: #bc6ec5;">)</span> 
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #2d9574;">(</span>null? lst<span style="color: #2d9574;">)</span>
       #t
-      (and (pred (car lst)) (every pred (cdr lst)))))
-(define (merge loi1 loi2)
-  (cond 
-    [(null? loi1) loi2]
-    [(null? loi2) loi1]
-    [else 
-      (if (&lt; (car loi1) (car loi2))
-	     (append (list (car loi1)) (merge (cdr loi1) loi2))
-	     (append (list (car loi2)) (merge loi1 (cdr loi2))))]))
-(define (flatten dlst)
-  (cond
-    [(null? dlst) '()]
-    [(not (list? dlst)) (list dlst)]
-    [else (append (flatten (car dlst)) (flatten (cdr dlst)))]))
-(define (traverse/preorder tree)
-  (cases full-binary-tree tree
-    (leaf-node (v) (list v))
-    (internal-node (v left right) 
-      (append 
-	(list v)
-	(append 
-	  (traverse/preorder left)
-	  (traverse/preorder right))))))
-(define (traverse/inorder tree)
-  (cases full-binary-tree tree
-    (leaf-node (v) (list v))
-    (internal-node (v left right) 
-      (append 
-	(traverse/inorder left) 
-	(append 
-	  (list v)
-	  (traverse/inorder right))))))
-(define (traverse/postorder tree)
-  (cases full-binary-tree tree
-    (leaf-node (v) (list v))
-    (internal-node (v left right) 
-      (append 
-	(traverse/postorder left) 
-	(append 
-	  (traverse/postorder right)
-	  (list v))))))
-(define (count-nodes tree)
-  (cases full-binary-tree tree
-    (leaf-node (v) 1)
-    (internal-node (v left right)
-      (+ 1 (count-nodes left) (count-nodes right)))))
-(define (count-leaves tree)
-  (cases full-binary-tree tree
-    (leaf-node (v) 1)
-    (internal-node (v left right)
-      (+ (count-leaves left) (count-leaves right)))))
-(define (count-internal tree)
-  (cases full-binary-tree tree
-    (leaf-node (v) 0)
-    (internal-node (v left right)
-      (+ 1 (count-internal left) (count-internal right)))))
-(define (tree/map fn tr)
-  (cases full-binary-tree tr
-    (leaf-node (v) (lnode (fn v)))
-    (internal-node (v left right)
-      (inode (fn v) (tree/map fn left) (tree/map fn right)))))
-(define path-item (list "left" "right"))
-(define (value-at-path path tree)
-  (cond
-    [(null? path) (cases full-binary-tree tree 
-		    (leaf-node (v) v)
-		    (internal-node (v left right) v))]
-    [(equal? (list-ref path-item 0) (car path))
-      (cases full-binary-tree tree
-	(leaf-node (v) tree) ;; return the last node in the path
-	(internal-node (v left right) (value-at-path (cdr path) left)))]
-    [(equal? (list-ref path-item 1) (car path))
-      (cases full-binary-tree tree
-	(leaf-node (v) tree) ;; return the last node in the path
-	(internal-node (v left right) (value-at-path (cdr path) right)))]))
-(define (search val tree)
-  (cases full-binary-tree tree
-    (leaf-node (v)
-      (if (= v val)
-	  '()
-	  #f))
-    (internal-node (v left right)
-      (cond 
-	[(= v val) '()]
-	[(list? (search val left)) 
-	    (append 
-	      (list (list-ref path-item 0)) ;; very, and I cannot stress this
-	      (search val left))] ;; enough, inefficient
-	[(list? (search val right))
-	    (append 
-	      (list (list-ref path-item 1)) 
-	      (search val right))]
-	[else #f]))))
-(define (update path fn tree)
-  (cond
-    [(null? path) 
-      (cases full-binary-tree tree 
-	(leaf-node (v) 
-	  (lnode (fn v)))
-	(internal-node (v left right) 
-	  (inode (fn v) left right)))]
-    [(equal? (list-ref path-item 0) (car path))
-      (cases full-binary-tree tree
-	(leaf-node (v) (lnode v)) ;; return unchanged
-	(internal-node (v left right)
-	  (inode v (update (cdr path) fn left) right)))]
-    [(equal? (list-ref path-item 1) (car path))
-      (cases full-binary-tree tree
-	(leaf-node (v) (lnode v)) ;; return unchanged
-	(internal-node (v left right)
-	  (inode v left (update (cdr path) fn right))))]))
-(define (tree/insert path left-st right-st tree)
-  (cond
-    [(null? path)
-      (cases full-binary-tree tree
-	(leaf-node (v)
-	  (inode v left-st right-st))
-	(internal-node (v left right) ;; faulty pathfinding
-	  (inode v left right)))] ;; return unchanged
-    [(equal? (list-ref path-item 0) (car path))
-      (cases full-binary-tree tree
-	(leaf-node (v) (lnode v)) ;; return unchanged
-	(internal-node (v left right)
-	  (inode v (tree/insert (cdr path) left-st right-st tree) right)))]
-    [(equal? (list-ref path-item 1) (car path))
-      (cases full-binary-tree tree
-	(leaf-node (v) (lnode v)) ;; return unchanged
-	(internal-node (v left right)
-	  (inode v left (tree/insert (cdr path) left-st right-st tree))))]))
+      <span style="color: #2d9574;">(</span><span style="color: #4f97d7; font-weight: bold;">and</span> <span style="color: #67b11d;">(</span>pred <span style="color: #b1951d;">(</span>car lst<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>every pred <span style="color: #b1951d;">(</span>cdr lst<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">merge</span> loi1 loi2<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span> 
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? loi1<span style="color: #67b11d;">)</span> loi2<span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? loi2<span style="color: #67b11d;">)</span> loi1<span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span>else 
+      <span style="color: #67b11d;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #b1951d;">(</span>&lt; <span style="color: #4f97d7;">(</span>car loi1<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>car loi2<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span>
+             <span style="color: #b1951d;">(</span>append <span style="color: #4f97d7;">(</span>list <span style="color: #bc6ec5;">(</span>car loi1<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>merge <span style="color: #bc6ec5;">(</span>cdr loi1<span style="color: #bc6ec5;">)</span> loi2<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span>
+             <span style="color: #b1951d;">(</span>append <span style="color: #4f97d7;">(</span>list <span style="color: #bc6ec5;">(</span>car loi2<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>merge loi1 <span style="color: #bc6ec5;">(</span>cdr loi2<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">flatten</span> dlst<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? dlst<span style="color: #67b11d;">)</span> '<span style="color: #67b11d;">()</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>not <span style="color: #b1951d;">(</span>list? dlst<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>list dlst<span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span>else <span style="color: #67b11d;">(</span>append <span style="color: #b1951d;">(</span>flatten <span style="color: #4f97d7;">(</span>car dlst<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>flatten <span style="color: #4f97d7;">(</span>cdr dlst<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">traverse/preorder</span> tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>list v<span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span> 
+      <span style="color: #67b11d;">(</span>append 
+        <span style="color: #b1951d;">(</span>list v<span style="color: #b1951d;">)</span>
+        <span style="color: #b1951d;">(</span>append 
+          <span style="color: #4f97d7;">(</span>traverse/preorder left<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>traverse/preorder right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">traverse/inorder</span> tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>list v<span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span> 
+      <span style="color: #67b11d;">(</span>append 
+        <span style="color: #b1951d;">(</span>traverse/inorder left<span style="color: #b1951d;">)</span> 
+        <span style="color: #b1951d;">(</span>append 
+          <span style="color: #4f97d7;">(</span>list v<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>traverse/inorder right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">traverse/postorder</span> tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>list v<span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span> 
+      <span style="color: #67b11d;">(</span>append 
+        <span style="color: #b1951d;">(</span>traverse/postorder left<span style="color: #b1951d;">)</span> 
+        <span style="color: #b1951d;">(</span>append 
+          <span style="color: #4f97d7;">(</span>traverse/postorder right<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>list v<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">count-nodes</span> tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #a45bad;">1</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>+ <span style="color: #a45bad;">1</span> <span style="color: #b1951d;">(</span>count-nodes left<span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>count-nodes right<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">count-leaves</span> tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #a45bad;">1</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>+ <span style="color: #b1951d;">(</span>count-leaves left<span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>count-leaves right<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">count-internal</span> tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #a45bad;">0</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>+ <span style="color: #a45bad;">1</span> <span style="color: #b1951d;">(</span>count-internal left<span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>count-internal right<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">tree/map</span> fn tr<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tr
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>lnode <span style="color: #b1951d;">(</span>fn v<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>inode <span style="color: #b1951d;">(</span>fn v<span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>tree/map fn left<span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>tree/map fn right<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5; font-weight: bold;">path-item</span> <span style="color: #bc6ec5;">(</span>list <span style="color: #2d9574;">"left"</span> <span style="color: #2d9574;">"right"</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">value-at-path</span> path tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? path<span style="color: #67b11d;">)</span> <span style="color: #67b11d;">(</span>cases full-binary-tree tree 
+                    <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> v<span style="color: #b1951d;">)</span>
+                    <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span> v<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>equal? <span style="color: #b1951d;">(</span>list-ref path-item <span style="color: #a45bad;">0</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>car path<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> tree<span style="color: #b1951d;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return the last node in the path</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>value-at-path <span style="color: #bc6ec5;">(</span>cdr path<span style="color: #bc6ec5;">)</span> left<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>equal? <span style="color: #b1951d;">(</span>list-ref path-item <span style="color: #a45bad;">1</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>car path<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> tree<span style="color: #b1951d;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return the last node in the path</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>value-at-path <span style="color: #bc6ec5;">(</span>cdr path<span style="color: #bc6ec5;">)</span> right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">search</span> val tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>cases full-binary-tree tree
+    <span style="color: #2d9574;">(</span>leaf-node <span style="color: #67b11d;">(</span>v<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #b1951d;">(</span>= v val<span style="color: #b1951d;">)</span>
+          '<span style="color: #b1951d;">()</span>
+          #f<span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>internal-node <span style="color: #67b11d;">(</span>v left right<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span> 
+        <span style="color: #b1951d;">[</span><span style="color: #4f97d7;">(</span>= v val<span style="color: #4f97d7;">)</span> '<span style="color: #4f97d7;">()</span><span style="color: #b1951d;">]</span>
+        <span style="color: #b1951d;">[</span><span style="color: #4f97d7;">(</span>list? <span style="color: #bc6ec5;">(</span>search val left<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span> 
+            <span style="color: #4f97d7;">(</span>append 
+              <span style="color: #bc6ec5;">(</span>list <span style="color: #2d9574;">(</span>list-ref path-item <span style="color: #a45bad;">0</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">very, and I cannot stress this</span>
+              <span style="color: #bc6ec5;">(</span>search val left<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">]</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">enough, inefficient</span>
+        <span style="color: #b1951d;">[</span><span style="color: #4f97d7;">(</span>list? <span style="color: #bc6ec5;">(</span>search val right<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+            <span style="color: #4f97d7;">(</span>append 
+              <span style="color: #bc6ec5;">(</span>list <span style="color: #2d9574;">(</span>list-ref path-item <span style="color: #a45bad;">1</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span> 
+              <span style="color: #bc6ec5;">(</span>search val right<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">]</span>
+        <span style="color: #b1951d;">[</span>else #f<span style="color: #b1951d;">]</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">update</span> path fn tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? path<span style="color: #67b11d;">)</span> 
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree 
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> 
+          <span style="color: #4f97d7;">(</span>lnode <span style="color: #bc6ec5;">(</span>fn v<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span> 
+          <span style="color: #4f97d7;">(</span>inode <span style="color: #bc6ec5;">(</span>fn v<span style="color: #bc6ec5;">)</span> left right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>equal? <span style="color: #b1951d;">(</span>list-ref path-item <span style="color: #a45bad;">0</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>car path<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>lnode v<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return unchanged</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>inode v <span style="color: #bc6ec5;">(</span>update <span style="color: #2d9574;">(</span>cdr path<span style="color: #2d9574;">)</span> fn left<span style="color: #bc6ec5;">)</span> right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>equal? <span style="color: #b1951d;">(</span>list-ref path-item <span style="color: #a45bad;">1</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>car path<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>lnode v<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return unchanged</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>inode v left <span style="color: #bc6ec5;">(</span>update <span style="color: #2d9574;">(</span>cdr path<span style="color: #2d9574;">)</span> fn right<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">define</span> <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">tree/insert</span> path left-st right-st tree<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">cond</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>null? path<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>inode v left-st right-st<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">faulty pathfinding</span>
+          <span style="color: #4f97d7;">(</span>inode v left right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return unchanged</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>equal? <span style="color: #b1951d;">(</span>list-ref path-item <span style="color: #a45bad;">0</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>car path<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>lnode v<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return unchanged</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>inode v <span style="color: #bc6ec5;">(</span>tree/insert <span style="color: #2d9574;">(</span>cdr path<span style="color: #2d9574;">)</span> left-st right-st tree<span style="color: #bc6ec5;">)</span> right<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span>
+    <span style="color: #2d9574;">[</span><span style="color: #67b11d;">(</span>equal? <span style="color: #b1951d;">(</span>list-ref path-item <span style="color: #a45bad;">1</span><span style="color: #b1951d;">)</span> <span style="color: #b1951d;">(</span>car path<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span>cases full-binary-tree tree
+        <span style="color: #b1951d;">(</span>leaf-node <span style="color: #4f97d7;">(</span>v<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>lnode v<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">return unchanged</span>
+        <span style="color: #b1951d;">(</span>internal-node <span style="color: #4f97d7;">(</span>v left right<span style="color: #4f97d7;">)</span>
+          <span style="color: #4f97d7;">(</span>inode v left <span style="color: #bc6ec5;">(</span>tree/insert <span style="color: #2d9574;">(</span>cdr path<span style="color: #2d9574;">)</span> left-st right-st tree<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 
-;;; exporting only the required function
-(provide repeat)
-(provide invert)
-(provide count-occurrences)
-(provide product)
-(provide every)
-(provide merge)
-(provide flatten)
-(provide traverse/preorder)
-(provide traverse/inorder)
-(provide traverse/postorder)
-(provide count-nodes)
-(provide count-leaves)
-(provide count-internal)
-(provide tree/map)
-(provide value-at-path)
-(provide search)
-(provide update)
-(provide tree/insert)
+<span style="color: #2aa1ae; background-color: #292e34;">;;; </span><span style="color: #2aa1ae; background-color: #292e34;">exporting only the required function</span>
+<span style="color: #4f97d7;">(</span>provide repeat<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide invert<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide count-occurrences<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide product<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide every<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide merge<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide flatten<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide traverse/preorder<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide traverse/inorder<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide traverse/postorder<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide count-nodes<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide count-leaves<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide count-internal<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide tree/map<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide value-at-path<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide search<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide update<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>provide tree/insert<span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 </div>
@@ -1277,7 +1358,7 @@ subtree.</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Zubair Abid (20171076)</p>
-<p class="date">Created: 2020-08-17 Mon 17:48</p>
+<p class="date">Created: 2020-08-17 Mon 18:20</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
