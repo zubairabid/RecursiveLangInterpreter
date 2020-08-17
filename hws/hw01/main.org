@@ -174,6 +174,19 @@
 #+END_SRC
 
 ** Flatten
+   The function =(flatten dlst)= needs to be implemented, and flatten
+   out any nested structure in the =dlst=. =dlst= is a list of lists in some
+   nested heirarchial structure.
+
+*** Solution
+    We make extensive use of the provided =(append list list)= function here.
+    After that, it's a rather straightforward recursive function.
+
+    - Base case(s) :: There are two:
+                      1. If =dlst= is empty, return an empty list
+                      2. If =dlst= is not a list, return it as a list.
+    - Recursive step :: =(append)= the recursive calls with =(car dlst)= and
+                        then =(cdr dlst)=
 
 #+NAME: flatten
 #+BEGIN_SRC scheme
