@@ -206,18 +206,18 @@
                                         singleton-tree)
                                        (lnode 10)))
               ))
-;; (define test-insert
-;;   (test-suite "Insert"
-;;               (test-case "insert"
-;;                          (check-equal? (tree/insert
-;;                                         '()
-;;                                         (lnode 3)
-;;                                         (lnode 5)
-;;                                         singleton-tree)
-;;                                        (inode 10
-;;                                             (lnode 3)
-;;                                             (lnode 5))))
-;;               ))
+(define test-insert
+  (test-suite "Insert"
+              (test-case "insert"
+                         (check-equal? (tree/insert
+                                        '()
+                                        (lnode 3)
+                                        (lnode 5)
+                                        singleton-tree)
+                                       (inode 10
+                                            (lnode 3)
+                                            (lnode 5))))
+              ))
 
 
 (run-tests repeat-fn-tests)
@@ -238,4 +238,4 @@
 (run-tests test-value-at-path)
 (run-tests test-search)
 (run-tests test-update)
-;; (run-tests test-insert)
+(run-tests test-insert)

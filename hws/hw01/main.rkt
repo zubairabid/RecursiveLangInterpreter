@@ -135,14 +135,32 @@
           (inode (fn v) left right)))]
     [(equal? (list-ref path-item 0) (car path))
       (cases full-binary-tree tree
-        (leaf-node (v) tree) ;; return the last node in the path
+        (leaf-node (v) (lnode v)) ;; return unchanged
         (internal-node (v left right)
           (inode v (update (cdr path) fn left) right)))]
     [(equal? (list-ref path-item 1) (car path))
       (cases full-binary-tree tree
-        (leaf-node (v) tree) ;; return the last node in the path
+        (leaf-node (v) (lnode v)) ;; return unchanged
         (internal-node (v left right)
           (inode v left (update (cdr path) fn right))))]))
+(define (tree/insert path left-st right-st tree)
+  (cond
+    [(null? path)
+      (cases full-binary-tree tree
+        (leaf-node (v)
+          (inode v left-st right-st))
+        (internal-node (v left right) ;; faulty pathfinding
+          (inode v left right)))] ;; return unchanged
+    [(equal? (list-ref path-item 0) (car path))
+      (cases full-binary-tree tree
+        (leaf-node (v) (lnode v)) ;; return unchanged
+        (internal-node (v left right)
+          (inode v (tree/insert (cdr path) left-st right-st tree) right)))]
+    [(equal? (list-ref path-item 1) (car path))
+      (cases full-binary-tree tree
+        (leaf-node (v) (lnode v)) ;; return unchanged
+        (internal-node (v left right)
+          (inode v left (tree/insert (cdr path) left-st right-st tree))))]))
 
 ;;; exporting only the required function
 (provide repeat)
@@ -162,3 +180,4 @@
 (provide value-at-path)
 (provide search)
 (provide update)
+(provide tree/insert)
