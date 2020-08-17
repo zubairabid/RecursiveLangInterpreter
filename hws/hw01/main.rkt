@@ -107,6 +107,24 @@
       (cases full-binary-tree tree
         (leaf-node (v) tree) ;; return the last node in the path
         (internal-node (v left right) (value-at-path (cdr path) right)))]))
+(define (search val tree)
+  (cases full-binary-tree tree
+    (leaf-node (v)
+      (if (= v val)
+          '()
+          #f))
+    (internal-node (v left right)
+      (cond 
+        [(= v val) '()]
+        [(list? (search val left)) 
+            (append 
+              (list (list-ref path-item 0)) ;; very, and I cannot stress this
+              (search val left))] ;; enough, inefficient
+        [(list? (search val right))
+            (append 
+              (list (list-ref path-item 1)) 
+              (search val right))]
+        [else #f]))))
 
 ;;; exporting only the required function
 (provide repeat)
@@ -124,3 +142,4 @@
 (provide count-internal)
 (provide tree/map)
 (provide value-at-path)
+(provide search)

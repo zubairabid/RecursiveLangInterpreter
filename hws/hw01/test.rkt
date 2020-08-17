@@ -189,14 +189,14 @@
                                         larger-tree)
                                        100))
               ))
-;; (define test-search
-;;   (test-suite "Search"
-;;               (test-case "found"
-;;                          (check-equal? (search 
-;;                                         200
-;;                                         larger-tree)
-;;                                        (list "left" "left")))
-;;               ))
+(define test-search
+  (test-suite "Search"
+              (test-case "found"
+                         (check-equal? (search 
+                                        200
+                                        larger-tree)
+                                       (list "left" "left")))
+              ))
 ;; (define test-update
 ;;   (test-suite "Update"
 ;;               (test-case "update"
@@ -236,6 +236,6 @@
 (run-tests test-tree-map)
 
 (run-tests test-value-at-path)
-;; (run-tests test-search)
+(run-tests test-search)
 ;; (run-tests test-update)
 ;; (run-tests test-insert)

@@ -232,6 +232,29 @@
 
 ** Problem No. 2.9: Search
 
+
+#+NAME: search
+#+BEGIN_SRC scheme
+(define (search val tree)
+  (cases full-binary-tree tree
+    (leaf-node (v)
+      (if (= v val)
+          '()
+          #f))
+    (internal-node (v left right)
+      (cond 
+        [(= v val) '()]
+        [(list? (search val left)) 
+            (append 
+              (list (list-ref path-item 0)) ;; very, and I cannot stress this
+              (search val left))] ;; enough, inefficient
+        [(list? (search val right))
+            (append 
+              (list (list-ref path-item 1)) 
+              (search val right))]
+        [else #f]))))
+#+END_SRC
+
 ** Problem No. 2.10: Update
 
 ** Problem No. 2.11: Insert
@@ -259,6 +282,7 @@
 <<tree/map>>
 <<path-item>>
 <<value-at-path>>
+<<search>>
 
 ;;; exporting only the required function
 (provide repeat)
@@ -276,4 +300,5 @@
 (provide count-internal)
 (provide tree/map)
 (provide value-at-path)
+(provide search)
 #+END_SRC
