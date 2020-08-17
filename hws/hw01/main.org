@@ -373,7 +373,27 @@
 #+END_SRC
 
 ** Problem No. 2.8: Value at Path
+   Given a =path=, the function =(value-at-path path tree)= should navigate
+   through the =tree= and return the value of the node it reaches at the end of
+   the =path=.
 
+*** Solution 
+    We navigate through the path as such: if the =path= is null, then we have 
+    found the solution. Here, we can return the value wrapped in a new node,
+    =(lnode v)= or =(inode v left right)= accordingly. Hoewever, if it is not,
+    then if the =(car)= is "left", we make a recursive call with the left 
+    subtree. However, if it's a leaf-node, we just return that as the search has
+    failed due to incorrect path. Likewise for if the =(car)= is "right" but
+    with the right subtree instead.
+
+    - Base case (=path= is empty) :: Return the =tree=, which is the node at
+                                     the correct location
+    - Recursive case :: Depending on whether the =(car path)= is left or right,
+                        1. If leaf node: this is a mistake, just return the node
+                           as there's nothing else specified
+                        2. If internal node: return the result of the recursive
+                           call with the =(cdr path)= and the left/right
+                           subtree.
    
 #+NAME: path-item
 #+BEGIN_SRC scheme 
