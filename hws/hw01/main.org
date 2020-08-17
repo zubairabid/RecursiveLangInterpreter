@@ -228,6 +228,20 @@
 #+END_SRC
 
 ** Problem No. 2.2: Inorder
+   The function =(traverse/inorder tree)= needs to do a inorder traversal of
+   the given =tree=, aka return a list with =left leaf right= traversing.
+
+*** Solution
+    We use recursion along with =(cases)= in order to navigate the
+    custom-defined datatype =full-binary-tree=.
+
+    - Base case (=tree= is a leaf-node) :: Return the value of the node
+    - Recursive case :: If =tree= is an internal node, return an =(append)= with
+                        the:
+                        1. The result of a recursive call with the left subtree
+                        2. Value of the node
+                        3. The result of a recursive call with the right subtree
+
 
 #+NAME: traverse/inorder
 #+BEGIN_SRC scheme
@@ -243,6 +257,19 @@
 #+END_SRC
 
 ** Problem No. 2.3: Postorder
+   The function =(traverse/psotorder tree)= needs to do a postorder traversal of
+   the given =tree=, aka return a list with =left right leaf= traversing.
+
+*** Solution
+    We use recursion along with =(cases)= in order to navigate the
+    custom-defined datatype =full-binary-tree=.
+
+    - Base case (=tree= is a leaf-node) :: Return the value of the node
+    - Recursive case :: If =tree= is an internal node, return an =(append)= with
+                        the:
+                        1. The result of a recursive call with the left subtree
+                        2. The result of a recursive call with the right subtree
+                        3. Value of the node
 
 #+NAME: traverse/postorder
 #+BEGIN_SRC scheme
