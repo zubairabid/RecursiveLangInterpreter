@@ -125,6 +125,24 @@
               (list (list-ref path-item 1)) 
               (search val right))]
         [else #f]))))
+(define (update path fn tree)
+  (cond
+    [(null? path) 
+      (cases full-binary-tree tree 
+        (leaf-node (v) 
+          (lnode (fn v)))
+        (internal-node (v left right) 
+          (inode (fn v) left right)))]
+    [(equal? (list-ref path-item 0) (car path))
+      (cases full-binary-tree tree
+        (leaf-node (v) tree) ;; return the last node in the path
+        (internal-node (v left right)
+          (inode v (update (cdr path) fn left) right)))]
+    [(equal? (list-ref path-item 1) (car path))
+      (cases full-binary-tree tree
+        (leaf-node (v) tree) ;; return the last node in the path
+        (internal-node (v left right)
+          (inode v left (update (cdr path) fn right))))]))
 
 ;;; exporting only the required function
 (provide repeat)
@@ -143,3 +161,4 @@
 (provide tree/map)
 (provide value-at-path)
 (provide search)
+(provide update)

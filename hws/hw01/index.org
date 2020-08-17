@@ -617,7 +617,7 @@
 <<path-items>>
 <<test-vap>>
 <<test-search>>
-;; <<test-update>>
+<<test-update>>
 ;; <<test-insert>>
 
 
@@ -638,6 +638,6 @@
 
 (run-tests test-value-at-path)
 (run-tests test-search)
-;; (run-tests test-update)
+(run-tests test-update)
 ;; (run-tests test-insert)
 #+END_SRC

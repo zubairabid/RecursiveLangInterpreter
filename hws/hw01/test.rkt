@@ -197,15 +197,15 @@
                                         larger-tree)
                                        (list "left" "left")))
               ))
-;; (define test-update
-;;   (test-suite "Update"
-;;               (test-case "update"
-;;                          (check-equal? (update
-;;                                         (list "left")
-;;                                         add1
-;;                                         singleton-tree)
-;;                                        (lnode 10)))
-;;               ))
+(define test-update
+  (test-suite "Update"
+              (test-case "update"
+                         (check-equal? (update
+                                        (list "left")
+                                        add1
+                                        singleton-tree)
+                                       (lnode 10)))
+              ))
 ;; (define test-insert
 ;;   (test-suite "Insert"
 ;;               (test-case "insert"
@@ -237,5 +237,5 @@
 
 (run-tests test-value-at-path)
 (run-tests test-search)
-;; (run-tests test-update)
+(run-tests test-update)
 ;; (run-tests test-insert)

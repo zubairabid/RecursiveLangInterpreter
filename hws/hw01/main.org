@@ -257,6 +257,28 @@
 
 ** Problem No. 2.10: Update
 
+#+NAME: update
+#+BEGIN_SRC scheme
+(define (update path fn tree)
+  (cond
+    [(null? path) 
+      (cases full-binary-tree tree 
+        (leaf-node (v) 
+          (lnode (fn v)))
+        (internal-node (v left right) 
+          (inode (fn v) left right)))]
+    [(equal? (list-ref path-item 0) (car path))
+      (cases full-binary-tree tree
+        (leaf-node (v) tree) ;; return the last node in the path
+        (internal-node (v left right)
+          (inode v (update (cdr path) fn left) right)))]
+    [(equal? (list-ref path-item 1) (car path))
+      (cases full-binary-tree tree
+        (leaf-node (v) tree) ;; return the last node in the path
+        (internal-node (v left right)
+          (inode v left (update (cdr path) fn right))))]))
+#+END_SRC
+  
 ** Problem No. 2.11: Insert
 * Tangle
 
@@ -283,6 +305,7 @@
 <<path-item>>
 <<value-at-path>>
 <<search>>
+<<update>>
 
 ;;; exporting only the required function
 (provide repeat)
@@ -301,4 +324,5 @@
 (provide tree/map)
 (provide value-at-path)
 (provide search)
+(provide update)
 #+END_SRC
