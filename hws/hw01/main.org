@@ -487,6 +487,29 @@
 #+END_SRC
   
 ** Problem No. 2.11: Insert
+   The function =(tree/insert path left-st right-st tree)= will traverse through 
+   the tree using the path like in problem 2.8 and 2.10, and will return the
+   tree (if the path points to a leaf node) with an internal node in place of
+   the earlier leaf node, with the =left-st= and =right-st= as subtrees.
+
+*** Solution
+    Like the =(update)= function, it's a recursive function based on the
+    value of =path=.
+
+    - Base case (=path= is empty) :: return:
+                                     1. if it's a leaf-node, then return an
+                                        internal node with the same value and
+                                        the =left-st= and =right-st=
+                                     2. else, return the node itself. There will
+                                        be no change to the tree as the path was
+                                        wrong.
+    - Recursive case :: Return the =tree= (whatever node it is) with only the
+                        following mofication:
+                        1. If it is a leaf node, return the node unchanged. The
+                           search has failed due to faulty path.
+                        2. If it is an internal node, then the branch taken
+                           should be the result of the recursive call with the
+                           aforesaid branch.
 
 #+NAME: tree/insert
 #+BEGIN_SRC scheme
