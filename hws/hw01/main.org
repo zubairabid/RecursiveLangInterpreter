@@ -443,6 +443,26 @@
 #+END_SRC
 
 ** Problem No. 2.10: Update
+   The function =(update path fn tree)= will traverse through the tree using the
+   path like in problem 2.8, and instead of returning the node, will return the
+   node after applying =(fn)= to the value of the node.
+
+*** Solution
+    Like the =(value-at-path)= function, it's a recursive function based on the
+    value of =path=.
+
+    - Base case (=path= is empty) :: return:
+                                     1. an internal node with =(fn v)=, or
+                                     2. a leaf node with =(fn v)=, according to
+                                        what the original node (=tree=) was at
+                                        this point
+    - Recursive case :: Return the =tree= (whatever node it is) with only the
+                        following mofication:
+                        1. If it is an internal node, then the branch taken
+                           should be the result of the recursive call with the
+                           aforesaid branch.
+                        2. Else, return the node unchanged. The search has
+                           failed due to faulty path.
 
 #+NAME: update
 #+BEGIN_SRC scheme
