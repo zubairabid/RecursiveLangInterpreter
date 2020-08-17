@@ -200,6 +200,19 @@
 * Recursion on Trees
 
 ** Problem No. 2.1: Preorder Traversal
+   The function =(traverse/preorder tree)= needs to do a preorder traversal of
+   the given =tree=, aka return a list with =leaf left right= traversing.
+
+*** Solution
+    We use recursion along with =(cases)= in order to navigate the
+    custom-defined datatype =full-binary-tree=.
+
+    - Base case (=tree= is a leaf-node) :: Return the value of the node
+    - Recursive case :: If =tree= is an internal node, return an =(append)= with
+                        the:
+                        1. Value of the node
+                        2. The result of a recursive call with the left subtree
+                        3. The result of a recursive call with the right subtree
 
 #+NAME: traverse/preorder
 #+BEGIN_SRC scheme
