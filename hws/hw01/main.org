@@ -99,6 +99,18 @@
     to the returned value of the recursive call of =(cdr sos2)= and eventually
     =(cdr sos1)=
 
+    - Base case(s) :: There's two broad base cases:
+                     - If either =sos1= or =sos2= is empty, return the other.
+                       This is as defined in the question. If neither list is
+                       null to begin with, this case will not get triggered.
+                     - if both =sos1= and =sos2= are single-length, then return
+                       a list appending the two
+    - Recursive step :: Again, this is an if-else step:
+                        - If =sos1= is bigger than 1-element, append the result
+                          of the recursive call with =(car sos1)= and the ones
+                          with =(cdr sos1)=
+                        - Likewise, but with =sos2=
+
 #+NAME: product
 #+BEGIN_SRC scheme
 (define (product sos1 sos2) 
@@ -114,6 +126,16 @@
         [else (list (append sos1 sos2))])]))
 #+END_SRC
 ** Problem No. 1.5: Every
+   The function =(every pred lst)= needs to be implemented, where it takes a
+   list =lst= and does and =and= check against each element with the predicate
+   =pred=.
+
+*** Solution
+    We implement a recursive function, where 
+
+    - Base step (=lst= is empty) :: returns true
+    - Recursive step :: return and =(and)= of the value of the =(pred)= on the
+      =(car lst)= and the value of the recursive call with =(cdr lst)=
 
 #+NAME: every
 #+BEGIN_SRC scheme
