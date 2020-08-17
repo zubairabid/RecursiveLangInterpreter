@@ -285,6 +285,16 @@
 #+END_SRC
 
 ** Problem No. 2.4: Count All Nodes
+   Function =(count-nodes tree)= will count how many nodes are there.
+
+*** Solution
+    We use a recursive solution, to sum it up: for each node with a value, we
+    add 1 to the sum.
+
+    - Base case (tree is a leaf-node) :: return 1
+    - Recursive case (tree is an internal-node) :: return the sum of 1 and the
+                                                   recursive call with both
+                                                   subtrees.
 
 #+NAME: count-nodes
 #+BEGIN_SRC scheme
@@ -296,6 +306,16 @@
 #+END_SRC
 
 ** Problem No. 2.5: Count Leaf Nodes
+   Function =(count-leaves tree)= will count how many leaf-nodes are there.
+
+*** Solution
+    We use a recursive solution, to sum it up: for each node that is a
+    leaf-node, we add 1 to the sum.
+
+    - Base case (tree is a leaf-node) :: return 1
+    - Recursive case (tree is an internal-node) :: return the sum of the
+                                                   recursive call with both
+                                                   subtrees.
 
 
 #+NAME: count-leaves
@@ -309,6 +329,16 @@
 
 
 ** Problem No. 2.6: Count Internal Nodes
+   Function =(count-internal tree)= will count how many internal-nodes are there
+
+*** Solution
+    We use a recursive solution, to sum it up: for each node that is an
+    internal-node, we add 1 to the sum.
+
+    - Base case (tree is a leaf-node) :: return 0
+    - Recursive case (tree is an internal-node) :: return the sum of 1 and the
+                                                   recursive call with both
+                                                   subtrees.
 
 #+NAME: count-internal
 #+BEGIN_SRC scheme
