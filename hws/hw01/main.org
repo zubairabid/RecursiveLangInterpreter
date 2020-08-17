@@ -1,4 +1,18 @@
 #+NAME: Homework Assignment 01 : Solution
+#+AUTHOR: Zubair Abid (20171076)
+
+* Introduction
+
+  Solution to HW01 of PoPL Monsoon 2020.
+
+  All of the solutions have been implemented using recursion and avoid using 
+  any of the following inbuilt functions:
+
+  - =map=
+  - =andmap=
+  - =ormap=
+  - =for-each=
+  - =foldl=
 
 * Recursion on Lists
 
@@ -10,9 +24,8 @@
    We define a recursive function =repeat=:
    
    - Base case (~n == 0~) ::  Returns an empty list
-   - Recursive step :: Append the value =x= 
-   to the list returned by recursively calling 
-   the function with =n-1= and =x= 
+   - Recursive step :: Append the value =x= to the list returned by recursively
+     calling the function with =n-1= and =x=
    
 #+NAME: repeat
 #+BEGIN_SRC scheme
@@ -30,11 +43,11 @@
 *** Solution:
     We define a recursive function =invert=:
 
-    - Base case (~null? lst~) :: Returns an empty list
+    - Base case (=lst= is empty) :: Returns an empty list
     - Recursive step ::
       1. Take the =(car lst)= and =(reverse)= it.
-      2. Append the result of step 1 to the value returned by
-         recursively calling the function with =(cdr lst)=
+      2. Append (cons) the result of step 1 to the value returned by recursively
+         calling the function with =(cdr lst)=
    
 #+NAME: invert
 #+BEGIN_SRC scheme
@@ -47,6 +60,20 @@
 ** Problem No. 1.3: Count Occurences
    The function =(count-occurences s slist)= has to be implemented,
    where it returns the number of occurences of =s= in =slist=
+
+*** Solution
+    We implement the function =(count-occurrences)= recursively. But first, we
+    setup a local function =(occplus s comp)= which will check for equality
+    between =s= and =comp= and return 1 if true, and 0 if false.
+
+    Then the recusion is defined as:
+
+    - Base case (=slist= is empty) :: return 0
+    - Recursive step :: Sum the following:
+                        1. 1 if the =(car slist)= is equal to the comparison s,
+                           using occplus, 0 otherwise
+                        2. The result of a recursive call with =s= and =(cdr
+                           slist)=
    
 #+NAME: count-occurrences
 #+BEGIN_SRC scheme
@@ -61,7 +88,16 @@
 #+END_SRC
 
 ** Problem No. 1.4: Product
-   
+   We need to write a function =(product sos1 sos2)=, where:
+   - =sos1=, =sos2= :: list of symbols without repetitions
+   - =product= :: function that will return the Cartesian product of the two
+                  lists as a list of =2-lists=
+
+*** Solution
+    The idea is to recursively reduce =sos1= to a single-element list, and then
+    reduce =sos2= to a single element list, append the two, and then append that
+    to the returned value of the recursive call of =(cdr sos2)= and eventually
+    =(cdr sos1)=
 
 #+NAME: product
 #+BEGIN_SRC scheme

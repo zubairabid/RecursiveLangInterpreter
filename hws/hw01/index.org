@@ -1,6 +1,9 @@
 
 
 * Introduction
+  :PROPERTIES:
+  :ID:       afb62e60-16f9-4692-ab2c-5bb1fccda81a
+  :END:
   Solving any problem using functional programming requires
   identifying repeating patterns in the data structures and
   leaveraging the repeating patterns to compose the solution.
