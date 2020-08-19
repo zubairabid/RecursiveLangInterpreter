@@ -1,0 +1,435 @@
+#+NAME: Homework Assignment 02 : Solution
+#+AUTHOR: Zubair Abid (20171076)
+
+* Introduction
+
+  Solution to HW02 of PoPL Monsoon 2020.
+
+* Recursion on Lists
+
+** Problem No. 1.1: Repeat
+   The function =(repeat n x)= has to return a list containing
+   =n= copies of =x=. 
+
+*** Solution
+   We define a recursive function =repeat=:
+   
+   - Base case (~n == 0~) ::  Returns an empty list
+   - Recursive step :: Append the value =x= to the list returned by recursively
+     calling the function with =n-1= and =x=
+   
+#+NAME: repeat
+#+BEGIN_SRC elm
+#+END_SRC
+
+** Problem No. 1.2: Invert
+   The function =(invert lst)= has to be implemented, where:
+   - =lst= :: A list of (lists of length 2)
+   - =invert= :: A function to invert each =lst=
+
+*** Solution:
+    We define a recursive function =invert=:
+
+    - Base case (=lst= is empty) :: Returns an empty list
+    - Recursive step ::
+      1. Take the =(car lst)= and =(reverse)= it.
+      2. Append (cons) the result of step 1 to the value returned by recursively
+         calling the function with =(cdr lst)=
+   
+#+NAME: invert
+#+BEGIN_SRC elm
+#+END_SRC
+
+** Problem No. 1.3: Count Occurences
+   The function =(count-occurences s slist)= has to be implemented,
+   where it returns the number of occurences of =s= in =slist=
+
+*** Solution
+    We implement the function =(count-occurrences)= recursively. But first, we
+    setup a local function =(occplus s comp)= which will check for equality
+    between =s= and =comp= and return 1 if true, and 0 if false.
+
+    Then the recusion is defined as:
+
+    - Base case (=slist= is empty) :: return 0
+    - Recursive step :: Sum the following:
+                        1. 1 if the =(car slist)= is equal to the comparison s,
+                           using occplus, 0 otherwise
+                        2. The result of a recursive call with =s= and =(cdr
+                           slist)=
+   
+#+NAME: count-occurrences
+#+BEGIN_SRC elm
+#+END_SRC
+
+** Problem No. 1.4: Product
+   We need to write a function =(product sos1 sos2)=, where:
+   - =sos1=, =sos2= :: list of symbols without repetitions
+   - =product= :: function that will return the Cartesian product of the two
+                  lists as a list of =2-lists=
+
+*** Solution
+    The idea is to recursively reduce =sos1= to a single-element list, and then
+    reduce =sos2= to a single element list, append the two, and then append that
+    to the returned value of the recursive call of =(cdr sos2)= and eventually
+    =(cdr sos1)=
+
+    - Base case(s) :: There's two broad base cases:
+                     - If either =sos1= or =sos2= is empty, return the other.
+                       This is as defined in the question. If neither list is
+                       null to begin with, this case will not get triggered.
+                     - if both =sos1= and =sos2= are single-length, then return
+                       a list appending the two
+    - Recursive step :: Again, this is an if-else step:
+                        - If =sos1= is bigger than 1-element, append the result
+                          of the recursive call with =(car sos1)= and the ones
+                          with =(cdr sos1)=
+                        - Likewise, but with =sos2=
+
+#+NAME: product
+#+BEGIN_SRC elm
+#+END_SRC
+** Problem No. 1.5: Every
+   The function =(every pred lst)= needs to be implemented, where it takes a
+   list =lst= and does and =and= check against each element with the predicate
+   =pred=.
+
+*** Solution
+    We implement a recursive function, where 
+
+    - Base step (=lst= is empty) :: returns true
+    - Recursive step :: return and =(and)= of the value of the =(pred)= on the
+      =(car lst)= and the value of the recursive call with =(cdr lst)=
+
+#+NAME: every
+#+BEGIN_SRC elm
+(define (every pred lst) 
+  (if (null? lst)
+      #t
+      (and (pred (car lst)) (every pred (cdr lst)))))
+#+END_SRC
+** Problem No. 1.6: Merge
+   The function =(merge loi1 loi2)= needs to take the two sorted lists =loi1=
+   and =loi2= and merge them such that the resulting list is also sorted.
+
+*** Solution
+    We define it recursively: if either list is empty, return the other,
+    otherwise compare the first elements of both and accordingly return the
+    appended element and the recursive call with the rest of the list and the
+    other list.
+
+    - Base cas (=loi1= or =loi2= is empty) :: return the other list
+    - Recursive step :: Compare the =(car loi1)= with =(car loi2)=. The one
+                        which is smaller will be appended to a new list along
+                        with the result of the recursive function call with
+                        =(cdr <the list from which the smaller was taken>)= and
+                        =<the other list>=
+
+#+NAME: merge
+#+BEGIN_SRC elm
+#+END_SRC
+
+** Flatten
+   The function =(flatten dlst)= needs to be implemented, and flatten
+   out any nested structure in the =dlst=. =dlst= is a list of lists in some
+   nested heirarchial structure.
+
+*** Solution
+    We make extensive use of the provided =(append list list)= function here.
+    After that, it's a rather straightforward recursive function.
+
+    - Base case(s) :: There are two:
+                      1. If =dlst= is empty, return an empty list
+                      2. If =dlst= is not a list, return it as a list.
+    - Recursive step :: =(append)= the recursive calls with =(car dlst)= and
+                        then =(cdr dlst)=
+
+#+NAME: flatten
+#+BEGIN_SRC elm
+#+END_SRC
+
+* Recursion on Trees
+
+** Defining the trees
+
+#+NAME: full-binary-tree
+#+BEGIN_SRC elm :tangle ./datatypes.rkt
+#+END_SRC
+
+** Problem No. 2.1: Preorder Traversal
+   The function =(traverse/preorder tree)= needs to do a preorder traversal of
+   the given =tree=, aka return a list with =leaf left right= traversing.
+
+*** Solution
+    We use recursion along with =(cases)= in order to navigate the
+    custom-defined datatype =full-binary-tree=.
+
+    - Base case (=tree= is a leaf-node) :: Return the value of the node
+    - Recursive case :: If =tree= is an internal node, return an =(append)= with
+                        the:
+                        1. Value of the node
+                        2. The result of a recursive call with the left subtree
+                        3. The result of a recursive call with the right subtree
+
+#+NAME: traverse/preorder
+#+BEGIN_SRC elm
+#+END_SRC
+
+** Problem No. 2.2: Inorder
+   The function =(traverse/inorder tree)= needs to do a inorder traversal of
+   the given =tree=, aka return a list with =left leaf right= traversing.
+
+*** Solution
+    We use recursion along with =(cases)= in order to navigate the
+    custom-defined datatype =full-binary-tree=.
+
+    - Base case (=tree= is a leaf-node) :: Return the value of the node
+    - Recursive case :: If =tree= is an internal node, return an =(append)= with
+                        the:
+                        1. The result of a recursive call with the left subtree
+                        2. Value of the node
+                        3. The result of a recursive call with the right subtree
+
+
+#+NAME: traverse/inorder
+#+BEGIN_SRC elm
+#+END_SRC
+
+** Problem No. 2.3: Postorder
+   The function =(traverse/psotorder tree)= needs to do a postorder traversal of
+   the given =tree=, aka return a list with =left right leaf= traversing.
+
+*** Solution
+    We use recursion along with =(cases)= in order to navigate the
+    custom-defined datatype =full-binary-tree=.
+
+    - Base case (=tree= is a leaf-node) :: Return the value of the node
+    - Recursive case :: If =tree= is an internal node, return an =(append)= with
+                        the:
+                        1. The result of a recursive call with the left subtree
+                        2. The result of a recursive call with the right subtree
+                        3. Value of the node
+
+#+NAME: traverse/postorder
+#+BEGIN_SRC elm
+#+END_SRC
+
+** Problem No. 2.4: Count All Nodes
+   Function =(count-nodes tree)= will count how many nodes are there.
+
+*** Solution
+    We use a recursive solution, to sum it up: for each node with a value, we
+    add 1 to the sum.
+
+    - Base case (tree is a leaf-node) :: return 1
+    - Recursive case (tree is an internal-node) :: return the sum of 1 and the
+                                                   recursive call with both
+                                                   subtrees.
+
+#+NAME: count-nodes
+#+BEGIN_SRC elm
+#+END_SRC
+
+** Problem No. 2.5: Count Leaf Nodes
+   Function =(count-leaves tree)= will count how many leaf-nodes are there.
+
+*** Solution
+    We use a recursive solution, to sum it up: for each node that is a
+    leaf-node, we add 1 to the sum.
+
+    - Base case (tree is a leaf-node) :: return 1
+    - Recursive case (tree is an internal-node) :: return the sum of the
+                                                   recursive call with both
+                                                   subtrees.
+
+
+#+NAME: count-leaves
+#+BEGIN_SRC elm
+#+END_SRC
+
+
+** Problem No. 2.6: Count Internal Nodes
+   Function =(count-internal tree)= will count how many internal-nodes are there
+
+*** Solution
+    We use a recursive solution, to sum it up: for each node that is an
+    internal-node, we add 1 to the sum.
+
+    - Base case (tree is a leaf-node) :: return 0
+    - Recursive case (tree is an internal-node) :: return the sum of 1 and the
+                                                   recursive call with both
+                                                   subtrees.
+
+#+NAME: count-internal
+#+BEGIN_SRC elm
+#+END_SRC
+
+** Problem No. 2.7: Map
+   The function =(tree/map fn tr)= needs to work like =(map)= but for trees.
+
+*** Solution:
+    We recursively navigate the tree such that:
+
+    - Base case (=tr= is a leaf-node) :: return a new leaf-node with the
+                                         function =(fn)= applied to its value.
+    - Recursive case (internal-node) :: return a new internal-node with the 
+                                        =(fn)= applied to the value, and
+                                        recursive calls to the left and right
+                                        subtree as the left and right subtree
+                                        definitions.
+
+#+NAME: tree/map
+#+BEGIN_SRC elm
+#+END_SRC
+
+** Problem No. 2.8: Value at Path
+   Given a =path=, the function =(value-at-path path tree)= should navigate
+   through the =tree= and return the value of the node it reaches at the end of
+   the =path=.
+
+*** Solution 
+    We navigate through the path as such: if the =path= is null, then we have 
+    found the solution. Here, we can return the value wrapped in a new node,
+    =(lnode v)= or =(inode v left right)= accordingly. Hoewever, if it is not,
+    then if the =(car)= is "left", we make a recursive call with the left 
+    subtree. However, if it's a leaf-node, we just return that as the search has
+    failed due to incorrect path. Likewise for if the =(car)= is "right" but
+    with the right subtree instead.
+
+    - Base case (=path= is empty) :: Return the =tree=, which is the node at
+                                     the correct location
+    - Recursive case :: Depending on whether the =(car path)= is left or right,
+                        1. If leaf node: this is a mistake, just return the node
+                           as there's nothing else specified
+                        2. If internal node: return the result of the recursive
+                           call with the =(cdr path)= and the left/right
+                           subtree.
+   
+#+NAME: path-item
+#+BEGIN_SRC elm 
+(define path-item (list "left" "right"))
+#+END_SRC
+   
+#+NAME: value-at-path
+#+BEGIN_SRC elm
+#+END_SRC
+
+** Problem No. 2.9: Search
+   The function =(search val tree)= should take the full-binary-tree and return
+   the path that needs to be taken in order to reach the first instance of =val=
+   in the =tree=, while in preorder traversal.
+
+*** Solution
+    This is not a very "neat" solution: the base case returns either a list (aka
+    the path is found) or an =#f=, and according to this response, we either
+    return it as the path or move on to trying out another path. So the value of
+    the recursive call needs to be stored.
+
+    - Base case :: There are broadly two cases in which something is returned:
+                   1. *A value matched*: In this case, we return an empty list
+                   2. *No value was matched*: This can happen if a leaf node was
+                      not matched, or if all other tests failed (indicating the
+                      entire branch does not contain the solution). In this
+                      case, we return =#f=
+    - Recursive case :: In the internal-node, 
+                        1. *If v didn't match*: We get the value of the
+                           recursive call with the left subtree. If it is a
+                           list, then the answer was found and we return that.
+                           Else,
+                        2. *If left subtree didn't match*: We get the value of
+                           the recursive call with the right subtree. If it is a
+                           list, we return the answer. Else, we return =#f=: as
+                           mentioned earlier.
+    
+    *Attribution Note*: I was confused here for a while as I did not know how to 
+    use =define=s in an expression context. 
+    [[https://stackoverflow.com/a/16221820][This answer from stackoverflow]] 
+    was used for the =let () ()= trick.
+
+#+NAME: search
+#+BEGIN_SRC elm
+#+END_SRC
+
+** Problem No. 2.10: Update
+   The function =(update path fn tree)= will traverse through the tree using the
+   path like in problem 2.8, and instead of returning the node, will return the
+   node after applying =(fn)= to the value of the node.
+
+*** Solution
+    Like the =(value-at-path)= function, it's a recursive function based on the
+    value of =path=.
+
+    - Base case (=path= is empty) :: return:
+                                     1. an internal node with =(fn v)=, or
+                                     2. a leaf node with =(fn v)=, according to
+                                        what the original node (=tree=) was at
+                                        this point
+    - Recursive case :: Return the =tree= (whatever node it is) with only the
+                        following mofication:
+                        1. If it is an internal node, then the branch taken
+                           should be the result of the recursive call with the
+                           aforesaid branch.
+                        2. Else, return the node unchanged. The search has
+                           failed due to faulty path.
+
+#+NAME: update
+#+BEGIN_SRC elm
+#+END_SRC
+  
+** Problem No. 2.11: Insert
+   The function =(tree/insert path left-st right-st tree)= will traverse through 
+   the tree using the path like in problem 2.8 and 2.10, and will return the
+   tree (if the path points to a leaf node) with an internal node in place of
+   the earlier leaf node, with the =left-st= and =right-st= as subtrees.
+
+*** Solution
+    Like the =(update)= function, it's a recursive function based on the
+    value of =path=.
+
+    - Base case (=path= is empty) :: return:
+                                     1. if it's a leaf-node, then return an
+                                        internal node with the same value and
+                                        the =left-st= and =right-st=
+                                     2. else, return the node itself. There will
+                                        be no change to the tree as the path was
+                                        wrong.
+    - Recursive case :: Return the =tree= (whatever node it is) with only the
+                        following mofication:
+                        1. If it is a leaf node, return the node unchanged. The
+                           search has failed due to faulty path.
+                        2. If it is an internal node, then the branch taken
+                           should be the result of the recursive call with the
+                           aforesaid branch.
+
+#+NAME: tree/insert
+#+BEGIN_SRC elm
+#+END_SRC
+
+* Tangle
+
+#+NAME: solution
+#+BEGIN_SRC elm :noweb yes :padline no :tangle ./src/Main.elm
+module Main exposing (..)
+import Defns exposing (..)
+
+<<repeat>>
+<<invert>>
+<<count-occurrences>>
+<<product>>
+<<every>>
+<<merge>>
+<<flatten>>
+<<traverse/preorder>>
+<<traverse/inorder>>
+<<traverse/postorder>>
+<<count-nodes>>
+<<count-leaves>>
+<<count-internal>>
+<<tree/map>>
+<<path-item>>
+<<value-at-path>>
+<<search>>
+<<update>>
+<<tree/insert>>
+
+#+END_SRC
