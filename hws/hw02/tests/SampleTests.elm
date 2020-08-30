@@ -46,13 +46,13 @@ test_every =
                     \_ -> Expect.equal (every isPositive [40, (-20), 100])
                                        False
              ]
--- test_merge: Test
--- test_merge =
---     describe "Merge"
---              [ test "Both lists length > 1" <|
---                     \_ -> Expect.equal (merge [10, 50, 60, 100] [1, 3, 6, 9])
---                                        [1, 3, 6, 9, 10, 50, 60, 100]
---              ]
+test_merge: Test
+test_merge =
+    describe "Merge"
+             [ test "Both lists length > 1" <|
+                    \_ -> Expect.equal (merge [10, 50, 60, 100] [1, 3, 6, 9])
+                                       [1, 3, 6, 9, 10, 50, 60, 100]
+             ]
 -- singleton_tree = Leaf 10
 -- 
 -- regular_tree =

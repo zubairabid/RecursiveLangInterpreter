@@ -6513,6 +6513,49 @@ var $author$project$SampleTests$test_invert = A2(
 						]));
 			})
 		]));
+var $author$project$Main$merge = F2(
+	function (loi1, loi2) {
+		if (!loi1.b) {
+			return loi2;
+		} else {
+			var x = loi1.a;
+			var xs = loi1.b;
+			if (!loi2.b) {
+				return loi1;
+			} else {
+				var y = loi2.a;
+				var ys = loi2.b;
+				return (_Utils_cmp(x, y) < 0) ? A2(
+					$elm$core$List$cons,
+					x,
+					A2($author$project$Main$merge, xs, loi2)) : A2(
+					$elm$core$List$cons,
+					y,
+					A2($author$project$Main$merge, loi1, ys));
+			}
+		}
+	});
+var $author$project$SampleTests$test_merge = A2(
+	$elm_explorations$test$Test$describe,
+	'Merge',
+	_List_fromArray(
+		[
+			A2(
+			$elm_explorations$test$Test$test,
+			'Both lists length > 1',
+			function (_v0) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					A2(
+						$author$project$Main$merge,
+						_List_fromArray(
+							[10, 50, 60, 100]),
+						_List_fromArray(
+							[1, 3, 6, 9])),
+					_List_fromArray(
+						[1, 3, 6, 9, 10, 50, 60, 100]));
+			})
+		]));
 var $author$project$Main$product = F2(
 	function (sos1, sos2) {
 		if ($elm$core$List$isEmpty(sos1)) {
@@ -6650,7 +6693,7 @@ var $author$project$SampleTests$test_repeat = A2(
 						]));
 			})
 		]));
-var $author$project$Test$Generated$Main1925914120$main = A2(
+var $author$project$Test$Generated$Main66601062$main = A2(
 	$author$project$Test$Runner$Node$run,
 	{
 		paths: _List_fromArray(
@@ -6658,7 +6701,7 @@ var $author$project$Test$Generated$Main1925914120$main = A2(
 		processes: 4,
 		report: $author$project$Test$Reporter$Reporter$ConsoleReport($author$project$Console$Text$UseColor),
 		runs: $elm$core$Maybe$Nothing,
-		seed: 301340220984189
+		seed: 388051855110299
 	},
 	$elm_explorations$test$Test$concat(
 		_List_fromArray(
@@ -6667,12 +6710,12 @@ var $author$project$Test$Generated$Main1925914120$main = A2(
 				$elm_explorations$test$Test$describe,
 				'SampleTests',
 				_List_fromArray(
-					[$author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat, $author$project$SampleTests$test_every]))
+					[$author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat, $author$project$SampleTests$test_merge, $author$project$SampleTests$test_every]))
 			])));
-_Platform_export({'Test':{'Generated':{'Main1925914120':{'init':$author$project$Test$Generated$Main1925914120$main($elm$json$Json$Decode$int)(0)}}}});}(this));
+_Platform_export({'Test':{'Generated':{'Main66601062':{'init':$author$project$Test$Generated$Main66601062$main($elm$json$Json$Decode$int)(0)}}}});}(this));
 return this.Elm;
 })({});
-var pipeFilename = "/tmp/elm_test-707570.sock";
+var pipeFilename = "/tmp/elm_test-710570.sock";
 // Make sure necessary things are defined.
 if (typeof Elm === "undefined") {
   throw "test runner config error: Elm is not defined. Make sure you provide a file compiled by Elm!";

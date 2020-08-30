@@ -150,7 +150,7 @@ every pred lst =
         x :: xs -> (pred x) && (every pred xs)
 #+END_SRC
 ** Problem No. 1.6: Merge
-   The function =(merge loi1 loi2)= needs to take the two sorted lists =loi1=
+   The function =merge loi1 loi2= needs to take the two sorted lists =loi1=
    and =loi2= and merge them such that the resulting list is also sorted.
 
 *** Solution
@@ -160,14 +160,26 @@ every pred lst =
     other list.
 
     - Base cas (=loi1= or =loi2= is empty) :: return the other list
-    - Recursive step :: Compare the =(car loi1)= with =(car loi2)=. The one
+    - Recursive step :: Compare the =car loi1= with =car loi2=. The one
                         which is smaller will be appended to a new list along
                         with the result of the recursive function call with
-                        =(cdr <the list from which the smaller was taken>)= and
+                        =cdr <the list from which the smaller was taken>= and
                         =<the other list>=
 
 #+NAME: merge
 #+BEGIN_SRC elm
+merge : List Int -> List Int -> List Int
+merge loi1 loi2 =
+    case loi1 of
+        [] -> loi2
+        x :: xs ->
+            case loi2 of
+                [] -> loi1
+                y :: ys ->
+                    if x < y then
+                        x :: (merge xs loi2)
+                    else
+                        y :: (merge loi1 ys)
 #+END_SRC
 
 ** Flatten

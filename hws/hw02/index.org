@@ -650,7 +650,7 @@ import Defns exposing (..)
 <<test-count-occur>>
 <<test-product>>
 <<test-every>>
--- <<test-merge>>
+<<test-merge>>
 -- <<sample-trees>>
 -- <<test-preorder>>
 -- <<test-inorder>>

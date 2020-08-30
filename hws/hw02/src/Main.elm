@@ -46,3 +46,15 @@ every pred lst =
     case lst of
         [] -> True
         x :: xs -> (pred x) && (every pred xs)
+merge : List Int -> List Int -> List Int
+merge loi1 loi2 =
+    case loi1 of
+        [] -> loi2
+        x :: xs ->
+            case loi2 of
+                [] -> loi1
+                y :: ys ->
+                    if x < y then
+                        x :: (merge xs loi2)
+                    else
+                        y :: (merge loi1 ys)
