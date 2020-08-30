@@ -5,6 +5,10 @@
 
   Solution to HW02 of PoPL Monsoon 2020.
 
+  *Note:* I use =car= and =cdr= as they are used in racket, even though Elm does
+  not (seem to?) have them and has to rely on pattern matching instead. This is
+  because they are really convenient.
+
 * Recursion on Lists
 
 ** Problem No. 1.1: Repeat
@@ -365,34 +369,48 @@ tree_map fn tr =
 #+END_SRC
 
 ** Problem No. 2.8: Value at Path
-   Given a =path=, the function =(value-at-path path tree)= should navigate
+   Given a =path=, the function =value_at_path path tree= should navigate
    through the =tree= and return the value of the node it reaches at the end of
    the =path=.
 
 *** Solution 
     We navigate through the path as such: if the =path= is null, then we have 
-    found the solution. Here, we can return the value wrapped in a new node,
-    =(lnode v)= or =(inode v left right)= accordingly. Hoewever, if it is not,
-    then if the =(car)= is "left", we make a recursive call with the left 
-    subtree. However, if it's a leaf-node, we just return that as the search has
-    failed due to incorrect path. Likewise for if the =(car)= is "right" but
-    with the right subtree instead.
+    found the solution. Here, we can return the value as a maybe, =Maybe v=. 
+    Hoewever, if it is not, then if the =car= is "left", we make a recursive 
+    call with the left subtree. However, if it's a leaf-node, we just return 
+    =Nothing=. Likewise for if the =(car)= is "right" but with the right subtree
+    instead.
 
     - Base case (=path= is empty) :: Return the =tree=, which is the node at
                                      the correct location
-    - Recursive case :: Depending on whether the =(car path)= is left or right,
+    - Recursive case :: Depending on whether the =car path= is left or right,
                         1. If leaf node: this is a mistake, just return the node
                            as there's nothing else specified
                         2. If internal node: return the result of the recursive
-                           call with the =(cdr path)= and the left/right
+                           call with the =cdr path= and the left/right
                            subtree.
-   
-#+NAME: path-item
-#+BEGIN_SRC elm 
-#+END_SRC
    
 #+NAME: value-at-path
 #+BEGIN_SRC elm
+value_at_path : List PathItem -> Tree -> Maybe Int
+value_at_path path tree = 
+    case path of
+        [] -> -- the current node is the value
+            case tree of
+                Leaf v -> Just v
+                Node v left right -> Just v
+        current :: rest ->
+            case current of
+                Left ->
+                    case tree of
+                        Leaf v -> Nothing
+                        Node v left right ->
+                            value_at_path rest left
+                Right ->
+                    case tree of
+                        Leaf v -> Nothing
+                        Node v left right ->
+                            value_at_path rest right
 #+END_SRC
 
 ** Problem No. 2.9: Search
@@ -506,7 +524,6 @@ import Defns exposing (..)
 <<count-leaves>>
 <<count-internal>>
 <<tree/map>>
-<<path-item>>
 <<value-at-path>>
 <<search>>
 <<update>>

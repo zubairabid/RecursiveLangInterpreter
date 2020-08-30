@@ -7005,7 +7005,7 @@ var $author$project$SampleTests$test_tree_map = A2(
 					$author$project$SampleTests$regular_tree);
 			})
 		]));
-var $author$project$Test$Generated$Main1906915572$main = A2(
+var $author$project$Test$Generated$Main3808472099$main = A2(
 	$author$project$Test$Runner$Node$run,
 	{
 		paths: _List_fromArray(
@@ -7013,7 +7013,7 @@ var $author$project$Test$Generated$Main1906915572$main = A2(
 		processes: 4,
 		report: $author$project$Test$Reporter$Reporter$ConsoleReport($author$project$Console$Text$UseColor),
 		runs: $elm$core$Maybe$Nothing,
-		seed: 239721924422218
+		seed: 330034517427186
 	},
 	$elm_explorations$test$Test$concat(
 		_List_fromArray(
@@ -7024,10 +7024,10 @@ var $author$project$Test$Generated$Main1906915572$main = A2(
 				_List_fromArray(
 					[$author$project$SampleTests$test_tree_map, $author$project$SampleTests$test_count_internal, $author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat, $author$project$SampleTests$test_merge, $author$project$SampleTests$test_every, $author$project$SampleTests$test_postorder, $author$project$SampleTests$test_count_leaves, $author$project$SampleTests$test_preorder, $author$project$SampleTests$test_inorder, $author$project$SampleTests$test_count_nodes]))
 			])));
-_Platform_export({'Test':{'Generated':{'Main1906915572':{'init':$author$project$Test$Generated$Main1906915572$main($elm$json$Json$Decode$int)(0)}}}});}(this));
+_Platform_export({'Test':{'Generated':{'Main3808472099':{'init':$author$project$Test$Generated$Main3808472099$main($elm$json$Json$Decode$int)(0)}}}});}(this));
 return this.Elm;
 })({});
-var pipeFilename = "/tmp/elm_test-748672.sock";
+var pipeFilename = "/tmp/elm_test-755838.sock";
 // Make sure necessary things are defined.
 if (typeof Elm === "undefined") {
   throw "test runner config error: Elm is not defined. Make sure you provide a file compiled by Elm!";

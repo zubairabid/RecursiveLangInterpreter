@@ -100,3 +100,22 @@ tree_map fn tr =
         Leaf val -> Leaf (fn val)
         Node val left right ->
             Node (fn val) (tree_map fn left) (tree_map fn right)
+value_at_path : List PathItem -> Tree -> Maybe Int
+value_at_path path tree = 
+    case path of
+        [] -> -- the current node is the value
+            case tree of
+                Leaf v -> Just v
+                Node v left right -> Just v
+        current :: rest ->
+            case current of
+                Left ->
+                    case tree of
+                        Leaf v -> Nothing
+                        Node v left right ->
+                            value_at_path rest left
+                Right ->
+                    case tree of
+                        Leaf v -> Nothing
+                        Node v left right ->
+                            value_at_path rest right
