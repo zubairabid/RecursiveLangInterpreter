@@ -93,36 +93,36 @@ test_postorder =
                     \_ -> Expect.equal (postorder regular_tree)
                                          [5, 6, 200, 80, 50, 40, 100]
              ]
--- test_count_nodes: Test
--- test_count_nodes =
---     describe "Count Nodes"
---              [ test "singleton" <|
---                     \_ -> Expect.equal (count_nodes singleton_tree)
---                                        1
---              , test "larger" <|
---                     \_ -> Expect.equal (count_nodes regular_tree)
---                                        7
---              ]
--- test_count_leaves: Test
--- test_count_leaves =
---     describe "Count Leaves"
---              [ test "singleton" <|
---                     \_ -> Expect.equal (count_leaves singleton_tree)
---                                        1
---              , test "larger" <|
---                     \_ -> Expect.equal (count_leaves regular_tree)
---                                        4
---              ]
--- test_count_internal: Test
--- test_count_internal =
---     describe "Count Internals"
---              [ test "singleton" <|
---                     \_ -> Expect.equal (count_internal singleton_tree)
---                                        0
---              , test "larger" <|
---                     \_ -> Expect.equal (count_internal regular_tree)
---                                        3
---              ]
+test_count_nodes: Test
+test_count_nodes =
+    describe "Count Nodes"
+             [ test "singleton" <|
+                    \_ -> Expect.equal (count_nodes singleton_tree)
+                                       1
+             , test "larger" <|
+                    \_ -> Expect.equal (count_nodes regular_tree)
+                                       7
+             ]
+test_count_leaves: Test
+test_count_leaves =
+    describe "Count Leaves"
+             [ test "singleton" <|
+                    \_ -> Expect.equal (count_leaves singleton_tree)
+                                       1
+             , test "larger" <|
+                    \_ -> Expect.equal (count_leaves regular_tree)
+                                       4
+             ]
+test_count_internal: Test
+test_count_internal =
+    describe "Count Internals"
+             [ test "singleton" <|
+                    \_ -> Expect.equal (count_internal singleton_tree)
+                                       0
+             , test "larger" <|
+                    \_ -> Expect.equal (count_internal regular_tree)
+                                       3
+             ]
 -- test_tree_map : Test
 -- test_tree_map =
 --     describe "Tree Map"

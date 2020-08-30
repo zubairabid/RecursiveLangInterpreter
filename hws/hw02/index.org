@@ -655,9 +655,9 @@ import Defns exposing (..)
 <<test-preorder>>
 <<test-inorder>>
 <<test-postorder>>
--- <<test-count-nodes>>
--- <<test-count-leaves>>
--- <<test-count-internal>>
+<<test-count-nodes>>
+<<test-count-leaves>>
+<<test-count-internal>>
 -- <<test-tree-map>>
 -- <<path-items>>
 -- <<test-vap>>

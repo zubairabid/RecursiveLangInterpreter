@@ -273,7 +273,7 @@ postorder tree =
 #+END_SRC
 
 ** Problem No. 2.4: Count All Nodes
-   Function =(count-nodes tree)= will count how many nodes are there.
+   Function =count_nodes tree= will count how many nodes are there.
 
 *** Solution
     We use a recursive solution, to sum it up: for each node with a value, we
@@ -286,10 +286,16 @@ postorder tree =
 
 #+NAME: count-nodes
 #+BEGIN_SRC elm
+count_nodes : Tree -> Int
+count_nodes tree =
+    case tree of
+        Leaf val -> 1
+        Node val left right ->
+            1 + (count_nodes left) + (count_nodes right)
 #+END_SRC
 
 ** Problem No. 2.5: Count Leaf Nodes
-   Function =(count-leaves tree)= will count how many leaf-nodes are there.
+   Function =(count_leaves tree)= will count how many leaf-nodes are there.
 
 *** Solution
     We use a recursive solution, to sum it up: for each node that is a
@@ -303,11 +309,17 @@ postorder tree =
 
 #+NAME: count-leaves
 #+BEGIN_SRC elm
+count_leaves : Tree -> Int
+count_leaves tree =
+    case tree of
+        Leaf val -> 1
+        Node val left right ->
+            (count_leaves left) + (count_leaves right)
 #+END_SRC
 
 
 ** Problem No. 2.6: Count Internal Nodes
-   Function =(count-internal tree)= will count how many internal-nodes are there
+   Function =(count_internal tree)= will count how many internal-nodes are there
 
 *** Solution
     We use a recursive solution, to sum it up: for each node that is an
@@ -320,6 +332,12 @@ postorder tree =
 
 #+NAME: count-internal
 #+BEGIN_SRC elm
+count_internal : Tree -> Int
+count_internal tree =
+    case tree of
+        Leaf val -> 0
+        Node val left right ->
+            1 + (count_internal left) + (count_internal right)
 #+END_SRC
 
 ** Problem No. 2.7: Map

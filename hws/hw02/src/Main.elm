@@ -76,3 +76,21 @@ postorder tree =
         Leaf val -> [val]
         Node val left right ->
             List.append (postorder left) (List.append (postorder right) [val])
+count_nodes : Tree -> Int
+count_nodes tree =
+    case tree of
+        Leaf val -> 1
+        Node val left right ->
+            1 + (count_nodes left) + (count_nodes right)
+count_leaves : Tree -> Int
+count_leaves tree =
+    case tree of
+        Leaf val -> 1
+        Node val left right ->
+            (count_leaves left) + (count_leaves right)
+count_internal : Tree -> Int
+count_internal tree =
+    case tree of
+        Leaf val -> 0
+        Node val left right ->
+            1 + (count_internal left) + (count_internal right)

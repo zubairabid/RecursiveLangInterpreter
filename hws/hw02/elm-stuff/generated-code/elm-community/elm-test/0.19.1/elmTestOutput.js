@@ -6327,20 +6327,17 @@ var $author$project$Test$Runner$Node$run = F2(
 				update: $author$project$Test$Runner$Node$update
 			});
 	});
-var $author$project$Main$occplus = F2(
-	function (s, comp) {
-		return _Utils_eq(s, comp) ? 1 : 0;
-	});
-var $author$project$Main$count_occurrences = F2(
-	function (s, slist) {
-		if (!slist.b) {
-			return 0;
-		} else {
-			var x = slist.a;
-			var xs = slist.b;
-			return A2($author$project$Main$occplus, s, x) + A2($author$project$Main$count_occurrences, s, xs);
-		}
-	});
+var $author$project$Main$count_internal = function (tree) {
+	if (tree.$ === 'Leaf') {
+		var val = tree.a;
+		return 0;
+	} else {
+		var val = tree.a;
+		var left = tree.b;
+		var right = tree.c;
+		return (1 + $author$project$Main$count_internal(left)) + $author$project$Main$count_internal(right);
+	}
+};
 var $elm_explorations$test$Test$Runner$Failure$Equality = F2(
 	function (a, b) {
 		return {$: 'Equality', a: a, b: b};
@@ -6382,6 +6379,27 @@ var $elm_explorations$test$Expect$equateWith = F4(
 		return usesFloats ? $elm_explorations$test$Expect$fail(floatError) : A5($elm_explorations$test$Expect$testWith, $elm_explorations$test$Test$Runner$Failure$Equality, reason, comparison, b, a);
 	});
 var $elm_explorations$test$Expect$equal = A2($elm_explorations$test$Expect$equateWith, 'Expect.equal', $elm$core$Basics$eq);
+var $author$project$Defns$Leaf = function (a) {
+	return {$: 'Leaf', a: a};
+};
+var $author$project$Defns$Node = F3(
+	function (a, b, c) {
+		return {$: 'Node', a: a, b: b, c: c};
+	});
+var $author$project$SampleTests$regular_tree = A3(
+	$author$project$Defns$Node,
+	100,
+	A3(
+		$author$project$Defns$Node,
+		50,
+		A3(
+			$author$project$Defns$Node,
+			200,
+			$author$project$Defns$Leaf(5),
+			$author$project$Defns$Leaf(6)),
+		$author$project$Defns$Leaf(80)),
+	$author$project$Defns$Leaf(40));
+var $author$project$SampleTests$singleton_tree = $author$project$Defns$Leaf(10);
 var $elm_explorations$test$Test$Internal$blankDescriptionFailure = $elm_explorations$test$Test$Internal$failNow(
 	{
 		description: 'This test has a blank description. Let\'s give it a useful one!',
@@ -6400,6 +6418,114 @@ var $elm_explorations$test$Test$test = F2(
 							thunk(_Utils_Tuple0)
 						]);
 				}));
+	});
+var $author$project$SampleTests$test_count_internal = A2(
+	$elm_explorations$test$Test$describe,
+	'Count Internals',
+	_List_fromArray(
+		[
+			A2(
+			$elm_explorations$test$Test$test,
+			'singleton',
+			function (_v0) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					$author$project$Main$count_internal($author$project$SampleTests$singleton_tree),
+					0);
+			}),
+			A2(
+			$elm_explorations$test$Test$test,
+			'larger',
+			function (_v1) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					$author$project$Main$count_internal($author$project$SampleTests$regular_tree),
+					3);
+			})
+		]));
+var $author$project$Main$count_leaves = function (tree) {
+	if (tree.$ === 'Leaf') {
+		var val = tree.a;
+		return 1;
+	} else {
+		var val = tree.a;
+		var left = tree.b;
+		var right = tree.c;
+		return $author$project$Main$count_leaves(left) + $author$project$Main$count_leaves(right);
+	}
+};
+var $author$project$SampleTests$test_count_leaves = A2(
+	$elm_explorations$test$Test$describe,
+	'Count Leaves',
+	_List_fromArray(
+		[
+			A2(
+			$elm_explorations$test$Test$test,
+			'singleton',
+			function (_v0) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					$author$project$Main$count_leaves($author$project$SampleTests$singleton_tree),
+					1);
+			}),
+			A2(
+			$elm_explorations$test$Test$test,
+			'larger',
+			function (_v1) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					$author$project$Main$count_leaves($author$project$SampleTests$regular_tree),
+					4);
+			})
+		]));
+var $author$project$Main$count_nodes = function (tree) {
+	if (tree.$ === 'Leaf') {
+		var val = tree.a;
+		return 1;
+	} else {
+		var val = tree.a;
+		var left = tree.b;
+		var right = tree.c;
+		return (1 + $author$project$Main$count_nodes(left)) + $author$project$Main$count_nodes(right);
+	}
+};
+var $author$project$SampleTests$test_count_nodes = A2(
+	$elm_explorations$test$Test$describe,
+	'Count Nodes',
+	_List_fromArray(
+		[
+			A2(
+			$elm_explorations$test$Test$test,
+			'singleton',
+			function (_v0) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					$author$project$Main$count_nodes($author$project$SampleTests$singleton_tree),
+					1);
+			}),
+			A2(
+			$elm_explorations$test$Test$test,
+			'larger',
+			function (_v1) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					$author$project$Main$count_nodes($author$project$SampleTests$regular_tree),
+					7);
+			})
+		]));
+var $author$project$Main$occplus = F2(
+	function (s, comp) {
+		return _Utils_eq(s, comp) ? 1 : 0;
+	});
+var $author$project$Main$count_occurrences = F2(
+	function (s, slist) {
+		if (!slist.b) {
+			return 0;
+		} else {
+			var x = slist.a;
+			var xs = slist.b;
+			return A2($author$project$Main$occplus, s, x) + A2($author$project$Main$count_occurrences, s, xs);
+		}
 	});
 var $author$project$SampleTests$test_countoccur = A2(
 	$elm_explorations$test$Test$describe,
@@ -6484,27 +6610,6 @@ var $author$project$Main$inorder = function (tree) {
 				$author$project$Main$inorder(right)));
 	}
 };
-var $author$project$Defns$Leaf = function (a) {
-	return {$: 'Leaf', a: a};
-};
-var $author$project$Defns$Node = F3(
-	function (a, b, c) {
-		return {$: 'Node', a: a, b: b, c: c};
-	});
-var $author$project$SampleTests$regular_tree = A3(
-	$author$project$Defns$Node,
-	100,
-	A3(
-		$author$project$Defns$Node,
-		50,
-		A3(
-			$author$project$Defns$Node,
-			200,
-			$author$project$Defns$Leaf(5),
-			$author$project$Defns$Leaf(6)),
-		$author$project$Defns$Leaf(80)),
-	$author$project$Defns$Leaf(40));
-var $author$project$SampleTests$singleton_tree = $author$project$Defns$Leaf(10);
 var $author$project$SampleTests$test_inorder = A2(
 	$elm_explorations$test$Test$describe,
 	'Inorder',
@@ -6849,7 +6954,7 @@ var $author$project$SampleTests$test_repeat = A2(
 						]));
 			})
 		]));
-var $author$project$Test$Generated$Main3700141114$main = A2(
+var $author$project$Test$Generated$Main3453722371$main = A2(
 	$author$project$Test$Runner$Node$run,
 	{
 		paths: _List_fromArray(
@@ -6857,7 +6962,7 @@ var $author$project$Test$Generated$Main3700141114$main = A2(
 		processes: 4,
 		report: $author$project$Test$Reporter$Reporter$ConsoleReport($author$project$Console$Text$UseColor),
 		runs: $elm$core$Maybe$Nothing,
-		seed: 192140939633992
+		seed: 399492957398339
 	},
 	$elm_explorations$test$Test$concat(
 		_List_fromArray(
@@ -6866,12 +6971,12 @@ var $author$project$Test$Generated$Main3700141114$main = A2(
 				$elm_explorations$test$Test$describe,
 				'SampleTests',
 				_List_fromArray(
-					[$author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat, $author$project$SampleTests$test_merge, $author$project$SampleTests$test_every, $author$project$SampleTests$test_postorder, $author$project$SampleTests$test_preorder, $author$project$SampleTests$test_inorder]))
+					[$author$project$SampleTests$test_count_internal, $author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat, $author$project$SampleTests$test_merge, $author$project$SampleTests$test_every, $author$project$SampleTests$test_postorder, $author$project$SampleTests$test_count_leaves, $author$project$SampleTests$test_preorder, $author$project$SampleTests$test_inorder, $author$project$SampleTests$test_count_nodes]))
 			])));
-_Platform_export({'Test':{'Generated':{'Main3700141114':{'init':$author$project$Test$Generated$Main3700141114$main($elm$json$Json$Decode$int)(0)}}}});}(this));
+_Platform_export({'Test':{'Generated':{'Main3453722371':{'init':$author$project$Test$Generated$Main3453722371$main($elm$json$Json$Decode$int)(0)}}}});}(this));
 return this.Elm;
 })({});
-var pipeFilename = "/tmp/elm_test-738580.sock";
+var pipeFilename = "/tmp/elm_test-747420.sock";
 // Make sure necessary things are defined.
 if (typeof Elm === "undefined") {
   throw "test runner config error: Elm is not defined. Make sure you provide a file compiled by Elm!";
