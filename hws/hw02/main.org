@@ -419,17 +419,17 @@ value_at_path path tree =
    in the =tree=, while in preorder traversal.
 
 *** Solution
-    This is not a very "neat" solution: the base case returns either a list (aka
-    the path is found) or an =#f=, and according to this response, we either
-    return it as the path or move on to trying out another path. So the value of
-    the recursive call needs to be stored.
+    The base case returns either a =Just= empty list (aka the path is found) or
+    a =Nothing=, and according to this response, we either return it as the path
+    or move on to trying out another path. So the value of the recursive call 
+    needs to be stored.
 
     - Base case :: There are broadly two cases in which something is returned:
                    1. *A value matched*: In this case, we return an empty list
                    2. *No value was matched*: This can happen if a leaf node was
                       not matched, or if all other tests failed (indicating the
                       entire branch does not contain the solution). In this
-                      case, we return =#f=
+                      case, we return =Nothing=
     - Recursive case :: In the internal-node, 
                         1. *If v didn't match*: We get the value of the
                            recursive call with the left subtree. If it is a
@@ -437,13 +437,8 @@ value_at_path path tree =
                            Else,
                         2. *If left subtree didn't match*: We get the value of
                            the recursive call with the right subtree. If it is a
-                           list, we return the answer. Else, we return =#f=: as
-                           mentioned earlier.
-    
-    *Attribution Note*: I was confused here for a while as I did not know how to 
-    use =define=s in an expression context. 
-    [[https://stackoverflow.com/a/16221820][This answer from stackoverflow]] 
-    was used for the =let () ()= trick.
+                           list, we return the answer. Else, we return =Nothing=
+                           , as mentioned earlier.
 
 #+NAME: search
 #+BEGIN_SRC elm
