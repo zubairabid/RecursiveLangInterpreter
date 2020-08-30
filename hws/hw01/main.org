@@ -583,12 +583,12 @@
       (cases full-binary-tree tree
         (leaf-node (v) (lnode v)) ;; return unchanged
         (internal-node (v left right)
-          (inode v (tree/insert (cdr path) left-st right-st tree) right)))]
+          (inode v (tree/insert (cdr path) left-st right-st left) right)))]
     [(equal? (list-ref path-item 1) (car path))
       (cases full-binary-tree tree
         (leaf-node (v) (lnode v)) ;; return unchanged
         (internal-node (v left right)
-          (inode v left (tree/insert (cdr path) left-st right-st tree))))]))
+          (inode v left (tree/insert (cdr path) left-st right-st right))))]))
 #+END_SRC
 
 * Tangle

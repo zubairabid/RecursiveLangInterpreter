@@ -471,12 +471,12 @@ search val tree =
 #+END_SRC
 
 ** Problem No. 2.10: Update
-   The function =(update path fn tree)= will traverse through the tree using the
+   The function =update path fn tree= will traverse through the tree using the
    path like in problem 2.8, and instead of returning the node, will return the
-   node after applying =(fn)= to the value of the node.
+   node after applying =fn= to the value of the node.
 
 *** Solution
-    Like the =(value-at-path)= function, it's a recursive function based on the
+    Like the =value-at-path= function, it's a recursive function based on the
     value of =path=.
 
     - Base case (=path= is empty) :: return:
@@ -494,6 +494,26 @@ search val tree =
 
 #+NAME: update
 #+BEGIN_SRC elm
+update : List PathItem -> (Int -> Int) -> Tree -> Tree
+update path fn tree =
+    case path of
+        [] ->
+            case tree of
+                Leaf v -> Leaf (fn v)
+                Node v left right ->
+                    Node (fn v) left right
+        first :: rest ->
+            case first of
+                Left ->
+                    case tree of
+                        Leaf v -> Leaf v -- failed search
+                        Node v left right ->
+                            Node v (update rest fn left) right
+                Right ->
+                    case tree of
+                        Leaf v -> Leaf v -- failed search
+                        Node v left right ->
+                            Node v left (update rest fn right)
 #+END_SRC
   
 ** Problem No. 2.11: Insert
@@ -523,6 +543,27 @@ search val tree =
 
 #+NAME: tree/insert
 #+BEGIN_SRC elm
+tree_insert : List PathItem -> Tree -> Tree -> Tree -> Tree
+tree_insert path lst rst tree = 
+    case path of
+        [] ->
+            case tree of
+                Leaf v ->
+                    Node v lst rst
+                Node v left right ->
+                    Node v left right -- failed insert
+        first :: rest ->
+            case first of
+                Left ->
+                    case tree of
+                        Leaf v -> Leaf v -- failed insert
+                        Node v left right ->
+                            Node v (tree_insert rest lst rst left) right
+                Right ->
+                    case tree of
+                        Leaf v -> Leaf v -- failed insert
+                        Node v left right ->
+                            Node v left (tree_insert rest lst rst right)
 #+END_SRC
 
 * Tangle

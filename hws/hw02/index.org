@@ -662,8 +662,8 @@ import Defns exposing (..)
 <<path-items>>
 <<test-vap>>
 <<test-search>>
--- <<test-update>>
--- <<test-insert>>
+<<test-update>>
+<<test-insert>>
 
 #+END_SRC
 

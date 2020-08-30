@@ -145,3 +145,44 @@ search val tree =
                                         Just (Right :: Maybe.withDefault [] rights)
                         _ ->
                             Just (Left :: Maybe.withDefault [] lefts)
+update : List PathItem -> (Int -> Int) -> Tree -> Tree
+update path fn tree =
+    case path of
+        [] ->
+            case tree of
+                Leaf v -> Leaf (fn v)
+                Node v left right ->
+                    Node (fn v) left right
+        first :: rest ->
+            case first of
+                Left ->
+                    case tree of
+                        Leaf v -> Leaf v -- failed search
+                        Node v left right ->
+                            Node v (update rest fn left) right
+                Right ->
+                    case tree of
+                        Leaf v -> Leaf v -- failed search
+                        Node v left right ->
+                            Node v left (update rest fn right)
+tree_insert : List PathItem -> Tree -> Tree -> Tree -> Tree
+tree_insert path lst rst tree = 
+    case path of
+        [] ->
+            case tree of
+                Leaf v ->
+                    Node v lst rst
+                Node v left right ->
+                    Node v left right -- failed insert
+        first :: rest ->
+            case first of
+                Left ->
+                    case tree of
+                        Leaf v -> Leaf v -- failed insert
+                        Node v left right ->
+                            Node v (tree_insert rest lst rst left) right
+                Right ->
+                    case tree of
+                        Leaf v -> Leaf v -- failed insert
+                        Node v left right ->
+                            Node v left (tree_insert rest lst rst right)

@@ -166,25 +166,25 @@ test_search =
                                               regular_tree)
                                              (Just [Left, Left])
              ]
--- test_update : Test
--- test_update =
---     describe "Update"
---              [ test "update" <|
---                     \_ -> Expect.equal (update
---                                               [Left]
---                                               (\x -> x+1)
---                                               singleton_tree)
---                                        (Leaf 10)
---              ]
--- test_insert =
---     describe "Insert"
---              [ test "insert" <|
---                     \_ -> Expect.equal (tree_insert
---                                       []
---                                       (Leaf 3)
---                                       (Leaf 5)
---                                       singleton_tree)
---                                  (Node 10
---                                        (Leaf 3)
---                                        (Leaf 5))
---              ]
+test_update : Test
+test_update =
+    describe "Update"
+             [ test "update" <|
+                    \_ -> Expect.equal (update
+                                              [Left]
+                                              (\x -> x+1)
+                                              singleton_tree)
+                                       (Leaf 10)
+             ]
+test_insert =
+    describe "Insert"
+             [ test "insert" <|
+                    \_ -> Expect.equal (tree_insert
+                                      []
+                                      (Leaf 3)
+                                      (Leaf 5)
+                                      singleton_tree)
+                                 (Node 10
+                                       (Leaf 3)
+                                       (Leaf 5))
+             ]
