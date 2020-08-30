@@ -130,7 +130,7 @@ product sos1 sos2 =
             [List.append sos1 sos2]
 #+END_SRC
 ** Problem No. 1.5: Every
-   The function =(every pred lst)= needs to be implemented, where it takes a
+   The function =every pred lst= needs to be implemented, where it takes a
    list =lst= and does and =and= check against each element with the predicate
    =pred=.
 
@@ -138,11 +138,16 @@ product sos1 sos2 =
     We implement a recursive function, where 
 
     - Base step (=lst= is empty) :: returns true
-    - Recursive step :: return and =(and)= of the value of the =(pred)= on the
-      =(car lst)= and the value of the recursive call with =(cdr lst)=
+    - Recursive step :: return and =and= of the value of the =pred= on the
+      =car lst= and the value of the recursive call with =cdr lst=
 
 #+NAME: every
 #+BEGIN_SRC elm
+every : (a -> Bool) -> List a -> Bool
+every pred lst =
+    case lst of
+        [] -> True
+        x :: xs -> (pred x) && (every pred xs)
 #+END_SRC
 ** Problem No. 1.6: Merge
    The function =(merge loi1 loi2)= needs to take the two sorted lists =loi1=

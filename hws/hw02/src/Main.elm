@@ -41,3 +41,8 @@ product sos1 sos2 =
                 y :: ys -> List.append (product sos1 [y]) (product sos1 ys)
         else
             [List.append sos1 sos2]
+every : (a -> Bool) -> List a -> Bool
+every pred lst =
+    case lst of
+        [] -> True
+        x :: xs -> (pred x) && (every pred xs)

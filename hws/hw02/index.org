@@ -649,7 +649,7 @@ import Defns exposing (..)
 <<test-invert>>
 <<test-count-occur>>
 <<test-product>>
--- <<test-every>>
+<<test-every>>
 -- <<test-merge>>
 -- <<sample-trees>>
 -- <<test-preorder>>

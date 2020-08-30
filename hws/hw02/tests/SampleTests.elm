@@ -34,18 +34,18 @@ test_product =
                \_ -> Expect.equal (product [1, 3, 4] [10, 20])
                                   [[1, 10], [1, 20], [3, 10], [3, 20], [4, 10], [4, 20]]
         ]
--- isPositive x = x > 0
--- 
--- test_every : Test
--- test_every = 
---     describe "Every"
---              [ test "All Pass" <|
---                     \_ -> Expect.equal (every isPositive [10, 40, 60])
---                                        True
---              , test "One Fail" <|
---                     \_ -> Expect.equal (every isPositive [40, (-20), 100])
---                                        False
---              ]
+isPositive x = x > 0
+
+test_every : Test
+test_every = 
+    describe "Every"
+             [ test "All Pass" <|
+                    \_ -> Expect.equal (every isPositive [10, 40, 60])
+                                       True
+             , test "One Fail" <|
+                    \_ -> Expect.equal (every isPositive [40, (-20), 100])
+                                       False
+             ]
 -- test_merge: Test
 -- test_merge =
 --     describe "Merge"
