@@ -647,23 +647,23 @@ import Defns exposing (..)
 
 <<test-repeat>>
 <<test-invert>>
-<<test-count-occur>>
-<<test-product>>
-<<test-every>>
-<<test-merge>>
-<<sample-trees>>
-<<test-preorder>>
-<<test-inorder>>
-<<test-postorder>>
-<<test-count-nodes>>
-<<test-count-leaves>>
-<<test-count-internal>>
-<<test-tree-map>>
-<<path-items>>
-<<test-vap>>
-<<test-search>>
-<<test-update>>
-<<test-insert>>
+-- <<test-count-occur>>
+-- <<test-product>>
+-- <<test-every>>
+-- <<test-merge>>
+-- <<sample-trees>>
+-- <<test-preorder>>
+-- <<test-inorder>>
+-- <<test-postorder>>
+-- <<test-count-nodes>>
+-- <<test-count-leaves>>
+-- <<test-count-internal>>
+-- <<test-tree-map>>
+-- <<path-items>>
+-- <<test-vap>>
+-- <<test-search>>
+-- <<test-update>>
+-- <<test-insert>>
 
 #+END_SRC
 

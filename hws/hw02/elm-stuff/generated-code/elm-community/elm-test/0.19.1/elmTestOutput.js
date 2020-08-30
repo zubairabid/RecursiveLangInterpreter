@@ -6327,34 +6327,189 @@ var $author$project$Test$Runner$Node$run = F2(
 				update: $author$project$Test$Runner$Node$update
 			});
 	});
-var $elm_explorations$test$Test$todo = function (desc) {
-	return $elm_explorations$test$Test$Internal$failNow(
-		{description: desc, reason: $elm_explorations$test$Test$Runner$Failure$TODO});
+var $elm_explorations$test$Test$Runner$Failure$Equality = F2(
+	function (a, b) {
+		return {$: 'Equality', a: a, b: b};
+	});
+var $elm$core$String$contains = _String_contains;
+var $elm_explorations$test$Test$Expectation$Pass = {$: 'Pass'};
+var $elm_explorations$test$Expect$pass = $elm_explorations$test$Test$Expectation$Pass;
+var $elm_explorations$test$Test$Internal$toString = _Debug_toString;
+var $elm_explorations$test$Expect$testWith = F5(
+	function (makeReason, label, runTest, expected, actual) {
+		return A2(runTest, actual, expected) ? $elm_explorations$test$Expect$pass : $elm_explorations$test$Test$Expectation$fail(
+			{
+				description: label,
+				reason: A2(
+					makeReason,
+					$elm_explorations$test$Test$Internal$toString(expected),
+					$elm_explorations$test$Test$Internal$toString(actual))
+			});
+	});
+var $elm$core$String$toInt = _String_toInt;
+var $elm_explorations$test$Expect$equateWith = F4(
+	function (reason, comparison, b, a) {
+		var isJust = function (x) {
+			if (x.$ === 'Just') {
+				return true;
+			} else {
+				return false;
+			}
+		};
+		var isFloat = function (x) {
+			return isJust(
+				$elm$core$String$toFloat(x)) && (!isJust(
+				$elm$core$String$toInt(x)));
+		};
+		var usesFloats = isFloat(
+			$elm_explorations$test$Test$Internal$toString(a)) || isFloat(
+			$elm_explorations$test$Test$Internal$toString(b));
+		var floatError = A2($elm$core$String$contains, reason, 'not') ? 'Do not use Expect.notEqual with floats. Use Float.notWithin instead.' : 'Do not use Expect.equal with floats. Use Float.within instead.';
+		return usesFloats ? $elm_explorations$test$Expect$fail(floatError) : A5($elm_explorations$test$Expect$testWith, $elm_explorations$test$Test$Runner$Failure$Equality, reason, comparison, b, a);
+	});
+var $elm_explorations$test$Expect$equal = A2($elm_explorations$test$Expect$equateWith, 'Expect.equal', $elm$core$Basics$eq);
+var $author$project$Main$invert = function (lst) {
+	if (!lst.b) {
+		return _List_Nil;
+	} else {
+		var x = lst.a;
+		var xs = lst.b;
+		return A2(
+			$elm$core$List$cons,
+			$elm$core$List$reverse(x),
+			$author$project$Main$invert(xs));
+	}
 };
-var $author$project$Example$suite = $elm_explorations$test$Test$todo('Implement our first test. See https://package.elm-lang.org/packages/elm-explorations/test/latest for how to do this!');
-var $author$project$Test$Generated$Main1988396648$main = A2(
+var $elm_explorations$test$Test$Internal$blankDescriptionFailure = $elm_explorations$test$Test$Internal$failNow(
+	{
+		description: 'This test has a blank description. Let\'s give it a useful one!',
+		reason: $elm_explorations$test$Test$Runner$Failure$Invalid($elm_explorations$test$Test$Runner$Failure$BadDescription)
+	});
+var $elm_explorations$test$Test$test = F2(
+	function (untrimmedDesc, thunk) {
+		var desc = $elm$core$String$trim(untrimmedDesc);
+		return $elm$core$String$isEmpty(desc) ? $elm_explorations$test$Test$Internal$blankDescriptionFailure : A2(
+			$elm_explorations$test$Test$Internal$Labeled,
+			desc,
+			$elm_explorations$test$Test$Internal$UnitTest(
+				function (_v0) {
+					return _List_fromArray(
+						[
+							thunk(_Utils_Tuple0)
+						]);
+				}));
+	});
+var $author$project$SampleTests$test_invert = A2(
+	$elm_explorations$test$Test$describe,
+	'invert-tests',
+	_List_fromArray(
+		[
+			A2(
+			$elm_explorations$test$Test$test,
+			'2-list is (number number)',
+			function (_v0) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					$author$project$Main$invert(
+						_List_fromArray(
+							[
+								_List_fromArray(
+								[1, 100]),
+								_List_fromArray(
+								[2, 300]),
+								_List_fromArray(
+								[5, 600]),
+								_List_fromArray(
+								[8, 200])
+							])),
+					_List_fromArray(
+						[
+							_List_fromArray(
+							[100, 1]),
+							_List_fromArray(
+							[300, 2]),
+							_List_fromArray(
+							[600, 5]),
+							_List_fromArray(
+							[200, 8])
+						]));
+			})
+		]));
+var $author$project$Main$repeat = F2(
+	function (n, x) {
+		return (n <= 0) ? _List_Nil : A2(
+			$elm$core$List$cons,
+			x,
+			A2($author$project$Main$repeat, n - 1, x));
+	});
+var $author$project$SampleTests$test_repeat = A2(
+	$elm_explorations$test$Test$describe,
+	'Repeat',
+	_List_fromArray(
+		[
+			A2(
+			$elm_explorations$test$Test$test,
+			'Repeat a number',
+			function (_v0) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					A2($author$project$Main$repeat, 3, 5),
+					_List_fromArray(
+						[5, 5, 5]));
+			}),
+			A2(
+			$elm_explorations$test$Test$test,
+			'Repeat a string',
+			function (_v1) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					A2($author$project$Main$repeat, 4, 'ab'),
+					_List_fromArray(
+						['ab', 'ab', 'ab', 'ab']));
+			}),
+			A2(
+			$elm_explorations$test$Test$test,
+			'Repeat a list',
+			function (_v2) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					A2(
+						$author$project$Main$repeat,
+						2,
+						_List_fromArray(
+							[1, 4])),
+					_List_fromArray(
+						[
+							_List_fromArray(
+							[1, 4]),
+							_List_fromArray(
+							[1, 4])
+						]));
+			})
+		]));
+var $author$project$Test$Generated$Main3638936706$main = A2(
 	$author$project$Test$Runner$Node$run,
 	{
 		paths: _List_fromArray(
-			['/home/zubair/Documents/Work/Acads/Projects/popl-monsoon-2020/hws/hw02/tests/Example.elm']),
+			['/home/zubair/Documents/Work/Acads/Projects/popl-monsoon-2020/hws/hw02/tests/SampleTests.elm']),
 		processes: 4,
 		report: $author$project$Test$Reporter$Reporter$ConsoleReport($author$project$Console$Text$UseColor),
 		runs: $elm$core$Maybe$Nothing,
-		seed: 83814828678873
+		seed: 309178088357683
 	},
 	$elm_explorations$test$Test$concat(
 		_List_fromArray(
 			[
 				A2(
 				$elm_explorations$test$Test$describe,
-				'Example',
+				'SampleTests',
 				_List_fromArray(
-					[$author$project$Example$suite]))
+					[$author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat]))
 			])));
-_Platform_export({'Test':{'Generated':{'Main1988396648':{'init':$author$project$Test$Generated$Main1988396648$main($elm$json$Json$Decode$int)(0)}}}});}(this));
+_Platform_export({'Test':{'Generated':{'Main3638936706':{'init':$author$project$Test$Generated$Main3638936706$main($elm$json$Json$Decode$int)(0)}}}});}(this));
 return this.Elm;
 })({});
-var pipeFilename = "/tmp/elm_test-625681.sock";
+var pipeFilename = "/tmp/elm_test-679323.sock";
 // Make sure necessary things are defined.
 if (typeof Elm === "undefined") {
   throw "test runner config error: Elm is not defined. Make sure you provide a file compiled by Elm!";
