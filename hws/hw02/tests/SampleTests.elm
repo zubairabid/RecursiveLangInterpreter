@@ -27,13 +27,13 @@ test_countoccur =
              [ test "Multiple Occurrences" <|
                     \_ -> Expect.equal (count_occurrences 3 [2, 3, 4, 3, 5, 6, 3]) 3
              ]
--- test_product: Test
--- test_product =
---     describe "Product"
---         [ test "Multiple Item" <|
---                \_ -> Expect.equal (product [1, 3, 4] [10, 20])
---                                   [[1, 10], [1, 20], [3, 10], [3, 20], [4, 10], [4, 20]]
---         ]
+test_product: Test
+test_product =
+    describe "Product"
+        [ test "Multiple Item" <|
+               \_ -> Expect.equal (product [1, 3, 4] [10, 20])
+                                  [[1, 10], [1, 20], [3, 10], [3, 20], [4, 10], [4, 20]]
+        ]
 -- isPositive x = x > 0
 -- 
 -- test_every : Test

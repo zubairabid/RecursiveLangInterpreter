@@ -6468,6 +6468,91 @@ var $author$project$SampleTests$test_invert = A2(
 						]));
 			})
 		]));
+var $author$project$Main$product = F2(
+	function (sos1, sos2) {
+		if ($elm$core$List$isEmpty(sos1)) {
+			return _List_fromArray(
+				[sos2]);
+		} else {
+			if ($elm$core$List$isEmpty(sos2)) {
+				return _List_fromArray(
+					[sos1]);
+			} else {
+				if ($elm$core$List$length(sos1) > 1) {
+					if (!sos1.b) {
+						return _List_Nil;
+					} else {
+						var x = sos1.a;
+						var xs = sos1.b;
+						return A2(
+							$elm$core$List$append,
+							A2(
+								$author$project$Main$product,
+								_List_fromArray(
+									[x]),
+								sos2),
+							A2($author$project$Main$product, xs, sos2));
+					}
+				} else {
+					if ($elm$core$List$length(sos2) > 1) {
+						if (!sos2.b) {
+							return _List_Nil;
+						} else {
+							var y = sos2.a;
+							var ys = sos2.b;
+							return A2(
+								$elm$core$List$append,
+								A2(
+									$author$project$Main$product,
+									sos1,
+									_List_fromArray(
+										[y])),
+								A2($author$project$Main$product, sos1, ys));
+						}
+					} else {
+						return _List_fromArray(
+							[
+								A2($elm$core$List$append, sos1, sos2)
+							]);
+					}
+				}
+			}
+		}
+	});
+var $author$project$SampleTests$test_product = A2(
+	$elm_explorations$test$Test$describe,
+	'Product',
+	_List_fromArray(
+		[
+			A2(
+			$elm_explorations$test$Test$test,
+			'Multiple Item',
+			function (_v0) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					A2(
+						$author$project$Main$product,
+						_List_fromArray(
+							[1, 3, 4]),
+						_List_fromArray(
+							[10, 20])),
+					_List_fromArray(
+						[
+							_List_fromArray(
+							[1, 10]),
+							_List_fromArray(
+							[1, 20]),
+							_List_fromArray(
+							[3, 10]),
+							_List_fromArray(
+							[3, 20]),
+							_List_fromArray(
+							[4, 10]),
+							_List_fromArray(
+							[4, 20])
+						]));
+			})
+		]));
 var $author$project$Main$repeat = F2(
 	function (n, x) {
 		return (n <= 0) ? _List_Nil : A2(
@@ -6520,7 +6605,7 @@ var $author$project$SampleTests$test_repeat = A2(
 						]));
 			})
 		]));
-var $author$project$Test$Generated$Main816192027$main = A2(
+var $author$project$Test$Generated$Main3941098174$main = A2(
 	$author$project$Test$Runner$Node$run,
 	{
 		paths: _List_fromArray(
@@ -6528,7 +6613,7 @@ var $author$project$Test$Generated$Main816192027$main = A2(
 		processes: 4,
 		report: $author$project$Test$Reporter$Reporter$ConsoleReport($author$project$Console$Text$UseColor),
 		runs: $elm$core$Maybe$Nothing,
-		seed: 35939022655186
+		seed: 3477923774
 	},
 	$elm_explorations$test$Test$concat(
 		_List_fromArray(
@@ -6537,12 +6622,12 @@ var $author$project$Test$Generated$Main816192027$main = A2(
 				$elm_explorations$test$Test$describe,
 				'SampleTests',
 				_List_fromArray(
-					[$author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat]))
+					[$author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat]))
 			])));
-_Platform_export({'Test':{'Generated':{'Main816192027':{'init':$author$project$Test$Generated$Main816192027$main($elm$json$Json$Decode$int)(0)}}}});}(this));
+_Platform_export({'Test':{'Generated':{'Main3941098174':{'init':$author$project$Test$Generated$Main3941098174$main($elm$json$Json$Decode$int)(0)}}}});}(this));
 return this.Elm;
 })({});
-var pipeFilename = "/tmp/elm_test-681352.sock";
+var pipeFilename = "/tmp/elm_test-706560.sock";
 // Make sure necessary things are defined.
 if (typeof Elm === "undefined") {
   throw "test runner config error: Elm is not defined. Make sure you provide a file compiled by Elm!";

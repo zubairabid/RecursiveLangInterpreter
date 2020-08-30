@@ -648,7 +648,7 @@ import Defns exposing (..)
 <<test-repeat>>
 <<test-invert>>
 <<test-count-occur>>
--- <<test-product>>
+<<test-product>>
 -- <<test-every>>
 -- <<test-merge>>
 -- <<sample-trees>>

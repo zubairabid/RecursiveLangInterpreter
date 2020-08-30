@@ -24,3 +24,20 @@ count_occurrences s slist =
     case slist of
         [] -> 0
         x :: xs -> (occplus s x) + (count_occurrences s xs)
+product : List a -> List a -> List (List a)
+product sos1 sos2 =
+    if List.isEmpty sos1 then
+        [sos2]
+    else if List.isEmpty sos2 then
+        [sos1]
+    else
+        if (List.length sos1) > 1 then
+            case sos1 of
+                [] -> [] -- this case should not happen
+                x :: xs -> List.append (product [x] sos2) (product xs sos2)
+        else if (List.length sos2) > 1 then
+            case sos2 of
+                [] -> [] -- again, won't happen
+                y :: ys -> List.append (product sos1 [y]) (product sos1 ys)
+        else
+            [List.append sos1 sos2]

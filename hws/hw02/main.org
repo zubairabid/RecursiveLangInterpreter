@@ -86,7 +86,7 @@ count_occurrences s slist =
 #+END_SRC
 
 ** Problem No. 1.4: Product
-   We need to write a function =(product sos1 sos2)=, where:
+   We need to write a function =product sos1 sos2=, where:
    - =sos1=, =sos2= :: list of symbols without repetitions
    - =product= :: function that will return the Cartesian product of the two
                   lists as a list of =2-lists=
@@ -94,8 +94,8 @@ count_occurrences s slist =
 *** Solution
     The idea is to recursively reduce =sos1= to a single-element list, and then
     reduce =sos2= to a single element list, append the two, and then append that
-    to the returned value of the recursive call of =(cdr sos2)= and eventually
-    =(cdr sos1)=
+    to the returned value of the recursive call of =cdr sos2= and eventually
+    =cdr sos1=
 
     - Base case(s) :: There's two broad base cases:
                      - If either =sos1= or =sos2= is empty, return the other.
@@ -105,12 +105,29 @@ count_occurrences s slist =
                        a list appending the two
     - Recursive step :: Again, this is an if-else step:
                         - If =sos1= is bigger than 1-element, append the result
-                          of the recursive call with =(car sos1)= and the ones
-                          with =(cdr sos1)=
+                          of the recursive call with =car sos1= and the ones
+                          with =cdr sos1=
                         - Likewise, but with =sos2=
 
 #+NAME: product
 #+BEGIN_SRC elm
+product : List a -> List a -> List (List a)
+product sos1 sos2 =
+    if List.isEmpty sos1 then
+        [sos2]
+    else if List.isEmpty sos2 then
+        [sos1]
+    else
+        if (List.length sos1) > 1 then
+            case sos1 of
+                [] -> [] -- this case should not happen
+                x :: xs -> List.append (product [x] sos2) (product xs sos2)
+        else if (List.length sos2) > 1 then
+            case sos2 of
+                [] -> [] -- again, won't happen
+                y :: ys -> List.append (product sos1 [y]) (product sos1 ys)
+        else
+            [List.append sos1 sos2]
 #+END_SRC
 ** Problem No. 1.5: Every
    The function =(every pred lst)= needs to be implemented, where it takes a
