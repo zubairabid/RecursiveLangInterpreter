@@ -58,3 +58,9 @@ merge loi1 loi2 =
                         x :: (merge xs loi2)
                     else
                         y :: (merge loi1 ys)
+preorder : Tree -> List Int
+preorder tree =
+    case tree of
+        Leaf val -> [val]
+        Node val left right ->
+            List.append [val] (List.append (preorder left) (preorder right))

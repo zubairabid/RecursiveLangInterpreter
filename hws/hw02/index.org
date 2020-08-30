@@ -652,7 +652,7 @@ import Defns exposing (..)
 <<test-every>>
 <<test-merge>>
 <<sample-trees>>
--- <<test-preorder>>
+<<test-preorder>>
 -- <<test-inorder>>
 -- <<test-postorder>>
 -- <<test-count-nodes>>

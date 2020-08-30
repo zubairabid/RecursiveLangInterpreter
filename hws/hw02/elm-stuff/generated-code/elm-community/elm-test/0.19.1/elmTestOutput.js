@@ -6556,6 +6556,72 @@ var $author$project$SampleTests$test_merge = A2(
 						[1, 3, 6, 9, 10, 50, 60, 100]));
 			})
 		]));
+var $author$project$Main$preorder = function (tree) {
+	if (tree.$ === 'Leaf') {
+		var val = tree.a;
+		return _List_fromArray(
+			[val]);
+	} else {
+		var val = tree.a;
+		var left = tree.b;
+		var right = tree.c;
+		return A2(
+			$elm$core$List$append,
+			_List_fromArray(
+				[val]),
+			A2(
+				$elm$core$List$append,
+				$author$project$Main$preorder(left),
+				$author$project$Main$preorder(right)));
+	}
+};
+var $author$project$Defns$Leaf = function (a) {
+	return {$: 'Leaf', a: a};
+};
+var $author$project$Defns$Node = F3(
+	function (a, b, c) {
+		return {$: 'Node', a: a, b: b, c: c};
+	});
+var $author$project$SampleTests$regular_tree = A3(
+	$author$project$Defns$Node,
+	100,
+	A3(
+		$author$project$Defns$Node,
+		50,
+		A3(
+			$author$project$Defns$Node,
+			200,
+			$author$project$Defns$Leaf(5),
+			$author$project$Defns$Leaf(6)),
+		$author$project$Defns$Leaf(80)),
+	$author$project$Defns$Leaf(40));
+var $author$project$SampleTests$singleton_tree = $author$project$Defns$Leaf(10);
+var $author$project$SampleTests$test_preorder = A2(
+	$elm_explorations$test$Test$describe,
+	'Preorder',
+	_List_fromArray(
+		[
+			A2(
+			$elm_explorations$test$Test$test,
+			'singleton',
+			function (_v0) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					$author$project$Main$preorder($author$project$SampleTests$singleton_tree),
+					_List_fromArray(
+						[10]));
+			}),
+			A2(
+			$elm_explorations$test$Test$test,
+			'larger',
+			function (_v1) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					$author$project$Main$preorder($author$project$SampleTests$regular_tree),
+					_List_fromArray(
+						[100, 50, 200, 5, 6, 80, 40]));
+			})
+		]));
 var $author$project$Main$product = F2(
 	function (sos1, sos2) {
 		if ($elm$core$List$isEmpty(sos1)) {
@@ -6693,7 +6759,7 @@ var $author$project$SampleTests$test_repeat = A2(
 						]));
 			})
 		]));
-var $author$project$Test$Generated$Main66601062$main = A2(
+var $author$project$Test$Generated$Main3911262868$main = A2(
 	$author$project$Test$Runner$Node$run,
 	{
 		paths: _List_fromArray(
@@ -6701,7 +6767,7 @@ var $author$project$Test$Generated$Main66601062$main = A2(
 		processes: 4,
 		report: $author$project$Test$Reporter$Reporter$ConsoleReport($author$project$Console$Text$UseColor),
 		runs: $elm$core$Maybe$Nothing,
-		seed: 388051855110299
+		seed: 350373776928747
 	},
 	$elm_explorations$test$Test$concat(
 		_List_fromArray(
@@ -6710,12 +6776,12 @@ var $author$project$Test$Generated$Main66601062$main = A2(
 				$elm_explorations$test$Test$describe,
 				'SampleTests',
 				_List_fromArray(
-					[$author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat, $author$project$SampleTests$test_merge, $author$project$SampleTests$test_every]))
+					[$author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat, $author$project$SampleTests$test_merge, $author$project$SampleTests$test_every, $author$project$SampleTests$test_preorder]))
 			])));
-_Platform_export({'Test':{'Generated':{'Main66601062':{'init':$author$project$Test$Generated$Main66601062$main($elm$json$Json$Decode$int)(0)}}}});}(this));
+_Platform_export({'Test':{'Generated':{'Main3911262868':{'init':$author$project$Test$Generated$Main3911262868$main($elm$json$Json$Decode$int)(0)}}}});}(this));
 return this.Elm;
 })({});
-var pipeFilename = "/tmp/elm_test-710570.sock";
+var pipeFilename = "/tmp/elm_test-736917.sock";
 // Make sure necessary things are defined.
 if (typeof Elm === "undefined") {
   throw "test runner config error: Elm is not defined. Make sure you provide a file compiled by Elm!";

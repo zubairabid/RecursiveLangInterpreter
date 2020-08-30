@@ -53,26 +53,26 @@ test_merge =
                     \_ -> Expect.equal (merge [10, 50, 60, 100] [1, 3, 6, 9])
                                        [1, 3, 6, 9, 10, 50, 60, 100]
              ]
--- singleton_tree = Leaf 10
--- 
--- regular_tree =
---     Node 100
---          (Node 50
---                (Node 200
---                      (Leaf 5)
---                      (Leaf 6))
---                (Leaf 80))
---          (Leaf 40)
--- test_preorder : Test
--- test_preorder =
---     describe "Preorder"
---              [ test "singleton" <|
---                     \_ -> Expect.equal (preorder singleton_tree)
---                                          [10]
---              , test "larger" <|
---                     \_ -> Expect.equal (preorder regular_tree)
---                                          [100, 50 ,200, 5, 6, 80, 40]
---              ]
+singleton_tree = Leaf 10
+
+regular_tree =
+    Node 100
+         (Node 50
+               (Node 200
+                     (Leaf 5)
+                     (Leaf 6))
+               (Leaf 80))
+         (Leaf 40)
+test_preorder : Test
+test_preorder =
+    describe "Preorder"
+             [ test "singleton" <|
+                    \_ -> Expect.equal (preorder singleton_tree)
+                                         [10]
+             , test "larger" <|
+                    \_ -> Expect.equal (preorder regular_tree)
+                                         [100, 50 ,200, 5, 6, 80, 40]
+             ]
 -- test_inorder : Test
 -- test_inorder =
 --     describe "Inorder"
