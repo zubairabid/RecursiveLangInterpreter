@@ -476,12 +476,12 @@ search val tree =
    node after applying =fn= to the value of the node.
 
 *** Solution
-    Like the =value-at-path= function, it's a recursive function based on the
+    Like the =value_at_path= function, it's a recursive function based on the
     value of =path=.
 
     - Base case (=path= is empty) :: return:
-                                     1. an internal node with =(fn v)=, or
-                                     2. a leaf node with =(fn v)=, according to
+                                     1. an internal node with =fn v=, or
+                                     2. a leaf node with =fn v=, according to
                                         what the original node (=tree=) was at
                                         this point
     - Recursive case :: Return the =tree= (whatever node it is) with only the
@@ -517,19 +517,19 @@ update path fn tree =
 #+END_SRC
   
 ** Problem No. 2.11: Insert
-   The function =(tree/insert path left-st right-st tree)= will traverse through 
+   The function =tree_insert path lst rst tree= will traverse through 
    the tree using the path like in problem 2.8 and 2.10, and will return the
    tree (if the path points to a leaf node) with an internal node in place of
-   the earlier leaf node, with the =left-st= and =right-st= as subtrees.
+   the earlier leaf node, with the =lst= and =rst= as subtrees.
 
 *** Solution
-    Like the =(update)= function, it's a recursive function based on the
+    Like the =update= function, it's a recursive function based on the
     value of =path=.
 
     - Base case (=path= is empty) :: return:
                                      1. if it's a leaf-node, then return an
                                         internal node with the same value and
-                                        the =left-st= and =right-st=
+                                        the =lst= and =rst=
                                      2. else, return the node itself. There will
                                         be no change to the tree as the path was
                                         wrong.

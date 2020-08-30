@@ -7291,7 +7291,7 @@ var $author$project$SampleTests$test_value_at_path = A2(
 					$elm$core$Maybe$Nothing);
 			})
 		]));
-var $author$project$Test$Generated$Main3759487259$main = A2(
+var $author$project$Test$Generated$Main3292009977$main = A2(
 	$author$project$Test$Runner$Node$run,
 	{
 		paths: _List_fromArray(
@@ -7299,7 +7299,7 @@ var $author$project$Test$Generated$Main3759487259$main = A2(
 		processes: 4,
 		report: $author$project$Test$Reporter$Reporter$ConsoleReport($author$project$Console$Text$UseColor),
 		runs: $elm$core$Maybe$Nothing,
-		seed: 169440062300572
+		seed: 301411294751781
 	},
 	$elm_explorations$test$Test$concat(
 		_List_fromArray(
@@ -7310,10 +7310,10 @@ var $author$project$Test$Generated$Main3759487259$main = A2(
 				_List_fromArray(
 					[$author$project$SampleTests$test_tree_map, $author$project$SampleTests$test_search, $author$project$SampleTests$test_count_internal, $author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat, $author$project$SampleTests$test_merge, $author$project$SampleTests$test_every, $author$project$SampleTests$test_postorder, $author$project$SampleTests$test_value_at_path, $author$project$SampleTests$test_count_leaves, $author$project$SampleTests$test_preorder, $author$project$SampleTests$test_inorder, $author$project$SampleTests$test_update, $author$project$SampleTests$test_count_nodes, $author$project$SampleTests$test_insert]))
 			])));
-_Platform_export({'Test':{'Generated':{'Main3759487259':{'init':$author$project$Test$Generated$Main3759487259$main($elm$json$Json$Decode$int)(0)}}}});}(this));
+_Platform_export({'Test':{'Generated':{'Main3292009977':{'init':$author$project$Test$Generated$Main3292009977$main($elm$json$Json$Decode$int)(0)}}}});}(this));
 return this.Elm;
 })({});
-var pipeFilename = "/tmp/elm_test-763200.sock";
+var pipeFilename = "/tmp/elm_test-764815.sock";
 // Make sure necessary things are defined.
 if (typeof Elm === "undefined") {
   throw "test runner config error: Elm is not defined. Make sure you provide a file compiled by Elm!";
