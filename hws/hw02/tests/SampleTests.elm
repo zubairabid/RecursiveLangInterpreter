@@ -21,12 +21,12 @@ test_invert =
                     \_ -> Expect.equal (invert [[1, 100], [2, 300], [5, 600], [8, 200]])
                                        [[100, 1], [300, 2], [600, 5], [200, 8]]
              ]
--- test_countoccur: Test
--- test_countoccur =
---     describe "Count Occurrences"
---              [ test "Multiple Occurrences" <|
---                     \_ -> Expect.equal (count_occurrences 3 [2, 3, 4, 3, 5, 6, 3]) 3
---              ]
+test_countoccur: Test
+test_countoccur =
+    describe "Count Occurrences"
+             [ test "Multiple Occurrences" <|
+                    \_ -> Expect.equal (count_occurrences 3 [2, 3, 4, 3, 5, 6, 3]) 3
+             ]
 -- test_product: Test
 -- test_product =
 --     describe "Product"

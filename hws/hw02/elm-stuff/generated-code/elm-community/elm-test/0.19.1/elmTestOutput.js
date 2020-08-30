@@ -6327,6 +6327,20 @@ var $author$project$Test$Runner$Node$run = F2(
 				update: $author$project$Test$Runner$Node$update
 			});
 	});
+var $author$project$Main$occplus = F2(
+	function (s, comp) {
+		return _Utils_eq(s, comp) ? 1 : 0;
+	});
+var $author$project$Main$count_occurrences = F2(
+	function (s, slist) {
+		if (!slist.b) {
+			return 0;
+		} else {
+			var x = slist.a;
+			var xs = slist.b;
+			return A2($author$project$Main$occplus, s, x) + A2($author$project$Main$count_occurrences, s, xs);
+		}
+	});
 var $elm_explorations$test$Test$Runner$Failure$Equality = F2(
 	function (a, b) {
 		return {$: 'Equality', a: a, b: b};
@@ -6368,18 +6382,6 @@ var $elm_explorations$test$Expect$equateWith = F4(
 		return usesFloats ? $elm_explorations$test$Expect$fail(floatError) : A5($elm_explorations$test$Expect$testWith, $elm_explorations$test$Test$Runner$Failure$Equality, reason, comparison, b, a);
 	});
 var $elm_explorations$test$Expect$equal = A2($elm_explorations$test$Expect$equateWith, 'Expect.equal', $elm$core$Basics$eq);
-var $author$project$Main$invert = function (lst) {
-	if (!lst.b) {
-		return _List_Nil;
-	} else {
-		var x = lst.a;
-		var xs = lst.b;
-		return A2(
-			$elm$core$List$cons,
-			$elm$core$List$reverse(x),
-			$author$project$Main$invert(xs));
-	}
-};
 var $elm_explorations$test$Test$Internal$blankDescriptionFailure = $elm_explorations$test$Test$Internal$failNow(
 	{
 		description: 'This test has a blank description. Let\'s give it a useful one!',
@@ -6399,6 +6401,37 @@ var $elm_explorations$test$Test$test = F2(
 						]);
 				}));
 	});
+var $author$project$SampleTests$test_countoccur = A2(
+	$elm_explorations$test$Test$describe,
+	'Count Occurrences',
+	_List_fromArray(
+		[
+			A2(
+			$elm_explorations$test$Test$test,
+			'Multiple Occurrences',
+			function (_v0) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					A2(
+						$author$project$Main$count_occurrences,
+						3,
+						_List_fromArray(
+							[2, 3, 4, 3, 5, 6, 3])),
+					3);
+			})
+		]));
+var $author$project$Main$invert = function (lst) {
+	if (!lst.b) {
+		return _List_Nil;
+	} else {
+		var x = lst.a;
+		var xs = lst.b;
+		return A2(
+			$elm$core$List$cons,
+			$elm$core$List$reverse(x),
+			$author$project$Main$invert(xs));
+	}
+};
 var $author$project$SampleTests$test_invert = A2(
 	$elm_explorations$test$Test$describe,
 	'invert-tests',
@@ -6487,7 +6520,7 @@ var $author$project$SampleTests$test_repeat = A2(
 						]));
 			})
 		]));
-var $author$project$Test$Generated$Main3638936706$main = A2(
+var $author$project$Test$Generated$Main816192027$main = A2(
 	$author$project$Test$Runner$Node$run,
 	{
 		paths: _List_fromArray(
@@ -6495,7 +6528,7 @@ var $author$project$Test$Generated$Main3638936706$main = A2(
 		processes: 4,
 		report: $author$project$Test$Reporter$Reporter$ConsoleReport($author$project$Console$Text$UseColor),
 		runs: $elm$core$Maybe$Nothing,
-		seed: 309178088357683
+		seed: 35939022655186
 	},
 	$elm_explorations$test$Test$concat(
 		_List_fromArray(
@@ -6504,12 +6537,12 @@ var $author$project$Test$Generated$Main3638936706$main = A2(
 				$elm_explorations$test$Test$describe,
 				'SampleTests',
 				_List_fromArray(
-					[$author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat]))
+					[$author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat]))
 			])));
-_Platform_export({'Test':{'Generated':{'Main3638936706':{'init':$author$project$Test$Generated$Main3638936706$main($elm$json$Json$Decode$int)(0)}}}});}(this));
+_Platform_export({'Test':{'Generated':{'Main816192027':{'init':$author$project$Test$Generated$Main816192027$main($elm$json$Json$Decode$int)(0)}}}});}(this));
 return this.Elm;
 })({});
-var pipeFilename = "/tmp/elm_test-679323.sock";
+var pipeFilename = "/tmp/elm_test-681352.sock";
 // Make sure necessary things are defined.
 if (typeof Elm === "undefined") {
   throw "test runner config error: Elm is not defined. Make sure you provide a file compiled by Elm!";

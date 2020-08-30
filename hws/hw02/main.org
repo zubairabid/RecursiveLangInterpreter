@@ -38,9 +38,9 @@ repeat n x =
 
     - Base case (=lst= is empty) :: Returns an empty list
     - Recursive step ::
-      1. Take the first elem of =(lst)= and =(reverse)= it.
+      1. Take the first elem of =lst= and =reverse= it.
       2. Append (cons) the result of step 1 to the value returned by recursively
-         calling the function with the rest of =(lst)=
+         calling the function with the rest of =lst=
    
 #+NAME: invert
 #+BEGIN_SRC elm
@@ -52,25 +52,37 @@ invert lst =
 #+END_SRC
 
 ** Problem No. 1.3: Count Occurences
-   The function =(count-occurences s slist)= has to be implemented,
+   The function =count_occurences s slist= has to be implemented,
    where it returns the number of occurences of =s= in =slist=
 
 *** Solution
-    We implement the function =(count-occurrences)= recursively. But first, we
-    setup a local function =(occplus s comp)= which will check for equality
+    We implement the function =count_occurrences= recursively. But first, we
+    setup a local function =occplus s comp= which will check for equality
     between =s= and =comp= and return 1 if true, and 0 if false.
 
     Then the recusion is defined as:
 
     - Base case (=slist= is empty) :: return 0
     - Recursive step :: Sum the following:
-                        1. 1 if the =(car slist)= is equal to the comparison s,
+                        1. 1 if the =car slist= is equal to the comparison s,
                            using occplus, 0 otherwise
-                        2. The result of a recursive call with =s= and =(cdr
-                           slist)=
+                        2. The result of a recursive call with =s= and =cdr
+                           slist=
    
 #+NAME: count-occurrences
 #+BEGIN_SRC elm
+occplus : a -> a -> Int
+occplus s comp =
+    if s == comp then
+        1
+    else
+        0
+
+count_occurrences : a -> List a -> Int
+count_occurrences s slist = 
+    case slist of
+        [] -> 0
+        x :: xs -> (occplus s x) + (count_occurrences s xs)
 #+END_SRC
 
 ** Problem No. 1.4: Product
