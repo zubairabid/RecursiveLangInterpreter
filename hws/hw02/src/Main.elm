@@ -119,3 +119,29 @@ value_at_path path tree =
                         Leaf v -> Nothing
                         Node v left right ->
                             value_at_path rest right
+search : Int -> Tree -> Maybe (List PathItem)
+search val tree =
+    case tree of
+        Leaf v ->
+            if v == val then
+                Just []
+            else
+                Nothing
+        Node v left right ->
+            if v == val then
+                Just []
+            else
+                let
+                    lefts = search val left
+                in
+                    case lefts of
+                        Nothing ->
+                            let
+                                rights = search val right
+                            in
+                                case rights of
+                                    Nothing -> Nothing
+                                    _ ->
+                                        Just (Right :: Maybe.withDefault [] rights)
+                        _ ->
+                            Just (Left :: Maybe.withDefault [] lefts)

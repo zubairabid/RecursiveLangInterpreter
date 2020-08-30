@@ -138,34 +138,34 @@ test_tree_map =
                                    (regular_tree)
          ]
 
--- test_value_at_path: Test
--- test_value_at_path =
---     describe "Value at Path"
---              [ test "left-right" <|
---                     \_ -> Expect.equal (value_at_path
---                                               [Left, Right]
---                                               regular_tree)
---                                              (Just 80)
---              , test "root" <|
---                     \_ -> Expect.equal (value_at_path 
---                                               []
---                                               regular_tree)
---                                              (Just 100)
---              , test "nothing" <|
---                     \_ -> Expect.equal (value_at_path 
---                                               [Left, Right]
---                                               singleton_tree)
---                                              Nothing
---              ]
--- test_search: Test
--- test_search =
---     describe "Search"
---              [ test "found" <|
---                     \_ -> Expect.equal (search
---                                               200
---                                               regular_tree)
---                                              (Just [Left, Left])
---              ]
+test_value_at_path: Test
+test_value_at_path =
+    describe "Value at Path"
+             [ test "left-right" <|
+                    \_ -> Expect.equal (value_at_path
+                                              [Left, Right]
+                                              regular_tree)
+                                             (Just 80)
+             , test "root" <|
+                    \_ -> Expect.equal (value_at_path 
+                                              []
+                                              regular_tree)
+                                             (Just 100)
+             , test "nothing" <|
+                    \_ -> Expect.equal (value_at_path 
+                                              [Left, Right]
+                                              singleton_tree)
+                                             Nothing
+             ]
+test_search: Test
+test_search =
+    describe "Search"
+             [ test "found" <|
+                    \_ -> Expect.equal (search
+                                              200
+                                              regular_tree)
+                                             (Just [Left, Left])
+             ]
 -- test_update : Test
 -- test_update =
 --     describe "Update"

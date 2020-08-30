@@ -6954,6 +6954,59 @@ var $author$project$SampleTests$test_repeat = A2(
 						]));
 			})
 		]));
+var $author$project$Defns$Left = {$: 'Left'};
+var $author$project$Defns$Right = {$: 'Right'};
+var $author$project$Main$search = F2(
+	function (val, tree) {
+		if (tree.$ === 'Leaf') {
+			var v = tree.a;
+			return _Utils_eq(v, val) ? $elm$core$Maybe$Just(_List_Nil) : $elm$core$Maybe$Nothing;
+		} else {
+			var v = tree.a;
+			var left = tree.b;
+			var right = tree.c;
+			if (_Utils_eq(v, val)) {
+				return $elm$core$Maybe$Just(_List_Nil);
+			} else {
+				var lefts = A2($author$project$Main$search, val, left);
+				if (lefts.$ === 'Nothing') {
+					var rights = A2($author$project$Main$search, val, right);
+					if (rights.$ === 'Nothing') {
+						return $elm$core$Maybe$Nothing;
+					} else {
+						return $elm$core$Maybe$Just(
+							A2(
+								$elm$core$List$cons,
+								$author$project$Defns$Right,
+								A2($elm$core$Maybe$withDefault, _List_Nil, rights)));
+					}
+				} else {
+					return $elm$core$Maybe$Just(
+						A2(
+							$elm$core$List$cons,
+							$author$project$Defns$Left,
+							A2($elm$core$Maybe$withDefault, _List_Nil, lefts)));
+				}
+			}
+		}
+	});
+var $author$project$SampleTests$test_search = A2(
+	$elm_explorations$test$Test$describe,
+	'Search',
+	_List_fromArray(
+		[
+			A2(
+			$elm_explorations$test$Test$test,
+			'found',
+			function (_v0) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					A2($author$project$Main$search, 200, $author$project$SampleTests$regular_tree),
+					$elm$core$Maybe$Just(
+						_List_fromArray(
+							[$author$project$Defns$Left, $author$project$Defns$Left])));
+			})
+		]));
 var $author$project$Main$tree_map = F2(
 	function (fn, tr) {
 		if (tr.$ === 'Leaf') {
@@ -7005,7 +7058,97 @@ var $author$project$SampleTests$test_tree_map = A2(
 					$author$project$SampleTests$regular_tree);
 			})
 		]));
-var $author$project$Test$Generated$Main3808472099$main = A2(
+var $author$project$Main$value_at_path = F2(
+	function (path, tree) {
+		value_at_path:
+		while (true) {
+			if (!path.b) {
+				if (tree.$ === 'Leaf') {
+					var v = tree.a;
+					return $elm$core$Maybe$Just(v);
+				} else {
+					var v = tree.a;
+					var left = tree.b;
+					var right = tree.c;
+					return $elm$core$Maybe$Just(v);
+				}
+			} else {
+				var current = path.a;
+				var rest = path.b;
+				if (current.$ === 'Left') {
+					if (tree.$ === 'Leaf') {
+						var v = tree.a;
+						return $elm$core$Maybe$Nothing;
+					} else {
+						var v = tree.a;
+						var left = tree.b;
+						var right = tree.c;
+						var $temp$path = rest,
+							$temp$tree = left;
+						path = $temp$path;
+						tree = $temp$tree;
+						continue value_at_path;
+					}
+				} else {
+					if (tree.$ === 'Leaf') {
+						var v = tree.a;
+						return $elm$core$Maybe$Nothing;
+					} else {
+						var v = tree.a;
+						var left = tree.b;
+						var right = tree.c;
+						var $temp$path = rest,
+							$temp$tree = right;
+						path = $temp$path;
+						tree = $temp$tree;
+						continue value_at_path;
+					}
+				}
+			}
+		}
+	});
+var $author$project$SampleTests$test_value_at_path = A2(
+	$elm_explorations$test$Test$describe,
+	'Value at Path',
+	_List_fromArray(
+		[
+			A2(
+			$elm_explorations$test$Test$test,
+			'left-right',
+			function (_v0) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					A2(
+						$author$project$Main$value_at_path,
+						_List_fromArray(
+							[$author$project$Defns$Left, $author$project$Defns$Right]),
+						$author$project$SampleTests$regular_tree),
+					$elm$core$Maybe$Just(80));
+			}),
+			A2(
+			$elm_explorations$test$Test$test,
+			'root',
+			function (_v1) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					A2($author$project$Main$value_at_path, _List_Nil, $author$project$SampleTests$regular_tree),
+					$elm$core$Maybe$Just(100));
+			}),
+			A2(
+			$elm_explorations$test$Test$test,
+			'nothing',
+			function (_v2) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					A2(
+						$author$project$Main$value_at_path,
+						_List_fromArray(
+							[$author$project$Defns$Left, $author$project$Defns$Right]),
+						$author$project$SampleTests$singleton_tree),
+					$elm$core$Maybe$Nothing);
+			})
+		]));
+var $author$project$Test$Generated$Main627551238$main = A2(
 	$author$project$Test$Runner$Node$run,
 	{
 		paths: _List_fromArray(
@@ -7013,7 +7156,7 @@ var $author$project$Test$Generated$Main3808472099$main = A2(
 		processes: 4,
 		report: $author$project$Test$Reporter$Reporter$ConsoleReport($author$project$Console$Text$UseColor),
 		runs: $elm$core$Maybe$Nothing,
-		seed: 330034517427186
+		seed: 196981061044227
 	},
 	$elm_explorations$test$Test$concat(
 		_List_fromArray(
@@ -7022,12 +7165,12 @@ var $author$project$Test$Generated$Main3808472099$main = A2(
 				$elm_explorations$test$Test$describe,
 				'SampleTests',
 				_List_fromArray(
-					[$author$project$SampleTests$test_tree_map, $author$project$SampleTests$test_count_internal, $author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat, $author$project$SampleTests$test_merge, $author$project$SampleTests$test_every, $author$project$SampleTests$test_postorder, $author$project$SampleTests$test_count_leaves, $author$project$SampleTests$test_preorder, $author$project$SampleTests$test_inorder, $author$project$SampleTests$test_count_nodes]))
+					[$author$project$SampleTests$test_tree_map, $author$project$SampleTests$test_search, $author$project$SampleTests$test_count_internal, $author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat, $author$project$SampleTests$test_merge, $author$project$SampleTests$test_every, $author$project$SampleTests$test_postorder, $author$project$SampleTests$test_value_at_path, $author$project$SampleTests$test_count_leaves, $author$project$SampleTests$test_preorder, $author$project$SampleTests$test_inorder, $author$project$SampleTests$test_count_nodes]))
 			])));
-_Platform_export({'Test':{'Generated':{'Main3808472099':{'init':$author$project$Test$Generated$Main3808472099$main($elm$json$Json$Decode$int)(0)}}}});}(this));
+_Platform_export({'Test':{'Generated':{'Main627551238':{'init':$author$project$Test$Generated$Main627551238$main($elm$json$Json$Decode$int)(0)}}}});}(this));
 return this.Elm;
 })({});
-var pipeFilename = "/tmp/elm_test-755838.sock";
+var pipeFilename = "/tmp/elm_test-760137.sock";
 // Make sure necessary things are defined.
 if (typeof Elm === "undefined") {
   throw "test runner config error: Elm is not defined. Make sure you provide a file compiled by Elm!";

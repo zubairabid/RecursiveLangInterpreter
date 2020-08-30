@@ -660,8 +660,8 @@ import Defns exposing (..)
 <<test-count-internal>>
 <<test-tree-map>>
 <<path-items>>
--- <<test-vap>>
--- <<test-search>>
+<<test-vap>>
+<<test-search>>
 -- <<test-update>>
 -- <<test-insert>>
 

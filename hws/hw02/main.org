@@ -414,7 +414,7 @@ value_at_path path tree =
 #+END_SRC
 
 ** Problem No. 2.9: Search
-   The function =(search val tree)= should take the full-binary-tree and return
+   The function =search val tree= should take the full-binary-tree and return
    the path that needs to be taken in order to reach the first instance of =val=
    in the =tree=, while in preorder traversal.
 
@@ -447,6 +447,32 @@ value_at_path path tree =
 
 #+NAME: search
 #+BEGIN_SRC elm
+search : Int -> Tree -> Maybe (List PathItem)
+search val tree =
+    case tree of
+        Leaf v ->
+            if v == val then
+                Just []
+            else
+                Nothing
+        Node v left right ->
+            if v == val then
+                Just []
+            else
+                let
+                    lefts = search val left
+                in
+                    case lefts of
+                        Nothing ->
+                            let
+                                rights = search val right
+                            in
+                                case rights of
+                                    Nothing -> Nothing
+                                    _ ->
+                                        Just (Right :: Maybe.withDefault [] rights)
+                        _ ->
+                            Just (Left :: Maybe.withDefault [] lefts)
 #+END_SRC
 
 ** Problem No. 2.10: Update
