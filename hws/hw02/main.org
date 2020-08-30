@@ -341,21 +341,27 @@ count_internal tree =
 #+END_SRC
 
 ** Problem No. 2.7: Map
-   The function =(tree/map fn tr)= needs to work like =(map)= but for trees.
+   The function =tree_map fn tr= needs to work like =List.map= but for trees.
 
 *** Solution:
     We recursively navigate the tree such that:
 
     - Base case (=tr= is a leaf-node) :: return a new leaf-node with the
-                                         function =(fn)= applied to its value.
+                                         function =fn= applied to its value.
     - Recursive case (internal-node) :: return a new internal-node with the 
-                                        =(fn)= applied to the value, and
+                                        =fn= applied to the value, and
                                         recursive calls to the left and right
                                         subtree as the left and right subtree
                                         definitions.
 
 #+NAME: tree/map
 #+BEGIN_SRC elm
+tree_map : (Int -> Int) -> Tree -> Tree
+tree_map fn tr =
+    case tr of
+        Leaf val -> Leaf (fn val)
+        Node val left right ->
+            Node (fn val) (tree_map fn left) (tree_map fn right)
 #+END_SRC
 
 ** Problem No. 2.8: Value at Path

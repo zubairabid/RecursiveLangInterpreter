@@ -658,7 +658,7 @@ import Defns exposing (..)
 <<test-count-nodes>>
 <<test-count-leaves>>
 <<test-count-internal>>
--- <<test-tree-map>>
+<<test-tree-map>>
 -- <<path-items>>
 -- <<test-vap>>
 -- <<test-search>>

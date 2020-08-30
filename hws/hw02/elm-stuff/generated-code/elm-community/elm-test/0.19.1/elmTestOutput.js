@@ -6954,7 +6954,58 @@ var $author$project$SampleTests$test_repeat = A2(
 						]));
 			})
 		]));
-var $author$project$Test$Generated$Main3453722371$main = A2(
+var $author$project$Main$tree_map = F2(
+	function (fn, tr) {
+		if (tr.$ === 'Leaf') {
+			var val = tr.a;
+			return $author$project$Defns$Leaf(
+				fn(val));
+		} else {
+			var val = tr.a;
+			var left = tr.b;
+			var right = tr.c;
+			return A3(
+				$author$project$Defns$Node,
+				fn(val),
+				A2($author$project$Main$tree_map, fn, left),
+				A2($author$project$Main$tree_map, fn, right));
+		}
+	});
+var $author$project$SampleTests$test_tree_map = A2(
+	$elm_explorations$test$Test$describe,
+	'Tree Map',
+	_List_fromArray(
+		[
+			A2(
+			$elm_explorations$test$Test$test,
+			'singleton',
+			function (_v0) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					A2(
+						$author$project$Main$tree_map,
+						function (v) {
+							return v + 1;
+						},
+						$author$project$SampleTests$singleton_tree),
+					$author$project$Defns$Leaf(11));
+			}),
+			A2(
+			$elm_explorations$test$Test$test,
+			'No change',
+			function (_v1) {
+				return A2(
+					$elm_explorations$test$Expect$equal,
+					A2(
+						$author$project$Main$tree_map,
+						function (v) {
+							return v;
+						},
+						$author$project$SampleTests$regular_tree),
+					$author$project$SampleTests$regular_tree);
+			})
+		]));
+var $author$project$Test$Generated$Main1906915572$main = A2(
 	$author$project$Test$Runner$Node$run,
 	{
 		paths: _List_fromArray(
@@ -6962,7 +7013,7 @@ var $author$project$Test$Generated$Main3453722371$main = A2(
 		processes: 4,
 		report: $author$project$Test$Reporter$Reporter$ConsoleReport($author$project$Console$Text$UseColor),
 		runs: $elm$core$Maybe$Nothing,
-		seed: 399492957398339
+		seed: 239721924422218
 	},
 	$elm_explorations$test$Test$concat(
 		_List_fromArray(
@@ -6971,12 +7022,12 @@ var $author$project$Test$Generated$Main3453722371$main = A2(
 				$elm_explorations$test$Test$describe,
 				'SampleTests',
 				_List_fromArray(
-					[$author$project$SampleTests$test_count_internal, $author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat, $author$project$SampleTests$test_merge, $author$project$SampleTests$test_every, $author$project$SampleTests$test_postorder, $author$project$SampleTests$test_count_leaves, $author$project$SampleTests$test_preorder, $author$project$SampleTests$test_inorder, $author$project$SampleTests$test_count_nodes]))
+					[$author$project$SampleTests$test_tree_map, $author$project$SampleTests$test_count_internal, $author$project$SampleTests$test_product, $author$project$SampleTests$test_countoccur, $author$project$SampleTests$test_invert, $author$project$SampleTests$test_repeat, $author$project$SampleTests$test_merge, $author$project$SampleTests$test_every, $author$project$SampleTests$test_postorder, $author$project$SampleTests$test_count_leaves, $author$project$SampleTests$test_preorder, $author$project$SampleTests$test_inorder, $author$project$SampleTests$test_count_nodes]))
 			])));
-_Platform_export({'Test':{'Generated':{'Main3453722371':{'init':$author$project$Test$Generated$Main3453722371$main($elm$json$Json$Decode$int)(0)}}}});}(this));
+_Platform_export({'Test':{'Generated':{'Main1906915572':{'init':$author$project$Test$Generated$Main1906915572$main($elm$json$Json$Decode$int)(0)}}}});}(this));
 return this.Elm;
 })({});
-var pipeFilename = "/tmp/elm_test-747420.sock";
+var pipeFilename = "/tmp/elm_test-748672.sock";
 // Make sure necessary things are defined.
 if (typeof Elm === "undefined") {
   throw "test runner config error: Elm is not defined. Make sure you provide a file compiled by Elm!";

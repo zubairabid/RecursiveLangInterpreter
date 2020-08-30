@@ -94,3 +94,9 @@ count_internal tree =
         Leaf val -> 0
         Node val left right ->
             1 + (count_internal left) + (count_internal right)
+tree_map : (Int -> Int) -> Tree -> Tree
+tree_map fn tr =
+    case tr of
+        Leaf val -> Leaf (fn val)
+        Node val left right ->
+            Node (fn val) (tree_map fn left) (tree_map fn right)

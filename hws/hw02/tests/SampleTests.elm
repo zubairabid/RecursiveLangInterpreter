@@ -123,20 +123,20 @@ test_count_internal =
                     \_ -> Expect.equal (count_internal regular_tree)
                                        3
              ]
--- test_tree_map : Test
--- test_tree_map =
---     describe "Tree Map"
---          [ test "singleton" <|
---                 \_ -> Expect.equal (tree_map
---                                    (\v -> v+1)
---                                    singleton_tree)
---                                    (Leaf 11)
---          , test "No change" <|
---                 \_ -> Expect.equal (tree_map
---                                    (\v -> v)
---                                    regular_tree)
---                                    (regular_tree)
---          ]
+test_tree_map : Test
+test_tree_map =
+    describe "Tree Map"
+         [ test "singleton" <|
+                \_ -> Expect.equal (tree_map
+                                   (\v -> v+1)
+                                   singleton_tree)
+                                   (Leaf 11)
+         , test "No change" <|
+                \_ -> Expect.equal (tree_map
+                                   (\v -> v)
+                                   regular_tree)
+                                   (regular_tree)
+         ]
 -- 
 -- test_value_at_path: Test
 -- test_value_at_path =
