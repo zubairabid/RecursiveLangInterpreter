@@ -182,31 +182,18 @@ merge loi1 loi2 =
                         y :: (merge loi1 ys)
 #+END_SRC
 
-** Flatten
-   The function =(flatten dlst)= needs to be implemented, and flatten
-   out any nested structure in the =dlst=. =dlst= is a list of lists in some
-   nested heirarchial structure.
-
-*** Solution
-    We make extensive use of the provided =(append list list)= function here.
-    After that, it's a rather straightforward recursive function.
-
-    - Base case(s) :: There are two:
-                      1. If =dlst= is empty, return an empty list
-                      2. If =dlst= is not a list, return it as a list.
-    - Recursive step :: =(append)= the recursive calls with =(car dlst)= and
-                        then =(cdr dlst)=
-
-#+NAME: flatten
-#+BEGIN_SRC elm
-#+END_SRC
-
 * Recursion on Trees
 
 ** Defining the trees
 
 #+NAME: full-binary-tree
-#+BEGIN_SRC elm :tangle ./datatypes.rkt
+#+BEGIN_SRC elm
+type Tree = Leaf Int | Node Int Tree Tree
+#+END_SRC
+
+#+NAME: path-def
+#+BEGIN_SRC elm
+type PathItem = Left | Right
 #+END_SRC
 
 ** Problem No. 2.1: Preorder Traversal
@@ -470,7 +457,6 @@ import Defns exposing (..)
 <<product>>
 <<every>>
 <<merge>>
-<<flatten>>
 <<traverse/preorder>>
 <<traverse/inorder>>
 <<traverse/postorder>>
@@ -484,4 +470,11 @@ import Defns exposing (..)
 <<update>>
 <<tree/insert>>
 
+#+END_SRC
+
+#+BEGIN_SRC elm :noweb yes :padline no :tangle ./src/Defns.elm
+module Defns exposing (..)
+
+<<full-binary-tree>>
+<<path-def>>
 #+END_SRC

@@ -651,7 +651,7 @@ import Defns exposing (..)
 <<test-product>>
 <<test-every>>
 <<test-merge>>
--- <<sample-trees>>
+<<sample-trees>>
 -- <<test-preorder>>
 -- <<test-inorder>>
 -- <<test-postorder>>
