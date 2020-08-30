@@ -64,3 +64,15 @@ preorder tree =
         Leaf val -> [val]
         Node val left right ->
             List.append [val] (List.append (preorder left) (preorder right))
+inorder : Tree -> List Int
+inorder tree =
+    case tree of
+        Leaf val -> [val]
+        Node val left right ->
+            List.append (inorder left) (List.append [val] (inorder right))
+postorder : Tree -> List Int
+postorder tree =
+    case tree of
+        Leaf val -> [val]
+        Node val left right ->
+            List.append (postorder left) (List.append (postorder right) [val])

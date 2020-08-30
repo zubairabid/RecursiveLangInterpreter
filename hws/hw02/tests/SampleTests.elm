@@ -73,26 +73,26 @@ test_preorder =
                     \_ -> Expect.equal (preorder regular_tree)
                                          [100, 50 ,200, 5, 6, 80, 40]
              ]
--- test_inorder : Test
--- test_inorder =
---     describe "Inorder"
---              [ test "singleton" <|
---                     \_ -> Expect.equal (inorder singleton_tree)
---                                          [10]
---              , test "larger" <|
---                     \_ -> Expect.equal (inorder regular_tree)
---                                          [5, 200, 6, 50, 80, 100, 40]
---              ]
--- test_postorder : Test
--- test_postorder =
---     describe "Postorder"
---              [ test "singleton" <|
---                     \_ -> Expect.equal (postorder singleton_tree)
---                                          [10]
---              , test "larger" <|
---                     \_ -> Expect.equal (postorder regular_tree)
---                                          [5, 6, 200, 80, 50, 40, 100]
---              ]
+test_inorder : Test
+test_inorder =
+    describe "Inorder"
+             [ test "singleton" <|
+                    \_ -> Expect.equal (inorder singleton_tree)
+                                         [10]
+             , test "larger" <|
+                    \_ -> Expect.equal (inorder regular_tree)
+                                         [5, 200, 6, 50, 80, 100, 40]
+             ]
+test_postorder : Test
+test_postorder =
+    describe "Postorder"
+             [ test "singleton" <|
+                    \_ -> Expect.equal (postorder singleton_tree)
+                                         [10]
+             , test "larger" <|
+                    \_ -> Expect.equal (postorder regular_tree)
+                                         [5, 6, 200, 80, 50, 40, 100]
+             ]
 -- test_count_nodes: Test
 -- test_count_nodes =
 --     describe "Count Nodes"

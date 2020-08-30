@@ -653,8 +653,8 @@ import Defns exposing (..)
 <<test-merge>>
 <<sample-trees>>
 <<test-preorder>>
--- <<test-inorder>>
--- <<test-postorder>>
+<<test-inorder>>
+<<test-postorder>>
 -- <<test-count-nodes>>
 -- <<test-count-leaves>>
 -- <<test-count-internal>>
