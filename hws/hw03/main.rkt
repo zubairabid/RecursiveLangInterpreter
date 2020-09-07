@@ -36,10 +36,15 @@
                (parse (third exp))
                (parse (fourth exp)))]
         [(and (list? exp)
-              (= (length exp) 3)
-              (eq? (first exp) '+))
-         (binop 'add (second exp) (third exp))]
-        [else (raise-parse-error "invalid syntax")]) ;; add an else
+              (= (length exp) 3))
+         (match (first exp)
+                ['+ (binop 'add (parse (second exp)) (parse (third exp)))]
+                ['- (binop 'sub (parse (second exp)) (parse (third exp)))]
+                ['* (binop 'mul (parse (second exp)) (parse (third exp)))]
+                ['/ (binop 'div (parse (second exp)) (parse (third exp)))]
+                ['< (binop 'lt? (parse (second exp)) (parse (third exp)))]
+                ['== (binop 'eq? (parse (second exp)) (parse (third exp)))])]
+        [else (raise exn:parse-error)]) ;; add an else
   )
 
 (struct exn:exec-div-by-zero exn:fail ())

@@ -134,10 +134,15 @@ You need to complete this definition.
                (parse (third exp))
                (parse (fourth exp)))]
         [(and (list? exp)
-              (= (length exp) 3)
-              (eq? (first exp) '+))
-         (binop 'add (second exp) (third exp))]
-        [else (raise-parse-error "invalid syntax")]) ;; add an else
+              (= (length exp) 3))
+         (match (first exp)
+                ['+ (binop 'add (parse (second exp)) (parse (third exp)))]
+                ['- (binop 'sub (parse (second exp)) (parse (third exp)))]
+                ['* (binop 'mul (parse (second exp)) (parse (third exp)))]
+                ['/ (binop 'div (parse (second exp)) (parse (third exp)))]
+                ['< (binop 'lt? (parse (second exp)) (parse (third exp)))]
+                ['== (binop 'eq? (parse (second exp)) (parse (third exp)))])]
+        [else (raise exn:parse-error)]) ;; add an else
   )
 #+END_SRC
 
@@ -150,9 +155,9 @@ You need to complete this definition.
   (test-suite "parsing"
               (test-case "num" (check-equal? (parse 10) (num 10)))
               (test-case "add" (check-equal? (parse '(+ 10 20)) (binop 'add (num 10) (num 20))))
-              ;(test-case "sub" (check-equal? (parse '(- 10 20)) (binop 'sub (num 10) (num 20))))
-              ;(test-case "mul" (check-equal? (parse '(* 10 20)) (binop 'mul (num 10) (num 20))))
-              ;(test-case "div" (check-equal? (parse '(/ 10 20)) (binop 'div (num 10) (num 20))))
+              (test-case "sub" (check-equal? (parse '(- 10 20)) (binop 'sub (num 10) (num 20))))
+              (test-case "mul" (check-equal? (parse '(* 10 20)) (binop 'mul (num 10) (num 20))))
+              (test-case "div" (check-equal? (parse '(/ 10 20)) (binop 'div (num 10) (num 20))))
               (test-case "bool-t" (check-equal? (parse #t) (bool #t)))
               (test-case "bool-f" (check-equal? (parse #f) (bool #f)))
               (test-case "if" (check-equal? (parse '(if #t 10 20)) (ifte (bool #t) (num 10) (num 20))))
