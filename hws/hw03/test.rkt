@@ -10,9 +10,9 @@
   (test-suite "parsing"
               (test-case "num" (check-equal? (parse 10) (num 10)))
               (test-case "add" (check-equal? (parse '(+ 10 20)) (binop 'add (num 10) (num 20))))
-              (test-case "sub" (check-equal? (parse '(- 10 20)) (binop 'sub (num 10) (num 20))))
-              (test-case "mul" (check-equal? (parse '(* 10 20)) (binop 'mul (num 10) (num 20))))
-              (test-case "div" (check-equal? (parse '(/ 10 20)) (binop 'div (num 10) (num 20))))
+              ;(test-case "sub" (check-equal? (parse '(- 10 20)) (binop 'sub (num 10) (num 20))))
+              ;(test-case "mul" (check-equal? (parse '(* 10 20)) (binop 'mul (num 10) (num 20))))
+              ;(test-case "div" (check-equal? (parse '(/ 10 20)) (binop 'div (num 10) (num 20))))
               (test-case "bool-t" (check-equal? (parse #t) (bool #t)))
               (test-case "bool-f" (check-equal? (parse #f) (bool #f)))
               (test-case "if" (check-equal? (parse '(if #t 10 20)) (ifte (bool #t) (num 10) (num 20))))

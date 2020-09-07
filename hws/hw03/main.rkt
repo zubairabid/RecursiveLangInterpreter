@@ -27,7 +27,19 @@
 ;;; parse :: any/c -> ast?  Raises exception exn:parse-error?
 ;;; Fill in the function parse here
 (define (parse exp)
-  ;; complete the definition
+  (cond [(number? exp) (num exp)]
+        [(boolean? exp) (bool exp)]
+        [(and (list? exp)
+              (= (length exp) 4)
+              (eq? (first exp) 'if))
+         (ifte (parse (second exp))
+               (parse (third exp))
+               (parse (fourth exp)))]
+        [(and (list? exp)
+              (= (length exp) 3)
+              (eq? (first exp) '+))
+         (binop 'add (second exp) (third exp))]
+        [else (raise-parse-error "invalid syntax")]) ;; add an else
   )
 
 (struct exn:exec-div-by-zero exn:fail ())
@@ -67,7 +79,7 @@
 ;;; eval-ast :: ast? -> expressible? || (or/c exn:exec-div-by-zero  exn:exec-type-mismatch)
 (define eval-ast
   (lambda (a)
-    ;; your solution here
+    a
     ))
 (define ts-numop-incorrect-param-rand1
   (test-suite 
