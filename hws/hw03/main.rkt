@@ -79,6 +79,7 @@
       ['add +]
       ['sub -]
       ['mul *]
+      ['div /]
       ['lt? <]
       ['eq? =]
       [_ error 'op-interpretation "unknown op"])))
@@ -89,9 +90,12 @@
            [num (n) n]
            [binop (op rand1 rand2) (
                                     (op-interpretation op)
-                                    (eval-ast rand1)
-                                    (eval-ast rand2))]
-           [ifte (c t e) t]
+                                    (typecheck-num (eval-ast rand1))
+                                    (typecheck-num (eval-ast rand2)))]
+           [ifte (c t e)
+                 (if (typecheck-bool (eval-ast c))
+                     (eval-ast t)
+                     (eval-ast e))]
            [bool (b) b])
     ))
 (define ts-numop-incorrect-param-rand1
