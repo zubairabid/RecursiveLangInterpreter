@@ -278,10 +278,16 @@ i.e., actual functions that operate on expressible values.
   (lambda (a)
     (cases ast a
            [num (n) n]
-           [binop (op rand1 rand2) (
-                                    (op-interpretation op)
-                                    (typecheck-num (eval-ast rand1))
-                                    (typecheck-num (eval-ast rand2)))]
+           [binop (op rand1 rand2) 
+                  (if (eq? op 'div)
+                      (
+                       (op-interpretation op)
+                       (typecheck-num (eval-ast rand1))
+                       (check-non-zero (typecheck-num (eval-ast rand2))))
+                      (
+                       (op-interpretation op)
+                       (typecheck-num (eval-ast rand1))
+                       (typecheck-num (eval-ast rand2))))]
            [ifte (c t e)
                  (if (typecheck-bool (eval-ast c))
                      (eval-ast t)
