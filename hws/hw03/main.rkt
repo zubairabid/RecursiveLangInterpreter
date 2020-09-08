@@ -43,8 +43,9 @@
                 ['* (binop 'mul (parse (second exp)) (parse (third exp)))]
                 ['/ (binop 'div (parse (second exp)) (parse (third exp)))]
                 ['< (binop 'lt? (parse (second exp)) (parse (third exp)))]
-                ['== (binop 'eq? (parse (second exp)) (parse (third exp)))])]
-        [else (raise exn:parse-error)]) ;; add an else
+                ['= (binop 'eq? (parse (second exp)) (parse (third exp)))]
+                [_ (raise-parse-error "Parse error")])]
+        [else (raise-parse-error "Parse error")]) ;; add an else
   )
 
 (struct exn:exec-div-by-zero exn:fail ())
@@ -84,7 +85,14 @@
 ;;; eval-ast :: ast? -> expressible? || (or/c exn:exec-div-by-zero  exn:exec-type-mismatch)
 (define eval-ast
   (lambda (a)
-    a
+    (cases ast a
+           [num (n) n]
+           [binop (op rand1 rand2) (
+                                    (op-interpretation op)
+                                    (eval-ast rand1)
+                                    (eval-ast rand2))]
+           [ifte (c t e) t]
+           [bool (b) b])
     ))
 (define ts-numop-incorrect-param-rand1
   (test-suite 
