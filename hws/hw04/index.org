@@ -43,9 +43,8 @@
         | <symbol>
         | (ifte <exp> <exp> <exp>)
         | (assume ([<symbol> <exp>]+) <exp>)
-        | (<op> <exp>+)
-          
-<op> ::= <binop> | <unaryop>
+        | (<binop> <exp> <exp>)
+        | (<unarynop> <exp>)
 
 <unaryop> ::= !
 
@@ -236,6 +235,7 @@ The function =raise-parse-error=, given below raises an
 (define ts-parsing
   (test-suite "parsing"
               (test-case "num" (check-equal? (parse 10) (num 10)))
+              (test-case "symbol" (check-equal? (parse 'a) (id-ref 'a)))
               (test-case "add" (check-equal? (parse '(+ 10 20)) (binop 'add (num 10) (num 20))))
               (test-case "sub" (check-equal? (parse '(- 10 20)) (binop 'sub (num 10) (num 20))))
               (test-case "mul" (check-equal? (parse '(* 10 20)) (binop 'mul (num 10) (num 20))))
@@ -262,6 +262,13 @@ The function =raise-parse-error=, given below raises an
         (list (make-bind 'x (num 30)))
         (binop 'add (num 100) (id-ref 'x)))
        (parse '(assume ([x 30])(+ 100 x)))))
+
+    (test-case "valid : operation in binding"
+      (check-equal? 
+       (assume
+        (list (make-bind 'x (binop 'add (num 2) (num 4))))
+        (binop 'add (num 100) (id-ref 'x)))
+       (parse '(assume ([x (+ 2 4)])(+ 100 x)))))
 
     (test-case "valid : multiple bindings"
       (check-equal?
@@ -383,7 +390,13 @@ The function =raise-parse-error=, given below raises an
         ((mock-env (extended-env (list 'x) (list 10) (empty-env))))
         (check-exn exn:lookup-error?
                    (lambda ()
-                     (lookup-env mock-env 'y)))))))
+                     (lookup-env mock-env 'y)))))
+    (test-case "Binding found in outer env"
+      (let*
+        ((other-env (extended-env (list 'y) (list 10) (empty-env)))
+         (mock-env (extended-env (list 'x) (list 3) other-env)))
+        (check-equal? 10
+                     (lookup-env mock-env 'y))))))
 #+END_SRC
 
 * Error domain
@@ -528,6 +541,10 @@ i.e., actual functions that operate on expressible values.
     (test-case "num" 
                (check-equal? 10 
                              (eval-ast (num 10) (empty-env))))
+    (test-case "id-ref" 
+               (check-equal? 3
+                             (eval-ast (id-ref 'x) 
+                             (extended-env '(x v) (list 3 5) (empty-env)))))
     (test-case "add" 
                (check-equal? 30 
                              (eval-ast (binop 'add (num 10) (num 20)) (empty-env))))
