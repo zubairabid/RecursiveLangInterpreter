@@ -201,16 +201,16 @@
 ;;; parse :: any/c -> ast?  Raises exception exn:parse-error?
 ;;; Fill in the function parse here
 (define (parse exp)
-  (cond [(number? exp) (num exp)]
-        [(boolean? exp) (bool exp)]
-        [(id? exp) (id-ref exp)]
-        [(and (list? exp)
+  (cond [(number? exp) (num exp)]       ;; number parser
+        [(boolean? exp) (bool exp)]     ;; boolean parser
+        [(id? exp) (id-ref exp)]         ;; symbol parser
+        [(and (list? exp)               ;; ifte parser
               (= (length exp) 4)
               (eq? (first exp) 'if))
          (ifte (parse (second exp))
                (parse (third exp))
                (parse (fourth exp)))]
-        [(and (list? exp)
+        [(and (list? exp)               ;; math (binop) parser
               (= (length exp) 3))
          (match (first exp)
                 ['+ (binop 'add (parse (second exp)) (parse (third exp)))]
@@ -218,8 +218,12 @@
                 ['* (binop 'mul (parse (second exp)) (parse (third exp)))]
                 ['/ (binop 'div (parse (second exp)) (parse (third exp)))]
                 ['< (binop 'lt? (parse (second exp)) (parse (third exp)))]
-                ['= (binop 'eq? (parse (second exp)) (parse (third exp)))]
+                ['== (binop 'eq? (parse (second exp)) (parse (third exp)))]
                 [_ (raise-parse-error "Parse error")])]
+        [(and (list? exp)               ;; unaryop parser
+              (= (length exp) 2)
+              (eq? (first exp) `!))
+         (unaryop 'neg (parse (second exp)))]
         [else (raise-parse-error "Parse error")]) ;; add an else
   )
 ;;;;; parse :: any/c -> ast?  Raises exception exn:parse-error?
