@@ -170,6 +170,16 @@
 ;;;                         || (or/c exn:exec-div-by-zero  exn:exec-type-mismatch exn:lookup-error)
 (define eval-ast
   (lambda (a e)
+    (define (envfrombind binds)
+      (if (= (length binds) 1)
+          (extended-env
+            (list (bind-id (first binds)))
+            (list (eval-ast (bind-ast (first binds)) e))
+            e)
+          (extended-env
+            (list (bind-id (first binds)))
+            (list (eval-ast (bind-ast (first binds)) e))
+            (envfrombind (rest binds)))))
     (cases ast a
            [num (n) n]
            [bool (b) b]
@@ -192,6 +202,8 @@
                  (if (typecheck-bool (eval-ast c e))
                      (eval-ast th e)
                      (eval-ast el e))]
+           [assume (binds expr)
+                   (eval-ast expr (envfrombind binds))]
            [else 5])))
 (define unaryop?
   (lambda (x)
