@@ -112,11 +112,19 @@
 ;;; lookup-env: [env?  symbol?] -> any/c || exn:lookup-err?
 (define lookup-env
   (lambda (e x)
+    (define (getv syms vals)            ;; From the list of syms and vals, 
+      (if (empty? syms)                 ;; Return val if x in sym, else false
+          #f
+          (if (eq? (first syms) x)
+              (first vals)
+              (getv (rest syms) (rest vals)))))
     (cases env e
            [extended-env (syms vals outer-env) 
-                         (if (eq? (first syms) x)
-                             (first vals)
-                             (lookup-env outer-env x))]
+                         (let ([result (getv syms vals)]) 
+                           (if (boolean? result) 
+                               (lookup-env outer-env x)
+                               result))]
+           ;;[empty-env (raise-lookup-error "Lookup Error")]
            [else (raise-lookup-error)])))
 (struct exn:lookup-error exn:fail ())
 (define raise-lookup-error 

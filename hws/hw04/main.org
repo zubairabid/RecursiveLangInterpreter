@@ -401,11 +401,19 @@ The function =raise-parse-error=, given below raises an
 ;;; lookup-env: [env?  symbol?] -> any/c || exn:lookup-err?
 (define lookup-env
   (lambda (e x)
+    (define (getv syms vals)            ;; From the list of syms and vals, 
+      (if (empty? syms)                 ;; Return val if x in sym, else false
+          #f
+          (if (eq? (first syms) x)
+              (first vals)
+              (getv (rest syms) (rest vals)))))
     (cases env e
            [extended-env (syms vals outer-env) 
-                         (if (eq? (first syms) x)
-                             (first vals)
-                             (lookup-env outer-env x))]
+                         (let ([result (getv syms vals)]) 
+                           (if (boolean? result) 
+                               (lookup-env outer-env x)
+                               result))]
+           ;;[empty-env (raise-lookup-error "Lookup Error")]
            [else (raise-lookup-error)])))
 #+END_SRC
 
@@ -437,7 +445,7 @@ The function =raise-parse-error=, given below raises an
     (test-case "Binding is present in latter : Lookup returns the ast"
       (let 
         ((mock-env (extended-env '(x v) (list 10 3) (empty-env))))
-        (check-equal? 10
+        (check-equal? 3
                       (lookup-env mock-env 'v))))
 
     (test-case "Binding not found : Lookup throws error"
