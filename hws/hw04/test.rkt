@@ -126,6 +126,12 @@
         (check-equal? 10
                       (lookup-env mock-env 'x))))
 
+    (test-case "Binding is present in latter : Lookup returns the ast"
+      (let 
+        ((mock-env (extended-env '(x v) (list 10 3) (empty-env))))
+        (check-equal? 10
+                      (lookup-env mock-env 'v))))
+
     (test-case "Binding not found : Lookup throws error"
       (let 
         ((mock-env (extended-env (list 'x) (list 10) (empty-env))))
