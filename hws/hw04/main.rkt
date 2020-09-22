@@ -158,13 +158,28 @@
       ['eq? =]
       ['neg not]
       [_ error 'op-interpretation "unknown op"])))
-
 ;;; eval-ast :: [ast? env?] -> expressible-value? 
 ;;;                         || (or/c exn:exec-div-by-zero  exn:exec-type-mismatch exn:lookup-error)
 (define eval-ast
   (lambda (a e)
-    ;; your solution here
-    1))
+    (cases ast a
+           [num (n) n]
+           [bool (b) b]
+           [binop (op rand1 rand2) 
+                  (if (eq? op 'div)
+                      (
+                       (op-interpretation op)
+                       (typecheck-num (eval-ast rand1 e))
+                       (check-non-zero (typecheck-num (eval-ast rand2))))
+                      (
+                       (op-interpretation op)
+                       (typecheck-num (eval-ast rand1 e))
+                       (typecheck-num (eval-ast rand2 e))))]
+           [ifte (c th el)
+                 (if (typecheck-bool (eval-ast c))
+                     (eval-ast th e)
+                     (eval-ast el e))]
+           [else 5])))
 (define unaryop?
   (lambda (x)
     (match x
