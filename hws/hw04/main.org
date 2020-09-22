@@ -401,7 +401,12 @@ The function =raise-parse-error=, given below raises an
 ;;; lookup-env: [env?  symbol?] -> any/c || exn:lookup-err?
 (define lookup-env
   (lambda (e x)
-    1)) ;; your solution here.
+    (cases env e
+           [extended-env (syms vals outer-env) 
+                         (if (eq? (first syms) x)
+                             (first vals)
+                             (lookup-env outer-env x))]
+           [else (raise-lookup-error)])))
 #+END_SRC
 
 *** Lookup Error

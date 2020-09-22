@@ -112,7 +112,12 @@
 ;;; lookup-env: [env?  symbol?] -> any/c || exn:lookup-err?
 (define lookup-env
   (lambda (e x)
-    1)) ;; your solution here.
+    (cases env e
+           [extended-env (syms vals outer-env) 
+                         (if (eq? (first syms) x)
+                             (first vals)
+                             (lookup-env outer-env x))]
+           [else (raise-lookup-error)])))
 (struct exn:lookup-error exn:fail ())
 (define raise-lookup-error 
   (lambda ()
