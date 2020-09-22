@@ -170,13 +170,13 @@
                       (
                        (op-interpretation op)
                        (typecheck-num (eval-ast rand1 e))
-                       (check-non-zero (typecheck-num (eval-ast rand2))))
+                       (check-non-zero (typecheck-num (eval-ast rand2 e))))
                       (
                        (op-interpretation op)
                        (typecheck-num (eval-ast rand1 e))
                        (typecheck-num (eval-ast rand2 e))))]
            [ifte (c th el)
-                 (if (typecheck-bool (eval-ast c))
+                 (if (typecheck-bool (eval-ast c e))
                      (eval-ast th e)
                      (eval-ast el e))]
            [else 5])))
