@@ -201,15 +201,31 @@
 ;;; parse :: any/c -> ast?  Raises exception exn:parse-error?
 ;;; Fill in the function parse here
 (define (parse exp)
+  (define bindparse             ;; helper function, parses assumes
+    (lambda (expr)
+      (if (empty? expr)
+          '()
+          (let (
+                [var (first (first expr))]
+                [ex (parse (second (first expr)))])
+            (cons 
+              (make-bind var ex) 
+              (bindparse (rest expr)))))))
   (cond [(number? exp) (num exp)]       ;; number parser
         [(boolean? exp) (bool exp)]     ;; boolean parser
-        [(id? exp) (id-ref exp)]         ;; symbol parser
+        [(id? exp) (id-ref exp)]        ;; symbol parser
         [(and (list? exp)               ;; ifte parser
               (= (length exp) 4)
               (eq? (first exp) 'if))
          (ifte (parse (second exp))
                (parse (third exp))
                (parse (fourth exp)))]
+        [(and (list? exp)
+              (= (length exp) 3)
+              (eq? (first exp) 'assume))
+         (assume                        ;; generic assume parser
+           (bindparse (second exp))
+           (parse (third exp)))]
         [(and (list? exp)               ;; math (binop) parser
               (= (length exp) 3))
          (match (first exp)
