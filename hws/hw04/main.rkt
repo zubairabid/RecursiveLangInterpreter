@@ -165,6 +165,7 @@
     (cases ast a
            [num (n) n]
            [bool (b) b]
+           [id-ref (sym) (lookup-env e sym)]
            [binop (op rand1 rand2) 
                   (if (eq? op 'div)
                       (
