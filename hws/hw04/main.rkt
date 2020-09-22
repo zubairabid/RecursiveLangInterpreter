@@ -166,6 +166,10 @@
            [num (n) n]
            [bool (b) b]
            [id-ref (sym) (lookup-env e sym)]
+           [unaryop (op rand1)
+                    (
+                     (op-interpretation op)
+                     (typecheck-bool (eval-ast rand1 e)))]
            [binop (op rand1 rand2) 
                   (if (eq? op 'div)
                       (
