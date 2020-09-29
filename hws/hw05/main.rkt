@@ -32,8 +32,8 @@
 (define (bisim? t1 t2 bisimlist)
   (cond [(and (null? t1) ;; Covering base cases: first, both empty
               (null? t2)) #t]
-        ;; If either is null while the other isn't then it's not bisimilar
 
+        ;; If either is null while the other isn't then it's not bisimilar
         [(or (and (null? t1)
                   (not (null? t2)))
              (and (not (null? t1))
@@ -42,7 +42,6 @@
 
         [(and (procedure? t1)
               (procedure? t2)
-              ;(hash-has-key? bisimlist (cons (list (hd t1)) (list (hd t2)))))
               (hash-has-key? bisimlist (cons (list t1) (list t2))))
          #t]
 
@@ -57,7 +56,7 @@
            t1
            (append (list (unroll (hd t2))) (tl t2))
            bisimlist)]
-        [(and (procedure? t1)
+        [(and (procedure? (hd t1))
               (not (procedure? (hd t2))))
          (bisim?
            (append (list (unroll (hd t1))) (tl t1))
@@ -82,7 +81,7 @@
         [else 
           (hash-set! bisimlist (cons (list t1) (list t2)) 1)
           (hash-set! bisimlist (cons (list t2) (list t1)) 1)
-          (if (bisim? '(hd t1) '(hd t2) bisimlist)
+          (if (equal? (hd t1) (hd t2))
               (bisim?
                 (tl t1)
                 (tl t2)
