@@ -65,8 +65,12 @@
 ;;; term? -> term? -> boolean?
 (define (bisimilar? t1 t2)
   (define bisimlist (make-hash))
-  (if (and (null? t1)
-           (null? t2))
+  (if (or (or (not (or (list? t1)
+                       (procedure? t1)))
+              (not (or (list? t2)
+                       (procedure? t2))))
+          (and (null? t1)
+               (null? t2)))
       (raise-type-error); send error
       (bisim? t1 t2 bisimlist))) ;; your solution here.
 
