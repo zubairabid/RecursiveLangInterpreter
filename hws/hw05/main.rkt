@@ -40,6 +40,12 @@
                   (null? t2)))
          #f]
 
+        [(and (procedure? t1)
+              (procedure? t2)
+              ;(hash-has-key? bisimlist (cons (list (hd t1)) (list (hd t2)))))
+              (hash-has-key? bisimlist (cons (list t1) (list t2))))
+         #t]
+
         ;; If either of the terms is a procedure while the other isn't, we need 
         ;; to unroll it for better comparison
         ;; Reminder: the head of the term will be a procedure,
@@ -63,7 +69,7 @@
         ;; with the one-colist but with both
         [(and (procedure? (hd t1))
               (procedure? (hd t2)))
-         (if (hash-has-key? bisimlist (cons '(hd t1) '(hd t2)))
+         (if (hash-has-key? bisimlist (cons (list (hd t1)) (list (hd t2))))
              (bisim? (tl t1) (tl t2) bisimlist)
              (bisim?
                (append (list (unroll (hd t1))) (tl t1))
@@ -74,8 +80,9 @@
         ;; If both are lists, compare heads. If they match, add t1 and t2 to the
         ;; bisimlist and return bisim? on rest. Else, return false
         [else 
-          (hash-set! bisimlist (cons '(t1) '(t2)) 1)
-          (if (equal? (hd t1) (hd t2))
+          (hash-set! bisimlist (cons (list t1) (list t2)) 1)
+          (hash-set! bisimlist (cons (list t2) (list t1)) 1)
+          (if (bisim? '(hd t1) '(hd t2) bisimlist)
               (bisim?
                 (tl t1)
                 (tl t2)
