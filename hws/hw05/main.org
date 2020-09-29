@@ -99,12 +99,12 @@
               (procedure? (hd t2)))
          (bisim? 
            t1
-           (append (list (unroll (hd t2))) (tl t2))
+           (append (flatten (list (unroll (hd t2)))) (tl t2))
            bisimlist)]
         [(and (procedure? (hd t1))
               (not (procedure? (hd t2))))
          (bisim?
-           (append (list (unroll (hd t1))) (tl t1))
+           (append (flatten (list (unroll (hd t1)))) (tl t1))
            t2
            bisimlist)]
 
