@@ -49,12 +49,12 @@
               (procedure? (hd t2)))
          (bisim? 
            t1
-           (append (unroll (hd t2)) (tl t2))
+           (append (list (unroll (hd t2))) (tl t2))
            bisimlist)]
         [(and (procedure? t1)
               (not (procedure? (hd t2))))
          (bisim?
-           (append (unroll (hd t1)) (tl t1))
+           (append (list (unroll (hd t1))) (tl t1))
            t2
            bisimlist)]
 
@@ -66,19 +66,20 @@
          (if (hash-has-key? bisimlist (cons '(hd t1) '(hd t2)))
              (bisim? (tl t1) (tl t2) bisimlist)
              (bisim?
-               (append (unroll (hd t1)) (tl t1))
-               (append (unroll (hd t2)) (tl t2))
+               (append (list (unroll (hd t1))) (tl t1))
+               (append (list (unroll (hd t2))) (tl t2))
                bisimlist))
          ]
 
         ;; If both are lists, compare heads. If they match, add t1 and t2 to the
         ;; bisimlist and return bisim? on rest. Else, return false
         [else 
+          (hash-set! bisimlist (cons '(t1) '(t2)) 1)
           (if (equal? (hd t1) (hd t2))
               (bisim?
                 (tl t1)
                 (tl t2)
-                (hash-set! bisimlist (cons '(t1) '(t2)) 1))
+                bisimlist)
               #f)]))
 
 (provide bisimilar?)
