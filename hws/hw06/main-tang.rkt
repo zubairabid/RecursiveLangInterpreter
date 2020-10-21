@@ -194,7 +194,7 @@
     (define (numred args)
       (if (null? args)
           '()
-          (cons (eval-ast (first args) e) (rest args))))
+          (cons (eval-ast (first args) e) (numred (rest args)))))
     (cases ast a
            [num (n) n]
            [bool (b) b]
