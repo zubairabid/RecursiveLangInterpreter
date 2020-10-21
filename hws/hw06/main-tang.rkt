@@ -148,7 +148,32 @@
 (define denotable-value?
   (or/c number? boolean? proc?))
 ;;; implement all procedures in the list
-(define +p 1)
+(define +p
+    (prim-proc + (list number? number? number?)))
+
+(define -p
+    (prim-proc - (list number? number? number?)))
+
+(define *p
+    (prim-proc * (list number? number? number?)))
+
+(define /p
+    (prim-proc / (list number? number? number?)))
+
+(define <p
+    (prim-proc < (list boolean? number? number?)))
+
+(define <=p
+    (prim-proc <= (list boolean? number? number?)))
+
+(define eq?p
+    (prim-proc eq? (list boolean? number? number?)))
+
+(define 0?p
+    (prim-proc 0? (list boolean? number?)))
+
+(define !p
+    (prim-proc ! (list boolean? boolean?)))
 ;;(define *init-env*
 ;;  (extended-env
 ;;   '(+ - * / < <= eq? 0? !)
