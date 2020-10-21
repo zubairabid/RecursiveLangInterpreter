@@ -200,10 +200,19 @@
                        formals
                        body
                        e)]
-           [app (rator rands)
-                (cases proc rator
-                       [prim-proc (prim sig) 1]
-                       [closure (formals body env) 1])]
+           [app (func args) ;; When tasked with applying a function, we need
+                ;; to check if rator is prim or closure. If it is a prim, we
+                ;; need to execute that. rands is the list of arguments. If it
+                ;; is 2 long, or 1 long, we act accordingly
+                (let [(finfunc (eval-ast func e))]
+                    (cases proc finfunc
+                           [prim-proc (prim sig) 
+                                      (if (= (length args) 1)
+                                          (prim (eval-ast (first args) e))
+                                          (prim 
+                                            (eval-ast (first args) e)
+                                            (eval-ast (second args) e)))]
+                           [closure (formals body env) 1]))] ;; filler)
            [ifte (c th el)
                  (if (boolean? (eval-ast c e))
                      (eval-ast th e)
