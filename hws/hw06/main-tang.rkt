@@ -1,0 +1,124 @@
+#lang racket
+
+(require eopl)
+
+(define-datatype ast ast?
+  [num (datum number?)]
+  [bool (datum boolean?)]
+  [ifte (test ast?) (then ast?) (else-ast ast?)]
+  [function
+   (formals (list-of id?))
+   (body ast?)]
+  [app (rator ast?) (rands (list-of ast?))]
+  [id-ref (sym id?)]
+  [assume (binds  (list-of bind?)) (body ast?)])
+
+(define-datatype bind bind?
+  [make-bind (b-id id?) (b-ast ast?)])
+
+;;; bind-id : bind? -> id?
+(define bind-id
+  (lambda (b)
+    (cases bind b
+      [make-bind (b-id b-ast) b-id])))
+
+;;; bind-ast : bind? -> ast?
+(define bind-ast
+  (lambda (b)
+    (cases bind b
+      [make-bind (b-id b-ast) b-ast])))
+(define env? procedure?)
+
+
+;;; lookup-env: [env?  symbol?] -> any/c
+;;; lookup-env: throws "unbound identifier" error
+(define lookup-env
+  (lambda (e x)
+    (e x)))
+
+;;; empty-env : () -> env?
+(define empty-env
+  (lambda ()
+    (lambda (x)
+      (error 'empty-env "unbound identifier ~a" x))))
+
+;;; extended-env :
+;;;    [(list-of symbol?) (list-of any/c) env?] -> env?
+(define extended-env
+  (lambda (syms vals outer-env)
+    (lambda (x)
+      (let ([j (list-index syms x)])
+        (cond
+          [(= j -1) (lookup-env outer-env x)]
+          [#t (list-ref vals j)])))))
+
+;;; Returns the loction of the element in a list, -1 if the
+;;; element is absent.
+
+;;; list-index : [(listof any/c)  any/c] -> 
+(define list-index
+  (lambda (ls a)
+    (letrec ([loop
+               (lambda (ls ans)
+                 (cond
+                   [(null? ls) -1]
+                   [(eq? (first ls) a) ans]
+                   [#t (loop (rest ls) (+ 1 ans))]))])
+      (loop ls 0))))
+(define *keywords*
+  '(ifte function assume))
+
+(define id?
+  (lambda (x)
+    (and
+     (symbol? x)
+     (not (memq x *keywords*)))))
+
+;;; parse :: any/c -> ast?  Raises exception exn?
+;;; Fill in the function parse here
+(define (parse exp)
+  ;; complete the definition
+  1)
+(define-datatype proc proc?
+  [prim-proc
+    ;; prim refers to a scheme procedure
+    (prim procedure?)
+    ;; sig is the signature
+    (sig (list-of procedure?))] 
+  [closure
+    (formals (list-of symbol?))
+    (body ast?)
+    (env env?)])
+
+;;; prim? : proc? -> boolean?
+(define prim-proc?
+  (lambda (p)
+    (cases proc p
+      [prim-proc (prim sig) #t]
+      [else #f])))
+
+(define closure? 
+  (lambda (p)
+    (cases proc p
+      [prim-proc (prim sig) #f]
+      [else #t])))
+;;; expressible-value? : any/c -> boolean?
+(define expressible-value?
+  (or/c number? boolean? proc?))
+;;; denotable-value? :any/c -> boolean?
+(define denotable-value?
+  (or/c number? boolean? proc?))
+;;; implement all procedures in the list
+(define +p 1)
+;;(define *init-env*
+;;  (extended-env
+;;   '(+ - * / < <= eq? 0? !)
+;;   (list +p -p *p /p <p <=p eq?p 0?p !p)
+;;   (empty-env)))
+;;(define eval-ast
+;;  (lambda (a e)
+;;    ;; your solution here
+;;    1))
+
+
+(provide (all-defined-out))
