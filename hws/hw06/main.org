@@ -124,6 +124,13 @@ parsing and evaluation errors.
   You need to implement the =parse= function that converts the
   concrete syntax of the functional lanauge into the ast
   representation.
+
+  The =parse= function is largely similar to what we wrote for
+  HW04 - the lexical language. As there is no binop/unaryop, those
+  are now no longer in the function. For the function construct,
+  we add a simple =(function args (parse body))=. We also need 
+  to be able to parse a random list as an operator sequence, so
+  that becomes =(apply first rest)= construct.
   
 #+NAME: parser
 #+BEGIN_SRC racket
@@ -361,6 +368,11 @@ parsing and evaluation errors.
    (list +p -p *p /p <p <=p eq?p 0?p !p)
    (empty-env)))
 #+END_SRC
+
+  The definition here is simple enough, akin to what we did with
+  the operator-list function in the last one. Only, instead of 
+  mapping just strings to functions, we map the function to the
+  correct internal function and the function signature too.
   
 #+NAME: prim-proc
 #+BEGIN_SRC racket
@@ -507,6 +519,17 @@ parsing and evaluation errors.
   The =eval-ast= function takes an =ast= and the corresponding =env=
   (that contains bindings for evaluation of the =ast=) and returns the
   evaluated expressible value.
+
+  Function evaluation is easy: we wrap a closure with the formals, body,
+  and environment. 
+
+  Application, however, is more involved. We need to first setup the
+  function so that it's evaluated in the context (otherwise '+' would
+  fail). Then, we check if it is a user-defined function or a system
+  function. If it is the latter, we check the number of arguments it
+  takes and call said function. If it is the former, we setup a new
+  environment that extends on the old one, setting the formals and 
+  arguments for values. Then we eval again with the closure body.
   
 #+NAME: eval-ast
 #+BEGIN_SRC racket
