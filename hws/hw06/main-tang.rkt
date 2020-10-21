@@ -170,19 +170,47 @@
     (prim-proc eq? (list boolean? number? number?)))
 
 (define 0?p
-    (prim-proc 0? (list boolean? number?)))
+    (prim-proc zero? (list boolean? number?)))
 
 (define !p
-    (prim-proc ! (list boolean? boolean?)))
-;;(define *init-env*
-;;  (extended-env
-;;   '(+ - * / < <= eq? 0? !)
-;;   (list +p -p *p /p <p <=p eq?p 0?p !p)
-;;   (empty-env)))
-;;(define eval-ast
-;;  (lambda (a e)
-;;    ;; your solution here
-;;    1))
+    (prim-proc not (list boolean? boolean?)))
+(define *init-env*
+  (extended-env
+   '(+ - * / < <= eq? 0? !)
+   (list +p -p *p /p <p <=p eq?p 0?p !p)
+   (empty-env)))
+(define eval-ast
+  (lambda (a e)
+    (define (envfrombind binds)
+      (if (= (length binds) 1)
+          (extended-env
+            (list (bind-id (first binds)))
+            (list (eval-ast (bind-ast (first binds)) e))
+            e)
+          (extended-env
+            (list (bind-id (first binds)))
+            (list (eval-ast (bind-ast (first binds)) e))
+            (envfrombind (rest binds)))))
+    (cases ast a
+           [num (n) n]
+           [bool (b) b]
+           [id-ref (sym) (lookup-env e sym)]
+           [function (formals body) 
+                     (closure
+                       formals
+                       body
+                       e)]
+           [app (rator rands)
+                (cases proc rator
+                       [prim-proc (prim sig) 1]
+                       [closure (formals body env) 1])]
+           [ifte (c th el)
+                 (if (boolean? (eval-ast c e))
+                     (eval-ast th e)
+                     (eval-ast el e))]
+           [assume (binds expr)
+                   (eval-ast expr (envfrombind binds))]
+           [else 5])))
 
 
 (provide (all-defined-out))

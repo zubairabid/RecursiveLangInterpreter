@@ -377,10 +377,10 @@ parsing and evaluation errors.
     (prim-proc eq? (list boolean? number? number?)))
 
 (define 0?p
-    (prim-proc 0? (list boolean? number?)))
+    (prim-proc zero? (list boolean? number?)))
 
 (define !p
-    (prim-proc ! (list boolean? boolean?)))
+    (prim-proc not (list boolean? boolean?)))
 #+END_SRC
 
 ** Tests
@@ -502,8 +502,36 @@ parsing and evaluation errors.
 #+BEGIN_SRC racket
 (define eval-ast
   (lambda (a e)
-    ;; your solution here
-    1))
+    (define (envfrombind binds)
+      (if (= (length binds) 1)
+          (extended-env
+            (list (bind-id (first binds)))
+            (list (eval-ast (bind-ast (first binds)) e))
+            e)
+          (extended-env
+            (list (bind-id (first binds)))
+            (list (eval-ast (bind-ast (first binds)) e))
+            (envfrombind (rest binds)))))
+    (cases ast a
+           [num (n) n]
+           [bool (b) b]
+           [id-ref (sym) (lookup-env e sym)]
+           [function (formals body) 
+                     (closure
+                       formals
+                       body
+                       e)]
+           [app (rator rands)
+                (cases proc rator
+                       [prim-proc (prim sig) 1]
+                       [closure (formals body env) 1])]
+           [ifte (c th el)
+                 (if (boolean? (eval-ast c e))
+                     (eval-ast th e)
+                     (eval-ast el e))]
+           [assume (binds expr)
+                   (eval-ast expr (envfrombind binds))]
+           [else 5])))
 #+END_SRC
 
 
@@ -557,8 +585,8 @@ parsing and evaluation errors.
 <<expressible-value>>
 <<denotable-value>>
 <<prim-proc>>
-;;<<init-env>>
-;;<<eval-ast>>
+<<init-env>>
+<<eval-ast>>
 
 
 (provide (all-defined-out))
@@ -590,15 +618,15 @@ parsing and evaluation errors.
 
 
 <<test-parser>>
-;;<<test-prim-proc>>
-;;<<test-eval-ast>>
+<<test-prim-proc>>
+<<test-eval-ast>>
 
 
 (define test-function
   (test-suite "Function Tests"
-              test-function-parsing  ))
+              test-function-parsing
               ;;test-function-evaluation
-              ;;test-operator-functions))
+              test-operator-functions))
 
 
 (define run-all-tests 
