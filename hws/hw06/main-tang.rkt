@@ -87,6 +87,11 @@
             (cons 
               (make-bind var ex) 
               (bindparse (rest expr)))))))
+  (define astlistparse
+    (lambda (listexp)
+      (if (null? listexp)
+          '()
+          (cons (parse (first listexp)) (astlistparse (rest listexp))))))
   (cond [(number? exp) (num exp)]       ;; number parser
         [(boolean? exp) (bool exp)]     ;; boolean parser
         [(id? exp) (id-ref exp)]        ;; symbol parser
@@ -107,7 +112,11 @@
               (eq? (first exp) 'function))
          (function
            (second exp)
-           (parse (third exp)))]) ;; add an else
+           (parse (third exp)))]
+        [(list? exp)
+         (app
+           (parse (first exp))
+           (astlistparse (rest exp)))]) ;; add an else
   )
 (define-datatype proc proc?
   [prim-proc
