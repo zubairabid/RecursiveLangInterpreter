@@ -101,7 +101,13 @@
               (eq? (first exp) 'assume))
          (assume                        ;; generic assume parser
            (bindparse (second exp))
-           (parse (third exp)))])
+           (parse (third exp)))]
+        [(and (list? exp)
+              (= (length exp) 3)
+              (eq? (first exp) 'function))
+         (function
+           (second exp)
+           (parse (third exp)))]) ;; add an else
   )
 (define-datatype proc proc?
   [prim-proc
