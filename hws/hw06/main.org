@@ -522,6 +522,10 @@ parsing and evaluation errors.
             (list (bind-id (first binds)))
             (list (eval-ast (bind-ast (first binds)) e))
             (envfrombind (rest binds)))))
+    (define (numred args)
+      (if (null? args)
+          '()
+          (cons (eval-ast (first args) e) (rest args))))
     (cases ast a
            [num (n) n]
            [bool (b) b]
@@ -552,7 +556,7 @@ parsing and evaluation errors.
                                     (let [(newenv 
                                             (extended-env
                                               formals
-                                              args
+                                              (numred args)
                                               e))]
                                       (eval-ast body newenv))]))] ;; filler)
            [ifte (c th el)
