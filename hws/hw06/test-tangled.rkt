@@ -37,6 +37,16 @@
                               (function '(p q)
                                         (app (id-ref '+)
                                              (list (id-ref 'p) (id-ref 'q))))))
+
+              ;; Adding a test case
+              (test-case "Correctly parsed"
+                (check-equal? (parse apply-sum-fn)
+                              (app
+                                (function '(p q)
+                                          (app (id-ref '+)
+                                               (list (id-ref 'p) (id-ref 'q))))
+                                (list (num 10) (num 30)))))
+
               (test-case "Parse Error - function"
                (check-exn exn:fail?
                           (lambda () 
@@ -118,7 +128,7 @@
 (define test-function
   (test-suite "Function Tests"
               test-function-parsing
-              ;;test-function-evaluation
+              test-function-evaluation
               test-operator-functions))
 
 

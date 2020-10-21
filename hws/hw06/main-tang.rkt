@@ -212,7 +212,18 @@
                                           (prim 
                                             (eval-ast (first args) e)
                                             (eval-ast (second args) e)))]
-                           [closure (formals body env) 1]))] ;; filler)
+                ;; The closures, on the other hand:
+                ;; The closure has formals, body, env.
+                ;; The arguments passed to the formals will become the new
+                ;;   environment, appending the old one on top. This is then
+                ;;   passed to the eval-ast again, with the body for execution
+                           [closure (formals body env) 
+                                    (let [(newenv 
+                                            (extended-env
+                                              formals
+                                              args
+                                              e))]
+                                      (eval-ast body newenv))]))] ;; filler)
            [ifte (c th el)
                  (if (boolean? (eval-ast c e))
                      (eval-ast th e)

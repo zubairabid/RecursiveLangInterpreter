@@ -202,6 +202,16 @@ parsing and evaluation errors.
                               (function '(p q)
                                         (app (id-ref '+)
                                              (list (id-ref 'p) (id-ref 'q))))))
+
+              ;; Adding a test case
+              (test-case "Correctly parsed"
+                (check-equal? (parse apply-sum-fn)
+                              (app
+                                (function '(p q)
+                                          (app (id-ref '+)
+                                               (list (id-ref 'p) (id-ref 'q))))
+                                (list (num 10) (num 30)))))
+
               (test-case "Parse Error - function"
                (check-exn exn:fail?
                           (lambda () 
@@ -533,7 +543,18 @@ parsing and evaluation errors.
                                           (prim 
                                             (eval-ast (first args) e)
                                             (eval-ast (second args) e)))]
-                           [closure (formals body env) 1]))] ;; filler)
+                ;; The closures, on the other hand:
+                ;; The closure has formals, body, env.
+                ;; The arguments passed to the formals will become the new
+                ;;   environment, appending the old one on top. This is then
+                ;;   passed to the eval-ast again, with the body for execution
+                           [closure (formals body env) 
+                                    (let [(newenv 
+                                            (extended-env
+                                              formals
+                                              args
+                                              e))]
+                                      (eval-ast body newenv))]))] ;; filler)
            [ifte (c th el)
                  (if (boolean? (eval-ast c e))
                      (eval-ast th e)
@@ -634,7 +655,7 @@ parsing and evaluation errors.
 (define test-function
   (test-suite "Function Tests"
               test-function-parsing
-              ;;test-function-evaluation
+              test-function-evaluation
               test-operator-functions))
 
 
