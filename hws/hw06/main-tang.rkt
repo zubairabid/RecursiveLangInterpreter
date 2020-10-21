@@ -77,8 +77,32 @@
 ;;; parse :: any/c -> ast?  Raises exception exn?
 ;;; Fill in the function parse here
 (define (parse exp)
-  ;; complete the definition
-  1)
+  (define bindparse             ;; helper function, parses assumes
+    (lambda (expr)
+      (if (empty? expr)
+          '()
+          (let (
+                [var (first (first expr))]
+                [ex (parse (second (first expr)))])
+            (cons 
+              (make-bind var ex) 
+              (bindparse (rest expr)))))))
+  (cond [(number? exp) (num exp)]       ;; number parser
+        [(boolean? exp) (bool exp)]     ;; boolean parser
+        [(id? exp) (id-ref exp)]        ;; symbol parser
+        [(and (list? exp)               ;; ifte parser
+              (= (length exp) 4)
+              (eq? (first exp) 'if))
+         (ifte (parse (second exp))
+               (parse (third exp))
+               (parse (fourth exp)))]
+        [(and (list? exp)
+              (= (length exp) 3)
+              (eq? (first exp) 'assume))
+         (assume                        ;; generic assume parser
+           (bindparse (second exp))
+           (parse (third exp)))])
+  )
 (define-datatype proc proc?
   [prim-proc
     ;; prim refers to a scheme procedure
