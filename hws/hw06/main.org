@@ -166,7 +166,7 @@ parsing and evaluation errors.
         [(id? exp) (id-ref exp)]        ;; symbol parser
         [(and (list? exp)               ;; ifte parser
               (= (length exp) 4)
-              (eq? (first exp) 'if))
+              (eq? (first exp) 'ifte))
          (ifte (parse (second exp))
                (parse (third exp))
                (parse (fourth exp)))]
