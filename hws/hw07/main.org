@@ -552,15 +552,15 @@ evaluated expressible value.
 <<ast>>
 <<fbind>>
 <<parser>>
-<<env>>
-<<proc>>
-<<expressible-value>>
-<<denotable-value>>
-<<env-predicates>>
-<<lookup-env>>
-<<prim-proc>>
-<<eval-ast>>
-<<init-env>>
+;;<<env>>
+;;<<proc>>
+;;<<expressible-value>>
+;;<<denotable-value>>
+;;<<env-predicates>>
+;;<<lookup-env>>
+;;<<prim-proc>>
+;;<<eval-ast>>
+;;<<init-env>>
 
 
 (provide (all-defined-out))
@@ -578,15 +578,15 @@ evaluated expressible value.
 
 
 <<test-parsing>>
-<<lookup-test>>
-<<test-eval-ast>>
+;;<<lookup-test>>
+;;<<test-eval-ast>>
 
 
 (define test-recursive
   (test-suite "Recursive Tests"
-              test-recursive-parsing
-              lookup-test
-              test-recursive-evaluation))
+              test-recursive-parsing))
+              ;;lookup-test
+              ;;test-recursive-evaluation))
 
 
 (define run-all-tests 
