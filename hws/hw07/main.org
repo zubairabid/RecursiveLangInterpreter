@@ -640,7 +640,7 @@ evaluated expressible value.
         (list (fbind-id (first fbinds)))  ;; fsyms
         (list (fbind-formals (first fbinds)))  ;; lformals
         (list (fbind-body (first fbinds)))  ;; bodies
-        (envfromfbind (rest fbinds env)))))
+        (envfromfbind (rest fbinds) env))))
 (define (envfrombind binds env)
   (if (= (length binds) 1)
       (extended-env
@@ -700,7 +700,7 @@ evaluated expressible value.
                               (envfromfbind fbinds e)])
                             (eval-ast body newenv))]
            [ifte (c th el)
-                 (if (boolean? (eval-ast c e))
+                 (if (eval-ast c e)
                      (eval-ast th e)
                      (eval-ast el e))]
            [assume (binds expr)
