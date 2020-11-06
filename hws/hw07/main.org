@@ -180,6 +180,19 @@ There is only one variant =make-fbind= with the following fields:
 You need to implement the =parse= function that converts the
 concrete syntax of the recursive lanauge into the ast
 representation.
+
+Once again, the only difference in this =parse= from functional is that we need
+to add a recursive parser, which returns a list of =fbind=s wrapped in a 
+=recursive= constructions.
+
+For recursive parsing, it's a three-part list that contains:
+
+1. 'recursive
+2. A list of ((essentially functions)) - expressions with =<symbol>*= as params,
+   referred to by the first =<symbol>=. Each of these becomes one =fbind=
+
+   > this needs a function to parse over the list option
+3. An expression. This will be evaluated later.
   
 #+NAME: parser
 #+BEGIN_SRC racket
@@ -196,7 +209,8 @@ representation.
 ;;; Fill in the function parse here
 (define (parse exp)
   (define bindparse             ;; helper function, parses assumes
-    (lambda (expr)
+    (lambda (expr)          ;; Recursive function that cons together parts of
+                            ;; list
       (if (empty? expr)
           '()
           (let (
@@ -205,12 +219,12 @@ representation.
             (cons 
               (make-bind var ex) 
               (bindparse (rest expr)))))))
-  (define astlistparse
+  (define astlistparse          ;; parses a list of ASTs, by recursively consing
     (lambda (listexp)
       (if (null? listexp)
           '()
           (cons (parse (first listexp)) (astlistparse (rest listexp))))))
-  (define reclistparse 
+  (define reclistparse          ;; parses a list of recursive constructions
     (lambda (listexp)
       (if (null? listexp)
           '()
@@ -368,6 +382,11 @@ construct.
 ** Lookup (YOU NEED TO IMPLEMENT THIS)
 The function =(lookup-env e x)= is used to get the value of the
 binding =x= in the environment =e=.
+
+In this, the =lookup-env= function is similar to in functional, but with the
+addition that =extended-rec-env= will return a =closure= with =fsyms[i]=,
+=lformals[i]=, and =current-env=, which needs to be reconstructed from the
+=outer-env=.
 
 #+NAME: lookup-env
 #+BEGIN_SRC racket
@@ -626,6 +645,10 @@ Types of values denoted by identifiers.
 The =eval-ast= function takes an =ast= and the corresponding =env=
 (that contains bindings for evaluation of the =ast=) and returns the
 evaluated expressible value.
+
+Since we're still focused on environments, all we need to do for recursive
+functions is set up a =extended-rec-env=. The evalution after continues without
+an issue.
   
 #+NAME: eval-ast
 #+BEGIN_SRC racket

@@ -63,7 +63,8 @@
 ;;; Fill in the function parse here
 (define (parse exp)
   (define bindparse             ;; helper function, parses assumes
-    (lambda (expr)
+    (lambda (expr)          ;; Recursive function that cons together parts of
+                            ;; list
       (if (empty? expr)
           '()
           (let (
@@ -72,12 +73,12 @@
             (cons 
               (make-bind var ex) 
               (bindparse (rest expr)))))))
-  (define astlistparse
+  (define astlistparse          ;; parses a list of ASTs, by recursively consing
     (lambda (listexp)
       (if (null? listexp)
           '()
           (cons (parse (first listexp)) (astlistparse (rest listexp))))))
-  (define reclistparse 
+  (define reclistparse          ;; parses a list of recursive constructions
     (lambda (listexp)
       (if (null? listexp)
           '()
