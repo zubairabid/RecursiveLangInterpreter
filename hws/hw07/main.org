@@ -388,7 +388,32 @@ binding =x= in the environment =e=.
 #+NAME: prim-proc
 #+BEGIN_SRC racket
 ;;; implement all procedures in the list
-(define +p ...)
+(define +p
+    (prim-proc + (list number? number? number?)))
+
+(define -p
+    (prim-proc - (list number? number? number?)))
+
+(define *p
+    (prim-proc * (list number? number? number?)))
+
+(define /p
+    (prim-proc / (list number? number? number?)))
+
+(define <p
+    (prim-proc < (list boolean? number? number?)))
+
+(define <=p
+    (prim-proc <= (list boolean? number? number?)))
+
+(define eq?p
+    (prim-proc eq? (list boolean? number? number?)))
+
+(define 0?p
+    (prim-proc zero? (list boolean? number?)))
+
+(define !p
+    (prim-proc not (list boolean? boolean?)))
 #+END_SRC
 
 *** Test
@@ -614,12 +639,12 @@ evaluated expressible value.
 <<ast>>
 <<fbind>>
 <<parser>>
-;;<<env>>
-;;<<proc>>
-;;<<expressible-value>>
-;;<<denotable-value>>
-;;<<env-predicates>>
-;;<<lookup-env>>
+<<env>>
+<<proc>>
+<<expressible-value>>
+<<denotable-value>>
+<<env-predicates>>
+<<lookup-env>>
 ;;<<prim-proc>>
 ;;<<eval-ast>>
 ;;<<init-env>>
@@ -640,14 +665,14 @@ evaluated expressible value.
 
 
 <<test-parsing>>
-;;<<lookup-test>>
+<<lookup-test>>
 ;;<<test-eval-ast>>
 
 
 (define test-recursive
   (test-suite "Recursive Tests"
-              test-recursive-parsing))
-              ;;lookup-test
+              test-recursive-parsing
+              lookup-test))
               ;;test-recursive-evaluation))
 
 

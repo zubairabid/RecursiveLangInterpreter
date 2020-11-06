@@ -127,71 +127,96 @@
            (astlistparse (rest exp)))]) ;; add an else
   )
 
-;;(define-datatype env env?
-;;  [empty-env]
-;;  [extended-env
-;;    (syms (list-of symbol?))
-;;    (vals (list-of denotable-value?))
-;;    (outer-env env?)]
-;;  [extended-rec-env
-;;    (fsyms (list-of symbol?))
-;;    (lformals (list-of (list-of symbol?)))
-;;    (bodies (list-of ast?))
-;;    (outer-env env?)])
-;;(define-datatype proc proc?
-;;  [prim-proc
-;;    ;; prim refers to a scheme procedure
-;;    (prim procedure?)
-;;    ;; sig is the signature
-;;    (sig (list-of procedure?))] 
-;;  [closure
-;;    (formals (list-of symbol?))
-;;    (body ast?)
-;;    (env env?)])
-;;
-;;;;; prim? : proc? -> boolean?
-;;(define prim-proc?
-;;  (lambda (p)
-;;    (cases proc p
-;;      [prim-proc (prim sig) #t]
-;;      [else #f])))
-;;
-;;(define closure? 
-;;  (lambda (p)
-;;    (cases proc p
-;;      [prim-proc (prim sig) #f]
-;;      [else #t])))
-;;;;; expressible-value? : any/c -> boolean?
-;;(define expressible-value?
-;;  (or/c number? boolean? proc?))
-;;;;; denotable-value? :any/c -> boolean?
-;;(define denotable-value?
-;;  (or/c number? boolean? proc?))
-;;;;; empty-env? : env? -> boolean?
-;;(define empty-env?
-;;  (lambda (e)
-;;    (cases env e
-;;      [empty-env () #t]
-;;      [else #f])))
-;;
-;;;;; extended-env? : env? -> boolean?
-;;(define extended-env?
-;;  (lambda (e)
-;;    (cases env e
-;;      [extended-env (syms vals outer-env) #t]
-;;      [else #f])))
-;;
-;;;;; extended-rec-env? : env? -> boolean?
-;;(define extended-rec-env?
-;;  (lambda (e)
-;;    (cases env e
-;;      [extended-rec-env (fsyms lformals bodies outer-env) #t]
-;;      [else #f])))
-;;(define lookup-env
-;;  (lambda (e x) 
-;;    #f))
+(define-datatype env env?
+  [empty-env]
+  [extended-env
+    (syms (list-of symbol?))
+    (vals (list-of denotable-value?))
+    (outer-env env?)]
+  [extended-rec-env
+    (fsyms (list-of symbol?))
+    (lformals (list-of (list-of symbol?)))
+    (bodies (list-of ast?))
+    (outer-env env?)])
+(define-datatype proc proc?
+  [prim-proc
+    ;; prim refers to a scheme procedure
+    (prim procedure?)
+    ;; sig is the signature
+    (sig (list-of procedure?))] 
+  [closure
+    (formals (list-of symbol?))
+    (body ast?)
+    (env env?)])
+
+;;; prim? : proc? -> boolean?
+(define prim-proc?
+  (lambda (p)
+    (cases proc p
+      [prim-proc (prim sig) #t]
+      [else #f])))
+
+(define closure? 
+  (lambda (p)
+    (cases proc p
+      [prim-proc (prim sig) #f]
+      [else #t])))
+;;; expressible-value? : any/c -> boolean?
+(define expressible-value?
+  (or/c number? boolean? proc?))
+;;; denotable-value? :any/c -> boolean?
+(define denotable-value?
+  (or/c number? boolean? proc?))
+;;; empty-env? : env? -> boolean?
+(define empty-env?
+  (lambda (e)
+    (cases env e
+      [empty-env () #t]
+      [else #f])))
+
+;;; extended-env? : env? -> boolean?
+(define extended-env?
+  (lambda (e)
+    (cases env e
+      [extended-env (syms vals outer-env) #t]
+      [else #f])))
+
+;;; extended-rec-env? : env? -> boolean?
+(define extended-rec-env?
+  (lambda (e)
+    (cases env e
+      [extended-rec-env (fsyms lformals bodies outer-env) #t]
+      [else #f])))
+(define lookup-env
+  (lambda (e x) 
+    #f))
 ;;;;; implement all procedures in the list
-;;(define +p ...)
+;;(define +p
+;;    (prim-proc + (list number? number? number?)))
+;;
+;;(define -p
+;;    (prim-proc - (list number? number? number?)))
+;;
+;;(define *p
+;;    (prim-proc * (list number? number? number?)))
+;;
+;;(define /p
+;;    (prim-proc / (list number? number? number?)))
+;;
+;;(define <p
+;;    (prim-proc < (list boolean? number? number?)))
+;;
+;;(define <=p
+;;    (prim-proc <= (list boolean? number? number?)))
+;;
+;;(define eq?p
+;;    (prim-proc eq? (list boolean? number? number?)))
+;;
+;;(define 0?p
+;;    (prim-proc zero? (list boolean? number?)))
+;;
+;;(define !p
+;;    (prim-proc not (list boolean? boolean?)))
 ;;(define eval-ast
 ;;  (lambda (a e)
 ;;    ;; your solution here

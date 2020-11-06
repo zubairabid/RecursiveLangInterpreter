@@ -40,58 +40,58 @@
     test-f1
     test-no-params
     test-multi-binds))
-;;
-;;(define e1
-;;  (extended-env '(x y z) '(1 2 3) (empty-env)))
-;;
-;;(define e2
-;;  (extended-env '(w x) '(5 6) e1))
-;;
-;;(define even-body
-;;  (ifte
-;;    (app (id-ref '0?) (list (id-ref 'n)))
-;;    (bool #t)
-;;    (app
-;;      (id-ref 'odd?)
-;;      (list (app
-;;              (id-ref '-)
-;;              (list (id-ref 'n) (num 1)))))))
-;;
-;;(define odd-body
-;;  (ifte (app (id-ref '0?) (list (id-ref 'n)))
-;;    (bool #f)
-;;    (app (id-ref 'even?)
-;;      (list (app (id-ref '-) (list (id-ref 'n) (num 1)))))))
-;;
-;;(define e3
-;;  (extended-rec-env
-;;    '(even? odd?)
-;;    '((n) (n))
-;;    (list even-body odd-body)
-;;    e2))
-;;
-;;
-;;
-;;(check-equal?
-;; (closure '(n) even-body e3)
-;; (lookup-env e3 'even?) "lookup-env-even? test")
-;;
-;;
-;;(define test-env
-;;  (test-case "outer env"
-;;    (check-equal? 6 (lookup-env e3 'x))))
-;;
-;;(define test-rec-env
-;;  (test-case "Outer Rec Env"
-;;    (check-equal?
-;;      (closure '(n) even-body e3)
-;;      (lookup-env e3 'even?))))
-;;
-;;
-;;(define lookup-test
-;;  (test-suite "Lookup"
-;;    test-env
-;;    test-rec-env))
+
+(define e1
+  (extended-env '(x y z) '(1 2 3) (empty-env)))
+
+(define e2
+  (extended-env '(w x) '(5 6) e1))
+
+(define even-body
+  (ifte
+    (app (id-ref '0?) (list (id-ref 'n)))
+    (bool #t)
+    (app
+      (id-ref 'odd?)
+      (list (app
+              (id-ref '-)
+              (list (id-ref 'n) (num 1)))))))
+
+(define odd-body
+  (ifte (app (id-ref '0?) (list (id-ref 'n)))
+    (bool #f)
+    (app (id-ref 'even?)
+      (list (app (id-ref '-) (list (id-ref 'n) (num 1)))))))
+
+(define e3
+  (extended-rec-env
+    '(even? odd?)
+    '((n) (n))
+    (list even-body odd-body)
+    e2))
+
+
+
+(check-equal?
+ (closure '(n) even-body e3)
+ (lookup-env e3 'even?) "lookup-env-even? test")
+
+
+(define test-env
+  (test-case "outer env"
+    (check-equal? 6 (lookup-env e3 'x))))
+
+(define test-rec-env
+  (test-case "Outer Rec Env"
+    (check-equal?
+      (closure '(n) even-body e3)
+      (lookup-env e3 'even?))))
+
+
+(define lookup-test
+  (test-suite "Lookup"
+    test-env
+    test-rec-env))
 ;;(define test-even-odd
 ;; (test-case "Even Odd"
 ;;  (check-equal?
@@ -133,8 +133,8 @@
 
 (define test-recursive
   (test-suite "Recursive Tests"
-              test-recursive-parsing))
-              ;;lookup-test
+              test-recursive-parsing
+              lookup-test))
               ;;test-recursive-evaluation))
 
 
