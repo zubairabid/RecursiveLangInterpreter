@@ -189,44 +189,84 @@
       [else #f])))
 (define lookup-env
   (lambda (e x) 
-    #f))
-;;;;; implement all procedures in the list
-;;(define +p
-;;    (prim-proc + (list number? number? number?)))
-;;
-;;(define -p
-;;    (prim-proc - (list number? number? number?)))
-;;
-;;(define *p
-;;    (prim-proc * (list number? number? number?)))
-;;
-;;(define /p
-;;    (prim-proc / (list number? number? number?)))
-;;
-;;(define <p
-;;    (prim-proc < (list boolean? number? number?)))
-;;
-;;(define <=p
-;;    (prim-proc <= (list boolean? number? number?)))
-;;
-;;(define eq?p
-;;    (prim-proc eq? (list boolean? number? number?)))
-;;
-;;(define 0?p
-;;    (prim-proc zero? (list boolean? number?)))
-;;
-;;(define !p
-;;    (prim-proc not (list boolean? boolean?)))
+    (define (getv syms vals)
+      (if (empty? syms)
+          #f
+          (if (eq? (first syms) x)
+              (first vals)
+              (getv (rest syms) (rest vals)))))
+    (define (extgetv fsyms lformals bodies outer-env)
+      (if (empty? fsyms)
+          #f
+          (if (eq? (first fsyms) x)
+              (closure
+                (first lformals)
+                (first bodies)
+                outer-env)
+              (extgetv
+                (rest fsyms) 
+                (rest lformals) 
+                (rest bodies) 
+                outer-env))))
+    (cases env e
+           [extended-env 
+             (syms vals outer-env)
+             (let ([result (getv syms vals)])
+               (if (boolean? result)    ;; aka, if nothing found.
+                   (lookup-env outer-env x) ;; we then move on to outer-env
+                   result))]
+           ;; The extended-rec-env only happens with functions - closures. 
+           ;; So we need to take the fsyms[i], lformals[i], bodies[i], and 
+           ;; outer-env, and create a closure with:
+           ;;   1. lformals[i] as the formal
+           ;;   2. bodies[i] as the function body reference
+           ;;   3. outer-env as the external environment.
+           ;; In summary, it's returning a closure. Else it's returning from
+           ;; its environment.
+           [extended-rec-env
+             (fsyms lformals bodies outer-env)
+             (let ([result (extgetv fsyms lformals bodies outer-env)])
+               (if (boolean? result)
+                   (lookup-env outer-env x)
+                   result))]
+           [else 0])))
+;;; implement all procedures in the list
+(define +p
+    (prim-proc + (list number? number? number?)))
+
+(define -p
+    (prim-proc - (list number? number? number?)))
+
+(define *p
+    (prim-proc * (list number? number? number?)))
+
+(define /p
+    (prim-proc / (list number? number? number?)))
+
+(define <p
+    (prim-proc < (list boolean? number? number?)))
+
+(define <=p
+    (prim-proc <= (list boolean? number? number?)))
+
+(define eq?p
+    (prim-proc eq? (list boolean? number? number?)))
+
+(define 0?p
+    (prim-proc zero? (list boolean? number?)))
+
+(define !p
+    (prim-proc not (list boolean? boolean?)))
 ;;(define eval-ast
 ;;  (lambda (a e)
 ;;    ;; your solution here
 ;;    #f))
 ;;
-;;(define *init-env*
-;;  (extended-env
-;;   '(+ - * / < <= eq? 0? !)
-;;   (list +p -p *p /p <p <=p eq?p 0?p !p)
-;;   (empty-env)))
+(define *init-env*
+  (extended-env
+   '(+ - * / < <= eq? 0? !)
+   (list +p -p *p /p <p <=p eq?p 0?p !p)
+   (empty-env)))
 
 
 (provide (all-defined-out))
