@@ -239,7 +239,7 @@
                      (lookup-env outer-env x)
                      result))
                )]
-           [else 0])))
+           [else 0]))) ;; TODO add something
 ;;; implement all procedures in the list
 (define +p
     (prim-proc + (list number? number? number?)))
