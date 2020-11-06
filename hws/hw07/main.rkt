@@ -267,11 +267,11 @@
 
 (define !p
     (prim-proc not (list boolean? boolean?)))
-;;(define eval-ast
-;;  (lambda (a e)
-;;    ;; your solution here
-;;    #f))
-;;
+(define eval-ast
+  (lambda (a e)
+    ;; your solution here
+    #f))
+
 (define *init-env*
   (extended-env
    '(+ - * / < <= eq? 0? !)

@@ -92,50 +92,50 @@
   (test-suite "Lookup"
     test-env
     test-rec-env))
-;;(define test-even-odd
-;; (test-case "Even Odd"
-;;  (check-equal?
-;;   (eval-ast
-;;    (recursive
-;;     (list
-;;      (make-fbind 'even?
-;;                  '(n)
-;;                  (ifte (app (id-ref '0?) (list (id-ref 'n)))
-;;                        (bool #t)
-;;                        (app (id-ref 'odd?)
-;;                             (list (app (id-ref '-) (list (id-ref 'n) (num 1)))))))
-;;      
-;;      (make-fbind 'odd?
-;;                  '(n)
-;;                  (ifte (app (id-ref '0?) (list (id-ref 'n)))
-;;                        (bool #f)
-;;                        (app (id-ref 'even?)
-;;                             (list (app (id-ref '-) (list (id-ref 'n) (num 1))))))))
-;;     
-;;     (app (id-ref 'even?) (list (num 3))))
-;;     *init-env*)
-;;   #f)))
-;;
-;;
-;;(define test-factorial
-;; (test-case "factorial"
-;;  (check-equal?
-;;   (eval-ast (parse '(recursive ([f (n) (ifte (0? n) 1 (* n (f (- n 1))))])
-;;         (f 3))) *init-env*)
-;;   6)))
-;;
-;;
-;;(define test-recursive-evaluation
-;;  (test-suite "test-eval"
-;;   test-even-odd
-;;   test-factorial))
+(define test-even-odd
+ (test-case "Even Odd"
+  (check-equal?
+   (eval-ast
+    (recursive
+     (list
+      (make-fbind 'even?
+                  '(n)
+                  (ifte (app (id-ref '0?) (list (id-ref 'n)))
+                        (bool #t)
+                        (app (id-ref 'odd?)
+                             (list (app (id-ref '-) (list (id-ref 'n) (num 1)))))))
+      
+      (make-fbind 'odd?
+                  '(n)
+                  (ifte (app (id-ref '0?) (list (id-ref 'n)))
+                        (bool #f)
+                        (app (id-ref 'even?)
+                             (list (app (id-ref '-) (list (id-ref 'n) (num 1))))))))
+     
+     (app (id-ref 'even?) (list (num 3))))
+     *init-env*)
+   #f)))
+
+
+(define test-factorial
+ (test-case "factorial"
+  (check-equal?
+   (eval-ast (parse '(recursive ([f (n) (ifte (0? n) 1 (* n (f (- n 1))))])
+         (f 3))) *init-env*)
+   6)))
+
+
+(define test-recursive-evaluation
+  (test-suite "test-eval"
+   test-even-odd
+   test-factorial))
 
 
 (define test-recursive
   (test-suite "Recursive Tests"
               test-recursive-parsing
-              lookup-test))
-              ;;test-recursive-evaluation))
+              lookup-test
+              test-recursive-evaluation))
 
 
 (define run-all-tests 
