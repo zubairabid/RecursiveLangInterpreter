@@ -1,7 +1,7 @@
-# Participation Report
-
-- Zubair Abid
-- 20171076
+---
+title: Participation Report
+author: Zubair Abid (20171076)
+---
 
 ## In-class contributions
 
